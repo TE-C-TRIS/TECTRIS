@@ -1,0 +1,3 @@
+C:/Users/emily/TECTRIS/TECTRIS/build/CMakeFiles/Tectris.dir
+C:/Users/emily/TECTRIS/TECTRIS/build/CMakeFiles/edit_cache.dir
+C:/Users/emily/TECTRIS/TECTRIS/build/CMakeFiles/rebuild_cache.dir

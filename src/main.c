@@ -14,8 +14,8 @@ int main()
     SetTargetFPS(60);
 
     GameContext game;
+    int menuIndex = 0; 
     InitGame(&game);
-    int menuIndex = 0;
 
     Question currentQuestion;
     char userInput[64] = "\0";
@@ -34,8 +34,24 @@ int main()
         switch (game.state)
         {
         case STATE_MENU:
-            if (IsKeyPressed(KEY_ENTER))
-                game.state = STATE_GAME;
+            if (IsKeyPressed(KEY_DOWN)) {
+                menuIndex++;
+                if (menuIndex > 2) menuIndex = 0; // 0: jogar 1:histórico 2:sair
+            }
+            if (IsKeyPressed(KEY_UP)) {
+                menuIndex--;
+                if (menuIndex < 0) menuIndex = 2;
+            }
+            if (IsKeyPressed(KEY_ENTER)) {
+                if (menuIndex == 0) {
+                    InitGame(&game); // Reinicia o jogo para garantir um novo começo
+                    game.state = STATE_GAME;
+                } else if (menuIndex == 1) {
+                    game.state = STATE_HISTORY; //Vai para a tela de histórco
+                } else if (menuIndex == 2) {
+                    CloseWindow(); // Sai do jogo
+                }
+            }
             break;
 
         case STATE_GAME:
