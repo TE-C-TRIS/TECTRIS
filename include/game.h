@@ -39,7 +39,7 @@ Question GetRandomQuestion(int level);
 bool ValidateAnswer(const char* user, const Question* q);
 
 // Renderização
-void DrawGame(GameContext *ctx);
+void DrawGame(GameContext *ctx, int menuIndex);
 void UpdateScreenConfig(GameContext *ctx);
 
 #endif
