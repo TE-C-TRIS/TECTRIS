@@ -43,14 +43,47 @@ float average) {
 }
 
 // Funções recursivas (stubs - serão implementadas pelo Dev 3)
-int RecursiveSum(int *arr, int n) { return 0; /* Implementar
-recursivamente */ }
-int RecursiveMax(int *arr, int n) { return 0; /* Implementar
-recursivamente */ }
-int RecursiveMin(int *arr, int n) { return 0; /* Implementar
-recursivamente */ }
-long RecursiveSquareSum(int *arr, int n) { return 0; /* Implementar
-recursivamente */ }
+int RecursiveSum(int *arr, int n) {
+    if (n <= 0) {
+        return 0;
+    }
+    return arr[n - 1] + RecursiveSum(arr, n - 1);
+}
+
+int RecursiveMax(int *arr, int n) {
+    if (arr == NULL || n <= 0) {
+        return 0;
+    }
+
+    if (n == 1) {
+        return arr[0];
+    }
+
+    int maxOfRest = RecursiveMax(arr, n - 1);
+
+    return (arr[n - 1] > maxOfRest) ? arr[n - 1] : maxOfRest;
+}
+
+int RecursiveMin(int *arr, int n) {
+    if (arr == NULL || n <= 0) {
+        return 0;
+    }
+
+    if (n == 1) {
+        return arr[0];
+    }
+
+    int minOfRest = RecursiveMin(arr, n - 1);
+
+    return (arr[n - 1] < minOfRest) ? arr[n - 1] : minOfRest;
+}
+
+long RecursiveSquareSum(int *arr, int n) {
+    if (n <= 0) {
+        return 0;
+    }
+    return (long)arr[n - 1] * arr[n - 1] + RecursiveSquareSum(arr, n - 1);
+}
 // Função para gerar heurísticas (stub - será implementada pelo Dev 4)
 void GenerateHeuristic(GameStats *stats) {
     sprintf(stats->heuristicMessage, "Analise de desempenho em andamento...");

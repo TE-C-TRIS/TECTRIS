@@ -1,4 +1,3 @@
-```c id="maincorrigido"
 #include "common.h"
 #include "game.h"
 #include <stdio.h>
@@ -28,27 +27,27 @@ int main()
     bool showFeedback = false;
     float feedbackTimer = 0;
     float nextQuestionTimer = 20.0f; // Tempo entre perguntas
-
+    
     while (!WindowShouldClose())
     {
         float dt = GetFrameTime();
-
+        
         // Máquina de Estados
         switch (game.state)
         {
         case STATE_MENU:
-            if (IsKeyPressed(KEY_DOWN)) {
+        if (IsKeyPressed(KEY_DOWN)) {
                 menuIndex++;
-                if (menuIndex > 2) menuIndex = 0;
+                if (menuIndex > 3) menuIndex = 0;
             }
-
+            
             if (IsKeyPressed(KEY_UP)) {
                 menuIndex--;
-                if (menuIndex < 0) menuIndex = 2;
+                if (menuIndex < 0) menuIndex = 3;
             }
 
             if (IsKeyPressed(KEY_ENTER)) {
-
+                
                 if (menuIndex == 0) {
                     InitGame(&game);
                     game.state = STATE_GAME;
@@ -60,29 +59,32 @@ int main()
                 }
 
                 else if (menuIndex == 2) {
+                    game.state = STATE_REPORT;
+                }
+                else if (menuIndex == 3) {
                     CloseWindow();
                 }
             }
             break;
-
-        case STATE_HISTORY:
+            
+            case STATE_HISTORY:
             if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
-                game.state = STATE_MENU;
+            game.state = STATE_MENU;
             break;
-
+            
         case STATE_GAME:
-            if (IsKeyPressed(KEY_P))
+        if (IsKeyPressed(KEY_P))
                 game.state = STATE_PAUSE;
-
-            // Controles de Gameplay
-            if (IsKeyPressed(KEY_LEFT))
-            {
-                if (!CheckCollision(&game, game.currentPiece, -1, 0))
+                
+                // Controles de Gameplay
+                if (IsKeyPressed(KEY_LEFT))
+                {
+                    if (!CheckCollision(&game, game.currentPiece, -1, 0))
                     game.currentPiece.pos.x--;
-            }
-
-            if (IsKeyPressed(KEY_RIGHT))
-            {
+                }
+                
+                if (IsKeyPressed(KEY_RIGHT))
+                {
                 if (!CheckCollision(&game, game.currentPiece, 1, 0))
                     game.currentPiece.pos.x++;
             }
@@ -91,9 +93,9 @@ int main()
             {
                 if (!CheckCollision(&game, game.currentPiece, 0, 1))
                     game.currentPiece.pos.y++;
-            }
-
-            if (IsKeyPressed(KEY_UP))
+                }
+                
+                if (IsKeyPressed(KEY_UP))
             {
                 TryRotate(&game);
             }
@@ -102,55 +104,55 @@ int main()
             {
                 // Hard Drop
                 while (!CheckCollision(&game, game.currentPiece, 0, 1))
-                    game.currentPiece.pos.y++;
-
+                game.currentPiece.pos.y++;
+                
                 MergePiece(&game);
             }
-
+            
             UpdateGame(&game, dt);
-
+            
             // Gerenciamento de Perguntas
             nextQuestionTimer -= dt;
-
+            
             if (nextQuestionTimer <= 0)
             {
                 game.state = STATE_QUESTION;
                 currentQuestion = GetRandomQuestion(game.level);
-
+                
                 userInput[0] = '\0';
                 letterCount = 0;
                 questionTimer = 15.0f;
                 showFeedback = false;
-
+                
                 nextQuestionTimer = 25.0f;
             }
-
+            
             break;
-
-        case STATE_PAUSE:
+            
+            case STATE_PAUSE:
             if (IsKeyPressed(KEY_P))
-                game.state = STATE_GAME;
-
+            game.state = STATE_GAME;
+            
             break;
 
-        case STATE_QUESTION:
-
+            case STATE_QUESTION:
+            
             if (!showFeedback)
             {
                 questionTimer -= dt;
-
+                
                 if (questionTimer <= 0)
                 {
                     isCorrect = false;
                     showFeedback = true;
                     feedbackTimer = 2.5f;
-
+                    
                     AddPenaltyLine(&game);
                 }
-
+                
                 // Captura de Input de Texto
                 int key = GetCharPressed();
-
+                
                 while (key > 0)
                 {
                     if ((key >= 32) && (key <= 125) && (letterCount < 63))
@@ -159,10 +161,10 @@ int main()
                         userInput[letterCount + 1] = '\0';
                         letterCount++;
                     }
-
+                    
                     key = GetCharPressed();
                 }
-
+                
                 if (IsKeyPressed(KEY_BACKSPACE))
                 {
                     if (letterCount > 0)
@@ -171,14 +173,14 @@ int main()
                         userInput[letterCount] = '\0';
                     }
                 }
-
+                
                 if (IsKeyPressed(KEY_ENTER) && letterCount > 0)
                 {
                     isCorrect = ValidateAnswer(userInput, &currentQuestion);
-
+                    
                     showFeedback = true;
                     feedbackTimer = 2.5f;
-
+                    
                     if (isCorrect)
                     {
                         game.score += 150;
@@ -193,26 +195,36 @@ int main()
             else
             {
                 feedbackTimer -= dt;
-
+                
                 if (feedbackTimer <= 0)
                 {
                     game.state = STATE_GAME;
                 }
             }
+            
+            break;
+            
+            case STATE_REPORT:
+                DrawText("Estatisticas", 100, 100, 30, WHITE);
+
+                if (IsKeyPressed(KEY_ESCAPE))
+                {
+                    game.state = STATE_MENU;
+                }
 
             break;
-
-        case STATE_GAMEOVER:
-
+            
+            case STATE_GAMEOVER:
+            
             if (IsKeyPressed(KEY_ENTER))
             {
                 MatchHistory currentMatch;
-
+                
                 currentMatch.score = game.score;
                 currentMatch.lines = game.lines;
                 currentMatch.level = game.level;
                 currentMatch.timestamp = time(NULL);
-
+                
                 SaveHistory(currentMatch);
 
                 game.state = STATE_MENU;
@@ -400,6 +412,36 @@ int main()
                 LIGHTGRAY
             );
         }
+        
+        else if (game.state == STATE_REPORT)
+        {
+            DrawRectangle(0, 0, sw, sh, (Color){15, 15, 30, 255});
+
+            DrawText(
+                "ESTATISTICAS",
+                sw / 2 - MeasureText("ESTATISTICAS", (int)(35 * s)) / 2,
+                (int)(sh * 0.1f),
+                (int)(35 * s),
+                COLOR_TEXT
+            );
+
+            DrawText(
+                "Analise de desempenho em andamento...",
+                sw / 2 - MeasureText("Analise de desempenho em andamento...", (int)(20 * s)) / 2,
+                (int)(sh / 2),
+                (int)(20 * s),
+                WHITE
+            );
+
+            DrawText(
+                "Pressione ENTER ou ESC para voltar",
+                sw / 2 - MeasureText("Pressione ENTER ou ESC para voltar", (int)(18 * s)) / 2,
+                (int)(sh * 0.9f),
+                (int)(18 * s),
+                LIGHTGRAY
+            );
+        }
+       
 
         else if (game.state == STATE_HISTORY)
         {
