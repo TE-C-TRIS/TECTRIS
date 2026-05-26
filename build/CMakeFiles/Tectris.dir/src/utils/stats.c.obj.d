@@ -1,6 +1,6 @@
-CMakeFiles/Tectris.dir/src/render/render.c.obj: \
- C:\Users\Administrator\CESAR\ School\PIF\TECTRIS-FORK\src\render\render.c \
- C:/Users/ADMINI~1/CESARS~1/PIF/TECTRI~1/include/game.h \
+CMakeFiles/Tectris.dir/src/utils/stats.c.obj: \
+ C:\Users\Administrator\CESAR\ School\PIF\TECTRIS-FORK\src\utils\stats.c \
+ C:/Users/ADMINI~1/CESARS~1/PIF/TECTRI~1/include/stats.h \
  C:/Users/ADMINI~1/CESARS~1/PIF/TECTRI~1/include/common.h \
  C:/msys64/ucrt64/include/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
@@ -20,9 +20,8 @@ CMakeFiles/Tectris.dir/src/render/render.c.obj: \
  C:/msys64/ucrt64/include/_timeval.h \
  C:/msys64/ucrt64/include/pthread_time.h \
  C:/msys64/ucrt64/include/pthread_compat.h \
- C:/msys64/ucrt64/include/stdio.h \
+ C:/msys64/ucrt64/include/math.h C:/msys64/ucrt64/include/stdio.h \
  C:/msys64/ucrt64/include/corecrt_stdio_config.h \
  C:/msys64/ucrt64/include/_mingw_off_t.h \
  C:/msys64/ucrt64/include/swprintf.inl \
- C:/msys64/ucrt64/include/sec_api/stdio_s.h \
- C:/msys64/ucrt64/include/math.h
+ C:/msys64/ucrt64/include/sec_api/stdio_s.h

@@ -21,11 +21,11 @@ int LoadHistory(MatchHistory *history, int maxCount) {
     }
     int count = 0;
     while(count < maxCount) {
-        int result = fscanf(file, "%d,%d,%d,%d\n",
+        int result = fscanf(file, "%d,%d,%d,%ld\n",
             &history[count].score,
             &history[count].lines,
             &history[count].level,
-            &history[count].timestamp);
+            (long long *)&history[count].timestamp);
         if (result != 4) break;
         count++;
     }

@@ -4,6 +4,7 @@
 #include <string.h>
 #include <math.h>
 #include "history.h"
+#include "stats.h"
 #include <time.h>
 
 int main()
@@ -18,6 +19,8 @@ int main()
     int menuIndex = 0;
     MatchHistory history[10];
     int historyCount = 0;
+    GameStats stats;
+    int scoresArr[10];
 
     Question currentQuestion;
     char userInput[64] = "\0";
@@ -27,64 +30,88 @@ int main()
     bool showFeedback = false;
     float feedbackTimer = 0;
     float nextQuestionTimer = 20.0f; // Tempo entre perguntas
-    
+
     while (!WindowShouldClose())
     {
         float dt = GetFrameTime();
-        
+
         // Máquina de Estados
         switch (game.state)
         {
         case STATE_MENU:
-        if (IsKeyPressed(KEY_DOWN)) {
+            if (IsKeyPressed(KEY_DOWN))
+            {
                 menuIndex++;
-                if (menuIndex > 3) menuIndex = 0;
-            }
-            
-            if (IsKeyPressed(KEY_UP)) {
-                menuIndex--;
-                if (menuIndex < 0) menuIndex = 3;
+                if (menuIndex > 3)
+                    menuIndex = 0;
             }
 
-            if (IsKeyPressed(KEY_ENTER)) {
-                
-                if (menuIndex == 0) {
+            if (IsKeyPressed(KEY_UP))
+            {
+                menuIndex--;
+                if (menuIndex < 0)
+                    menuIndex = 3;
+            }
+
+            if (IsKeyPressed(KEY_ENTER))
+            {
+
+                if (menuIndex == 0)
+                {
                     InitGame(&game);
                     game.state = STATE_GAME;
                 }
 
-                else if (menuIndex == 1) {
-                    historyCount = LoadHistory(history, 10);
+                else if (menuIndex == 1)
+                {
+                    game.historyCount = LoadHistory(game.history, MAX_HISTORY_RECORDS);
                     game.state = STATE_HISTORY;
                 }
 
-                else if (menuIndex == 2) {
+                else if (menuIndex == 2)
+                {
+                    historyCount = LoadHistory(history, 10);
+
+                    stats.totalMatches = historyCount;
+                    stats.averageScore = CalculateAverageScore(history, historyCount);
+                    stats.bestScore = CalculateBestScore(history, historyCount);
+                    stats.worstScore = CalculateWorstScore(history, historyCount);
+                    stats.standardDeviation = CalculateStandardDeviation(history, historyCount, stats.averageScore);
+
+                    for (int i = 0; i < historyCount; i++)
+                    {
+                        scoresArr[i] = game.history[i].score;
+                    }
+
+                    GenerateHeuristic(&stats);
                     game.state = STATE_REPORT;
                 }
-                else if (menuIndex == 3) {
+
+                else if (menuIndex == 3)
+                {
                     CloseWindow();
                 }
             }
             break;
-            
-            case STATE_HISTORY:
+
+        case STATE_HISTORY:
             if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
-            game.state = STATE_MENU;
+                game.state = STATE_MENU;
             break;
-            
+
         case STATE_GAME:
-        if (IsKeyPressed(KEY_P))
+            if (IsKeyPressed(KEY_P))
                 game.state = STATE_PAUSE;
-                
-                // Controles de Gameplay
-                if (IsKeyPressed(KEY_LEFT))
-                {
-                    if (!CheckCollision(&game, game.currentPiece, -1, 0))
+
+            // Controles de Gameplay
+            if (IsKeyPressed(KEY_LEFT))
+            {
+                if (!CheckCollision(&game, game.currentPiece, -1, 0))
                     game.currentPiece.pos.x--;
-                }
-                
-                if (IsKeyPressed(KEY_RIGHT))
-                {
+            }
+
+            if (IsKeyPressed(KEY_RIGHT))
+            {
                 if (!CheckCollision(&game, game.currentPiece, 1, 0))
                     game.currentPiece.pos.x++;
             }
@@ -93,9 +120,9 @@ int main()
             {
                 if (!CheckCollision(&game, game.currentPiece, 0, 1))
                     game.currentPiece.pos.y++;
-                }
-                
-                if (IsKeyPressed(KEY_UP))
+            }
+
+            if (IsKeyPressed(KEY_UP))
             {
                 TryRotate(&game);
             }
@@ -104,55 +131,55 @@ int main()
             {
                 // Hard Drop
                 while (!CheckCollision(&game, game.currentPiece, 0, 1))
-                game.currentPiece.pos.y++;
-                
+                    game.currentPiece.pos.y++;
+
                 MergePiece(&game);
             }
-            
+
             UpdateGame(&game, dt);
-            
+
             // Gerenciamento de Perguntas
             nextQuestionTimer -= dt;
-            
+
             if (nextQuestionTimer <= 0)
             {
                 game.state = STATE_QUESTION;
                 currentQuestion = GetRandomQuestion(game.level);
-                
+
                 userInput[0] = '\0';
                 letterCount = 0;
                 questionTimer = 15.0f;
                 showFeedback = false;
-                
+
                 nextQuestionTimer = 25.0f;
             }
-            
-            break;
-            
-            case STATE_PAUSE:
-            if (IsKeyPressed(KEY_P))
-            game.state = STATE_GAME;
-            
+
             break;
 
-            case STATE_QUESTION:
-            
+        case STATE_PAUSE:
+            if (IsKeyPressed(KEY_P))
+                game.state = STATE_GAME;
+
+            break;
+
+        case STATE_QUESTION:
+
             if (!showFeedback)
             {
                 questionTimer -= dt;
-                
+
                 if (questionTimer <= 0)
                 {
                     isCorrect = false;
                     showFeedback = true;
                     feedbackTimer = 2.5f;
-                    
+
                     AddPenaltyLine(&game);
                 }
-                
+
                 // Captura de Input de Texto
                 int key = GetCharPressed();
-                
+
                 while (key > 0)
                 {
                     if ((key >= 32) && (key <= 125) && (letterCount < 63))
@@ -161,10 +188,10 @@ int main()
                         userInput[letterCount + 1] = '\0';
                         letterCount++;
                     }
-                    
+
                     key = GetCharPressed();
                 }
-                
+
                 if (IsKeyPressed(KEY_BACKSPACE))
                 {
                     if (letterCount > 0)
@@ -173,14 +200,14 @@ int main()
                         userInput[letterCount] = '\0';
                     }
                 }
-                
+
                 if (IsKeyPressed(KEY_ENTER) && letterCount > 0)
                 {
                     isCorrect = ValidateAnswer(userInput, &currentQuestion);
-                    
+
                     showFeedback = true;
                     feedbackTimer = 2.5f;
-                    
+
                     if (isCorrect)
                     {
                         game.score += 150;
@@ -195,36 +222,36 @@ int main()
             else
             {
                 feedbackTimer -= dt;
-                
+
                 if (feedbackTimer <= 0)
                 {
                     game.state = STATE_GAME;
                 }
             }
-            
-            break;
-            
-            case STATE_REPORT:
-                DrawText("Estatisticas", 100, 100, 30, WHITE);
-
-                if (IsKeyPressed(KEY_ESCAPE))
-                {
-                    game.state = STATE_MENU;
-                }
 
             break;
-            
-            case STATE_GAMEOVER:
-            
+
+        case STATE_REPORT:
+            DrawText("Estatisticas", 100, 100, 30, WHITE);
+
+            if (IsKeyPressed(KEY_ESCAPE))
+            {
+                game.state = STATE_MENU;
+            }
+
+            break;
+
+        case STATE_GAMEOVER:
+
             if (IsKeyPressed(KEY_ENTER))
             {
                 MatchHistory currentMatch;
-                
+
                 currentMatch.score = game.score;
                 currentMatch.lines = game.lines;
                 currentMatch.level = game.level;
                 currentMatch.timestamp = time(NULL);
-                
+
                 SaveHistory(currentMatch);
 
                 game.state = STATE_MENU;
@@ -253,16 +280,14 @@ int main()
                 sw / 2 - MeasureText("PAUSA", (int)(50 * s)) / 2,
                 sh / 2 - (int)(40 * s),
                 (int)(50 * s),
-                WHITE
-            );
+                WHITE);
 
             DrawText(
                 "Pressione P para continuar",
                 sw / 2 - MeasureText("Pressione P para continuar", (int)(20 * s)) / 2,
                 sh / 2 + (int)(20 * s),
                 (int)(20 * s),
-                LIGHTGRAY
-            );
+                LIGHTGRAY);
         }
 
         else if (game.state == STATE_QUESTION)
@@ -273,54 +298,47 @@ int main()
                 sw * 0.1f,
                 sh * 0.15f,
                 sw * 0.8f,
-                sh * 0.7f
-            };
+                sh * 0.7f};
 
             DrawRectangleLinesEx(
                 qBox,
                 3 * s,
-                showFeedback ? (isCorrect ? GREEN : RED) : COLOR_TEXT
-            );
+                showFeedback ? (isCorrect ? GREEN : RED) : COLOR_TEXT);
 
             DrawText(
                 "DESAFIO DE C",
                 sw / 2 - MeasureText("DESAFIO DE C", (int)(35 * s)) / 2,
                 (int)(qBox.y + 40 * s),
                 (int)(35 * s),
-                COLOR_TEXT
-            );
+                COLOR_TEXT);
 
             DrawText(
                 currentQuestion.question,
                 sw / 2 - MeasureText(currentQuestion.question, (int)(22 * s)) / 2,
                 (int)(qBox.y + 120 * s),
                 (int)(22 * s),
-                WHITE
-            );
+                WHITE);
 
             // Input Box
             Rectangle iBox = {
                 sw / 2 - 250 * s,
                 qBox.y + 220 * s,
                 500 * s,
-                60 * s
-            };
+                60 * s};
 
             DrawRectangleRec(iBox, COLOR_PANEL);
 
             DrawRectangleLinesEx(
                 iBox,
                 2 * s,
-                showFeedback ? (isCorrect ? GREEN : RED) : WHITE
-            );
+                showFeedback ? (isCorrect ? GREEN : RED) : WHITE);
 
             DrawText(
                 userInput,
                 (int)(iBox.x + 15 * s),
                 (int)(iBox.y + 15 * s),
                 (int)(30 * s),
-                COLOR_TEXT
-            );
+                COLOR_TEXT);
 
             // Cursor piscante
             if (!showFeedback && ((int)(GetTime() * 2) % 2 == 0))
@@ -332,8 +350,7 @@ int main()
                     (int)(iBox.y + 15 * s),
                     (int)(2 * s),
                     (int)(30 * s),
-                    COLOR_TEXT
-                );
+                    COLOR_TEXT);
             }
 
             // Barra de Tempo
@@ -344,24 +361,22 @@ int main()
                 (int)(iBox.y + 70 * s),
                 (int)timerWidth,
                 (int)(5 * s),
-                (questionTimer < 5) ? RED : GREEN
-            );
+                (questionTimer < 5) ? RED : GREEN);
 
             if (showFeedback)
             {
                 Color fColor = isCorrect ? GREEN : RED;
 
                 const char *fText = isCorrect
-                    ? "RESPOSTA CORRETA!"
-                    : "RESPOSTA INCORRETA!";
+                                        ? "RESPOSTA CORRETA!"
+                                        : "RESPOSTA INCORRETA!";
 
                 DrawText(
                     fText,
                     sw / 2 - MeasureText(fText, (int)(40 * s)) / 2,
                     (int)(qBox.y + 350 * s),
                     (int)(40 * s),
-                    fColor
-                );
+                    fColor);
 
                 if (!isCorrect)
                 {
@@ -374,8 +389,7 @@ int main()
                         sw / 2 - MeasureText(ans, (int)(20 * s)) / 2,
                         (int)(qBox.y + 410 * s),
                         (int)(20 * s),
-                        LIGHTGRAY
-                    );
+                        LIGHTGRAY);
                 }
             }
         }
@@ -389,8 +403,7 @@ int main()
                 sw / 2 - MeasureText("GAME OVER", (int)(80 * s)) / 2,
                 (int)(sh * 0.35f),
                 (int)(80 * s),
-                RED
-            );
+                RED);
 
             char finalScore[64];
 
@@ -401,18 +414,16 @@ int main()
                 sw / 2 - MeasureText(finalScore, (int)(30 * s)) / 2,
                 (int)(sh * 0.5f),
                 (int)(30 * s),
-                WHITE
-            );
+                WHITE);
 
             DrawText(
                 "Pressione ENTER para voltar ao menu",
                 sw / 2 - MeasureText("Pressione ENTER para voltar ao menu", (int)(20 * s)) / 2,
                 (int)(sh * 0.7f),
                 (int)(20 * s),
-                LIGHTGRAY
-            );
+                LIGHTGRAY);
         }
-        
+
         else if (game.state == STATE_REPORT)
         {
             DrawRectangle(0, 0, sw, sh, (Color){15, 15, 30, 255});
@@ -422,26 +433,80 @@ int main()
                 sw / 2 - MeasureText("ESTATISTICAS", (int)(35 * s)) / 2,
                 (int)(sh * 0.1f),
                 (int)(35 * s),
-                COLOR_TEXT
-            );
+                COLOR_TEXT);
 
-            DrawText(
-                "Analise de desempenho em andamento...",
-                sw / 2 - MeasureText("Analise de desempenho em andamento...", (int)(20 * s)) / 2,
-                (int)(sh / 2),
-                (int)(20 * s),
-                WHITE
-            );
+            if (stats.totalMatches == 0)
+            {
+                DrawText(
+                    "Nenhuma partida registrada.",
+                    sw / 2 - MeasureText("Nenhuma partida registrada.", (int)(20 * s)) / 2,
+                    (int)(sh / 2),
+                    (int)(20 * s),
+                    LIGHTGRAY);
+            }
+            else
+            {
+                char buf[128];
+
+                sprintf(buf, "Partidas jogadas: %d", stats.totalMatches);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.25f), (int)(20 * s), WHITE);
+
+                sprintf(buf, "Media de pontuacao: %.1f", stats.averageScore);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.35f), (int)(20 * s), WHITE);
+
+                sprintf(buf, "Melhor pontuacao: %d", stats.bestScore);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.45f), (int)(20 * s), GREEN);
+
+                sprintf(buf, "Pior pontuacao: %d", stats.worstScore);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.55f), (int)(20 * s), RED);
+
+                sprintf(buf, "Desvio padrao: %.1f", stats.standardDeviation);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.65f), (int)(20 * s), YELLOW);
+
+                DrawText(stats.heuristicMessage,
+                         sw / 2 - MeasureText(stats.heuristicMessage, (int)(18 * s)) / 2,
+                         (int)(sh * 0.75f), (int)(18 * s), LIGHTGRAY);
+            }
+            {
+                char buf[128];
+
+                sprintf(buf, "Partidas jogadas: %d", stats.totalMatches);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.25f), (int)(20 * s), WHITE);
+
+                sprintf(buf, "Media de pontuacao: %.1f", stats.averageScore);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.35f), (int)(20 * s), WHITE);
+
+                sprintf(buf, "Melhor pontuacao: %d", stats.bestScore);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.45f), (int)(20 * s), GREEN);
+
+                sprintf(buf, "Pior pontuacao: %d", stats.worstScore);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.55f), (int)(20 * s), RED);
+
+                sprintf(buf, "Desvio padrao: %.1f", stats.standardDeviation);
+                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
+                         (int)(sh * 0.65f), (int)(20 * s), YELLOW);
+
+                DrawText(stats.heuristicMessage,
+                         sw / 2 - MeasureText(stats.heuristicMessage, (int)(18 * s)) / 2,
+                         (int)(sh * 0.75f), (int)(18 * s), LIGHTGRAY);
+            }
 
             DrawText(
                 "Pressione ENTER ou ESC para voltar",
                 sw / 2 - MeasureText("Pressione ENTER ou ESC para voltar", (int)(18 * s)) / 2,
                 (int)(sh * 0.9f),
                 (int)(18 * s),
-                LIGHTGRAY
-            );
+                LIGHTGRAY);
         }
-       
 
         else if (game.state == STATE_HISTORY)
         {
@@ -452,52 +517,47 @@ int main()
                 sw / 2 - MeasureText("HISTORICO DE PARTIDAS", (int)(35 * s)) / 2,
                 (int)(sh * 0.08f),
                 (int)(35 * s),
-                COLOR_TEXT
-            );
+                COLOR_TEXT);
 
-            if (historyCount == 0)
+            if (game.historyCount == 0)
             {
                 DrawText(
                     "Nenhuma partida registrada.",
                     sw / 2 - MeasureText("Nenhuma partida registrada.", (int)(20 * s)) / 2,
                     sh / 2,
                     (int)(20 * s),
-                    LIGHTGRAY
-                );
+                    LIGHTGRAY);
             }
             else
             {
-                for (int i = 0; i < historyCount; i++)
+                for (int i = 0; i < game.historyCount; i++)
                 {
                     char line[128];
                     char dateStr[32];
 
-                    struct tm *timeInfo = localtime(&history[i].timestamp);
+                    struct tm *timeInfo = localtime(&game.history[i].timestamp);
 
                     strftime(
                         dateStr,
                         sizeof(dateStr),
                         "%d/%m/%Y %H:%M",
-                        timeInfo
-                    );
+                        timeInfo);
 
                     sprintf(
                         line,
                         "%d. Score: %d | Linhas: %d | Nivel: %d | %s",
                         i + 1,
-                        history[i].score,
-                        history[i].lines,
-                        history[i].level,
-                        dateStr
-                    );
+                        game.history[i].score,
+                        game.history[i].lines,
+                        game.history[i].level,
+                        dateStr);
 
                     DrawText(
                         line,
                         sw / 2 - MeasureText(line, (int)(16 * s)) / 2,
                         (int)(sh * 0.2f) + i * (int)(35 * s),
                         (int)(16 * s),
-                        WHITE
-                    );
+                        WHITE);
                 }
             }
 
@@ -506,8 +566,7 @@ int main()
                 sw / 2 - MeasureText("Pressione ENTER ou ESC para voltar", (int)(18 * s)) / 2,
                 (int)(sh * 0.9f),
                 (int)(18 * s),
-                LIGHTGRAY
-            );
+                LIGHTGRAY);
         }
 
         EndDrawing();

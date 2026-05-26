@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS
+# Install script for directory: C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,13 +34,13 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/mingw64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/msys64/ucrt64/bin/objdump.exe")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/install_local_manifest.txt"
+  file(WRITE "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -56,6 +56,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

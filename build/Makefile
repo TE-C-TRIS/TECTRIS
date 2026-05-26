@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS"
+CMAKE_SOURCE_DIR = "C:\Users\Administrator\CESAR School\PIF\TECTRIS-FORK"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build"
+CMAKE_BINARY_DIR = "C:\Users\Administrator\CESAR School\PIF\TECTRIS-FORK\build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Administrator\CESAR School\PIF\TECTRIS-FORK\build\CMakeFiles" "C:\Users\Administrator\CESAR School\PIF\TECTRIS-FORK\build\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Administrator\CESAR School\PIF\TECTRIS-FORK\build\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -248,6 +248,30 @@ src/utils/history.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/history.c.s
 .PHONY : src/utils/history.c.s
 
+src/utils/stats.obj: src/utils/stats.c.obj
+.PHONY : src/utils/stats.obj
+
+# target to build an object file
+src/utils/stats.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/stats.c.obj
+.PHONY : src/utils/stats.c.obj
+
+src/utils/stats.i: src/utils/stats.c.i
+.PHONY : src/utils/stats.i
+
+# target to preprocess a source file
+src/utils/stats.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/stats.c.i
+.PHONY : src/utils/stats.c.i
+
+src/utils/stats.s: src/utils/stats.c.s
+.PHONY : src/utils/stats.s
+
+# target to generate assembly for a file
+src/utils/stats.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/stats.c.s
+.PHONY : src/utils/stats.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -272,6 +296,9 @@ help:
 	@echo ... src/utils/history.obj
 	@echo ... src/utils/history.i
 	@echo ... src/utils/history.s
+	@echo ... src/utils/stats.obj
+	@echo ... src/utils/stats.i
+	@echo ... src/utils/stats.s
 .PHONY : help
 
 

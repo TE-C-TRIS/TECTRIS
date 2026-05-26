@@ -1,38 +1,33 @@
 CMakeFiles/Tectris.dir/src/game/game.c.obj: \
- C:\Users\Matheus\OneDrive\Desktop\CESAR\ SCHOOL\Semestre\ 2\Jogo_Tectris\TECTRIS\src\game\game.c \
- C:/Users/Matheus/OneDrive/Desktop/CESARS~1/SEMEST~2/JOGO_T~1/TECTRIS/include/game.h \
- C:/Users/Matheus/OneDrive/Desktop/CESARS~1/SEMEST~2/JOGO_T~1/TECTRIS/include/common.h \
- C:/raylib/raylib/src/raylib.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
- C:/mingw64/x86_64-w64-mingw32/include/stdarg.h \
- C:/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h \
- C:/mingw64/x86_64-w64-mingw32/include/vadefs.h \
- C:/mingw64/x86_64-w64-mingw32/include/_mingw.h \
- C:/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
- C:/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
- C:/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
- C:/mingw64/x86_64-w64-mingw32/include/stdint.h \
- C:/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
- C:/mingw64/x86_64-w64-mingw32/include/corecrt.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
- C:/mingw64/x86_64-w64-mingw32/include/stddef.h \
- C:/mingw64/x86_64-w64-mingw32/include/time.h \
- C:/mingw64/x86_64-w64-mingw32/include/sys/timeb.h \
- C:/mingw64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
- C:/mingw64/x86_64-w64-mingw32/include/_timeval.h \
- C:/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
- C:/mingw64/x86_64-w64-mingw32/include/pthread_compat.h \
- C:/mingw64/x86_64-w64-mingw32/include/stdlib.h \
- C:/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
- C:/mingw64/x86_64-w64-mingw32/include/limits.h \
- C:/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
- C:/mingw64/x86_64-w64-mingw32/include/malloc.h \
- C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
- C:/mingw64/x86_64-w64-mingw32/include/errno.h \
- C:/mingw64/x86_64-w64-mingw32/include/string.h \
- C:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
- C:/mingw64/x86_64-w64-mingw32/include/math.h
+ C:\Users\Administrator\CESAR\ School\PIF\TECTRIS-FORK\src\game\game.c \
+ C:/Users/ADMINI~1/CESARS~1/PIF/TECTRI~1/include/game.h \
+ C:/Users/ADMINI~1/CESARS~1/PIF/TECTRI~1/include/common.h \
+ C:/msys64/ucrt64/include/raylib.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
+ C:/msys64/ucrt64/include/stdarg.h \
+ C:/msys64/ucrt64/include/_mingw_stdarg.h \
+ C:/msys64/ucrt64/include/vadefs.h C:/msys64/ucrt64/include/_mingw.h \
+ C:/msys64/ucrt64/include/_mingw_mac.h \
+ C:/msys64/ucrt64/include/_mingw_secapi.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h C:/msys64/ucrt64/include/crtdefs.h \
+ C:/msys64/ucrt64/include/corecrt.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
+ C:/msys64/ucrt64/include/stddef.h C:/msys64/ucrt64/include/time.h \
+ C:/msys64/ucrt64/include/sys/timeb.h \
+ C:/msys64/ucrt64/include/sec_api/sys/timeb_s.h \
+ C:/msys64/ucrt64/include/_timeval.h \
+ C:/msys64/ucrt64/include/pthread_time.h \
+ C:/msys64/ucrt64/include/pthread_compat.h \
+ C:/msys64/ucrt64/include/stdlib.h \
+ C:/msys64/ucrt64/include/corecrt_wstdlib.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
+ C:/msys64/ucrt64/include/limits.h \
+ C:/msys64/ucrt64/include/sec_api/stdlib_s.h \
+ C:/msys64/ucrt64/include/malloc.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
+ C:/msys64/ucrt64/include/errno.h C:/msys64/ucrt64/include/string.h \
+ C:/msys64/ucrt64/include/sec_api/string_s.h \
+ C:/msys64/ucrt64/include/math.h

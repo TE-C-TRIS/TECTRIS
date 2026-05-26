@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Tectris.dir/src/render/render.c.obj.d"
   "CMakeFiles/Tectris.dir/src/utils/history.c.obj"
   "CMakeFiles/Tectris.dir/src/utils/history.c.obj.d"
+  "CMakeFiles/Tectris.dir/src/utils/stats.c.obj"
+  "CMakeFiles/Tectris.dir/src/utils/stats.c.obj.d"
   "bin/Tectris.exe"
   "bin/Tectris.exe.manifest"
   "bin/Tectris.pdb"

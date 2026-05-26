@@ -7,7 +7,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(
     include
-    C:/raylib/raylib/src
 )
 
 set(SOURCES
@@ -16,13 +15,12 @@ set(SOURCES
     src/game/questions.c
     src/render/render.c
     src/utils/history.c
+    src/utils/stats.c
 )
 
 add_executable(Tectris ${SOURCES})
 
 target_link_libraries(Tectris
-    C:/raylib/raylib/src/libraylib.a
-    winmm
-    gdi32
-    opengl32
+    raylib # Abordagem portátil para linkar a Raylib
+    m # NOVO: Para funções matemáticas (sqrtf, powf) 
 )
