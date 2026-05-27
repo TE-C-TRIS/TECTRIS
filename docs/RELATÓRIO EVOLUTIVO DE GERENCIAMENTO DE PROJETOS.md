@@ -120,7 +120,7 @@ Nesta etapa inicial, a principal dificuldade da equipe foi integrar a lógica in
 
 **5.1 Atividades realizadas**
 * Realizamos reuniões de alinhamento para planejar as entregas da próxima semana.
-* Devido ao surgimento de novas demandas acadêmicas no mesmo período (trabalho de Lógica e entregas da Residência Tecnológica), ajustamos nosso planejamento e redistribuímos as tarefas entre os integrantes.
+* Devido ao surgimento de novas demandas acadêmicas no mesmo período (trabalho de lógica e entregas da Residência Tecnológica), ajustamos nosso planejamento e redistribuímos as tarefas entre os integrantes.
 
 **5.2 Decisões tomadas**
 * **Projeto de Lógica:** Após avaliarmos se seria melhor adaptar o nosso jogo atual ou criar um novo, decidimos desenvolver um jogo físico independente e já definimos o seu conteúdo e regras.
