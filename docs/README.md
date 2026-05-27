@@ -28,7 +28,7 @@
 
 Os <b>diagramas UML (Unified Modeling Language)</b> são representações visuais utilizadas para descrever, planejar e documentar sistemas de software. Eles permitem visualizar a estrutura e o comportamento da aplicação, facilitando o entendimento das funcionalidades e dos fluxos do sistema.
 
-A utilização de diagramas UML é importante porque ajuda a organizar as ideias antes da implementação, melhora a comunicação entre os membros da equipe e garante maior clareza sobre como o sistema deve funcionar. Além disso, servem como documentação do projeto, permitindo que outras pessoas compreendam e contribuam com mais facilidade no desenvolvimento.
+A utilização de diagramas UML é importante, pois ajuda a organizar as ideias antes da implementação, melhora a comunicação entre os membros da equipe e garante maior clareza sobre como o sistema deve funcionar. Além disso, servem como documentação do projeto, permitindo que outras pessoas compreendam e contribuam com mais facilidade no desenvolvimento.
 
 ## Guia Rápido de Diagramas UML (Atividades)
 
