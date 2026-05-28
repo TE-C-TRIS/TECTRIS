@@ -151,6 +151,30 @@ As features estão organizadas por **nível de prioridade e impacto no core do s
 | **Conversation** | • Uso de cores semânticas (verde/vermelho) <br> • Animações de resposta <br> • Destaque visual de estados |
 | **Confirmation** | • [ ] Feedback imediato ao responder <br> • [ ] Cores representam corretamente o estado <br> • [ ] Interface reforça ações do usuário |
 
+### 13. Sistema de Estatísticas de Desempenho
+
+| **Elemento**     | **Descrição** |
+|-----------------|--------------|
+| **Card**        | Como jogador, quero visualizar estatísticas do meu desempenho ao final da partida para entender minha evolução. |
+| **Conversation** | • Cálculo de média de pontuação entre as rodadas <br> • Identificação do melhor e pior desempenho registrado <br> • Exibição dos dados em formato de relatório <br> • Dados calculados a partir do histórico de scores do jogador |
+| **Confirmation** | • [ ] Média de desempenho é calculada corretamente <br> • [ ] Melhor e pior resultado são identificados e exibidos <br> • [ ] Relatório é gerado ao encerrar a partida <br> • [ ] Dados refletem o histórico real da sessão |
+
+### 14. Funções Recursivas de Análise
+
+| **Elemento**     | **Descrição** |
+|-----------------|--------------|
+| **Card**        | Como sistema, quero utilizar funções recursivas para calcular operações matemáticas sobre os dados da partida para garantir precisão analítica. |
+| **Conversation** | • Implementação recursiva de soma total de pontos <br> • Funções recursivas para mínimo e máximo do histórico <br> • Cálculo recursivo da soma dos quadrados para análise de variância <br> • Funções isoladas e reutilizáveis pelo sistema |
+| **Confirmation** | • [ ] Função recursiva de soma retorna valor correto <br> • [ ] Mínimo e máximo são identificados via recursão <br> • [ ] Soma dos quadrados é calculada sem erros <br> • [ ] Funções operam corretamente sobre o histórico de dados |
+
+### 15. Heurísticas Textuais de Estratégia
+
+| **Elemento**     | **Descrição** |
+|-----------------|--------------|
+| **Card**        | Como jogador, quero receber dicas e mensagens estratégicas durante a partida para orientar minhas decisões de jogo. |
+| **Conversation** | • Geração de mensagens textuais baseadas no estado atual do jogo <br> • Heurísticas que analisam desempenho e sugerem ações <br> • Integração com o loop principal para exibição contextual <br> • Mensagens adaptadas ao nível de pontuação do jogador |
+| **Confirmation** | • [ ] Mensagens são exibidas em momentos relevantes do jogo <br> • [ ] Conteúdo das dicas é coerente com o estado da partida <br> • [ ] Heurísticas analisam corretamente os dados disponíveis <br> • [ ] Jogador consegue ler e compreender as orientações |
+
 ## Backlog — Sistema de Adivinhação (Alta Prioridade)
 
 ### 1. Sorteio do número secreto
