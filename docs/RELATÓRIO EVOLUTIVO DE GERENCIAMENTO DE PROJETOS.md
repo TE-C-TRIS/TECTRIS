@@ -127,7 +127,7 @@ Nesta etapa inicial, a principal dificuldade da equipe foi integrar a lógica in
 * **Divisão da equipe:** Para dar conta de todas as entregas da semana e evitar atrasos, decidimos dividir a equipe em subgrupos, cada um focado em uma entrega específica.
 
 **5.3 Dificuldades encontradas**
-* O principal desafio da semana foi a gestão do tempo e a sobrecarga de tarefas. Tivemos prazos muito curtos para os trabalhos de Lógica e da Residência, exatamente na mesma semana em que já tínhamos validações do projeto principal (TeCtris) com três professores diferentes. Isso dificultou bastante a organização e a priorização do que deveria ser feito primeiro.
+O principal desafio da semana foi a gestão do tempo e a sobrecarga de tarefas. Tivemos prazos muito curtos para os trabalhos de Lógica e da Residência, exatamente na mesma semana em que já tínhamos validações do projeto principal (TeCtris) com três professores diferentes. Isso dificultou bastante a organização e a priorização do que deveria ser feito primeiro.
 
 **5.4 Próximos passos**
 * Concluir e entregar as soluções da disciplina de Lógica e da Residência Tecnológica dentro dos prazos.
@@ -139,31 +139,31 @@ Nesta etapa inicial, a principal dificuldade da equipe foi integrar a lógica in
 **Período:** 25/05/2026 a 29/05/2026
 
 **5.1 Atividades realizadas**
-* Foi realizada a implementação das estatísticas do jogo, incluindo cálculo de média, melhor e pior desempenho. Também foram desenvolvidas funções recursivas para operações de soma, mínimo, máximo e soma dos quadrados, bem como heurísticas textuais voltadas à estratégia do jogo. Como resultado, foi estruturado um relatório analítico funcional do TeCtris.
+Foi realizada a implementação das estatísticas do jogo, incluindo cálculo de média, melhor e pior desempenho. Também foram desenvolvidas funções recursivas para operações de soma, mínimo, máximo e soma dos quadrados, bem como heurísticas textuais voltadas à estratégia do jogo. Como resultado, foi estruturado um relatório analítico funcional do TeCtris.
 
 **5.2 Decisões tomadas**
-* Nesta semana, não houve decisões significativas relacionadas ao direcionamento do projeto, sendo mantido o planejamento previamente estabelecido pela equipe.
+Nesta semana, não houve decisões significativas relacionadas ao direcionamento do projeto, sendo mantido o planejamento previamente estabelecido pela equipe.
 
 **5.3 Dificuldades encontradas**
-* A principal dificuldade encontrada esteve relacionada à compreensão de determinadas partes do código-fonte. Entretanto, por meio de análises, discussões em equipe e apoio da Inteligência Artificial, foi possível superar os obstáculos e desenvolver as funcionalidades propostas.
+A principal dificuldade encontrada esteve relacionada à compreensão de determinadas partes do código-fonte. Entretanto, por meio de análises, discussões em equipe e apoio da Inteligência Artificial, foi possível superar os obstáculos e desenvolver as funcionalidades propostas.
 
 **5.4 Próximos passos**
-* Os próximos passos consistem na realização de testes funcionais e de usabilidade, além da aplicação dos ajustes necessários para a finalização e refinamento do jogo.
+Os próximos passos consistem na realização de testes funcionais e de usabilidade, além da aplicação dos ajustes necessários para a finalização e refinamento do jogo.
 
 ---
 
 ### Semana 4 — Testes, Validação e Melhorias
-*Período:* 01 / 06 / 2026  a  05 / 06 / 2026
+**Período:** 01 / 06 / 2026  a  05 / 06 / 2026
 
-* 5.1 Atividades realizadas *
+**5.1 Atividades realizadas**
 * Realização de testes funcionais para identificação de bugs e ajustes no jogo.
 * Identificação de melhorias para a versão final do protótipo.
 * Elaboração do relatório sobre a experiência de programação em par.
 
-* 5.2 Como a solução foi testada ou validada? *
+**5.2 Como a solução foi testada ou validada?**
 A solução foi apresentada ao professor Ricardo Baudel, da disciplina de Interface Humano-Computador, que avaliou aspectos relacionados à experiência do usuário e à interface do jogo. Além disso, algumas funcionalidades foram demonstradas ao professor Lucas Farias, da disciplina de Fundamentos de Desenvolvimento de Software, que contribuiu com sugestões para aprimoramento do projeto. 
 
-* 5.3 Resultados dos testes ou feedbacks recebidos *
+**5.3 Resultados dos testes ou feedbacks recebidos**
 
 | Pessoa/grupo consultado | Feedback recebido | Melhorias sugeridas |
 | :--- | :--- | :--- |
@@ -171,14 +171,14 @@ A solução foi apresentada ao professor Ricardo Baudel, da disciplina de Interf
 | Prof. Lucas Farias | Considerou a mecânica do jogo interessante para o aprendizado de programação. | Expandir funcionalidades e aumentar a variedade de perguntas. |
 | Equipe de desenvolvimento (testes internos) | Foram identificados pequenos bugs e inconsistências durante as partidas. | Corrigir falhas na mecânica do jogo e refinar a interface. |
 
-* 5.4 Melhorias realizadas no projeto *
+**5.4 Melhorias realizadas no projeto**
 * Implementação de trilha sonora e efeitos sonoros.
 * Aprimoramento visual da interface do jogo.
 * Ampliação do banco de perguntas.
 * Implementação do modo Jogador vs. Jogador (PvP).
 * Correção de bugs identificados durante os testes.
 
-* 5.5 Próximos passos *
+**5.5 Próximos passos**
 Como evolução futura do projeto, será implementado o Modo Easy, uma versão do TeCtris voltada para pessoas sem experiência prévia em programação ou na linguagem C. Nesse modo, as perguntas técnicas serão substituídas por questões de conhecimentos e curiosidades gerais, tornando o jogo mais acessível para diferentes perfis de usuários.
 
 ---
