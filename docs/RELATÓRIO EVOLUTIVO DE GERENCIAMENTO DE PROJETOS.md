@@ -152,20 +152,34 @@ Nesta etapa inicial, a principal dificuldade da equipe foi integrar a lógica in
 
 ---
 
-### Semana 4: Testes, Validação e Melhorias
-**Período:** [Preencher]
+### Semana 4 — Testes, Validação e Melhorias
+*Período:* 01 / 06 / 2026  a  05 / 06 / 2026
 
-* **5.1 Atividades realizadas:** [Descrever o que a equipe fez durante a semana]
-* **5.2 Como a solução foi testada ou validada?:** [Descrever se a equipe apresentou a solução para usuários, colegas, professor, possíveis clientes ou outras pessoas]
+* 5.1 Atividades realizadas *
+* Realização de testes funcionais para identificação de bugs e ajustes no jogo.
+* Identificação de melhorias para a versão final do protótipo.
+* Elaboração do relatório sobre a experiência de programação em par.
 
-**5.3 Resultados dos testes ou feedbacks recebidos**
+* 5.2 Como a solução foi testada ou validada? *
+A solução foi apresentada ao professor Ricardo Baudel, da disciplina de Interface Humano-Computador, que avaliou aspectos relacionados à experiência do usuário e à interface do jogo. Além disso, algumas funcionalidades foram demonstradas ao professor Lucas Farias, da disciplina de Fundamentos de Desenvolvimento de Software, que contribuiu com sugestões para aprimoramento do projeto. 
+
+* 5.3 Resultados dos testes ou feedbacks recebidos *
 
 | Pessoa/grupo consultado | Feedback recebido | Melhorias sugeridas |
 | :--- | :--- | :--- |
-| [Preencher] | [Preencher] | [Preencher] |
+| Prof. Ricardo Baudel | Avaliou positivamente a proposta do jogo e sua aplicação educacional. | Aprimorar aspectos visuais e a experiência do usuário. |
+| Prof. Lucas Farias | Considerou a mecânica do jogo interessante para o aprendizado de programação. | Expandir funcionalidades e aumentar a variedade de perguntas. |
+| Equipe de desenvolvimento (testes internos) | Foram identificados pequenos bugs e inconsistências durante as partidas. | Corrigir falhas na mecânica do jogo e refinar a interface. |
 
-* **5.4 Melhorias realizadas no projeto:** [Preencher]
-* **5.5 Próximos passos:** [Preencher]
+* 5.4 Melhorias realizadas no projeto *
+* Implementação de trilha sonora e efeitos sonoros.
+* Aprimoramento visual da interface do jogo.
+* Ampliação do banco de perguntas.
+* Implementação do modo Jogador vs. Jogador (PvP).
+* Correção de bugs identificados durante os testes.
+
+* 5.5 Próximos passos *
+Como evolução futura do projeto, será implementado o Modo Easy, uma versão do TeCtris voltada para pessoas sem experiência prévia em programação ou na linguagem C. Nesse modo, as perguntas técnicas serão substituídas por questões de conhecimentos e curiosidades gerais, tornando o jogo mais acessível para diferentes perfis de usuários.
 
 ---
 
