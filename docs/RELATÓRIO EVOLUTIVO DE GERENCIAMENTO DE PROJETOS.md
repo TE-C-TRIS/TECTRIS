@@ -5,7 +5,7 @@
 - **Nome do Projeto:** TeCtris
 - **Professor(a):** André Luiz Gomes da Silva
 - **Curso/Turma:** ADS - EMBARQUE
-- **Período de Desenvolvimento:** __/05/2026 a 12/06/2026
+- **Período de Desenvolvimento:** 13/04/2026 a 12/06/2026
 
 ---
 
