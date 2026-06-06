@@ -84,7 +84,48 @@ long RecursiveSquareSum(int *arr, int n) {
     }
     return (long)arr[n - 1] * arr[n - 1] + RecursiveSquareSum(arr, n - 1);
 }
-// Função para gerar heurísticas (stub - será implementada pelo Dev 4)
+
 void GenerateHeuristic(GameStats *stats) {
-    sprintf(stats->heuristicMessage, "Analise de desempenho em andamento...");
+    if (stats->totalMatches == 0) {
+        sprintf(stats->heuristicMessage,
+                "Nenhuma partida registrada para analise.");
+        return;
+    }
+
+    if (stats->totalMatches < 5) {
+        sprintf(stats->heuristicMessage,
+                "Continue jogando! Precisa de mais partidas para uma analise completa.");
+    }
+    else if (stats->averageScore > 2000 && stats->standardDeviation < 200) {
+        sprintf(stats->heuristicMessage,
+                "Excelente consistencia! Voce domina o Tectris!");
+    }
+    else if (stats->bestScore > 3000 && stats->averageScore < 1000) {
+        sprintf(stats->heuristicMessage,
+                "Voce tem potencial! Seu melhor jogo prova isso. Mantenha o foco!");
+    }
+    else if (stats->worstScore == 0) {
+        sprintf(stats->heuristicMessage,
+                "Algumas partidas foram dificeis, mas todo expert ja foi iniciante!");
+    }
+    else if (stats->standardDeviation > 500 && stats->averageScore < 1000) {
+        sprintf(stats->heuristicMessage,
+                "Desempenho inconsistente. Respire fundo e mantenha a calma!");
+    }
+    else if (stats->bestScore > 3000) {
+        sprintf(stats->heuristicMessage,
+                "Pontuacao impressionante! Voce esta no caminho certo.");
+    }
+    else if (stats->totalMatches > 10 && stats->averageScore < 500) {
+        sprintf(stats->heuristicMessage,
+                "Muitas partidas e dedicacao! Tente focar nas perguntas para ganhar mais pontos.");
+    }
+    else if (stats->averageScore >= 1000 && stats->averageScore <= 2000) {
+        sprintf(stats->heuristicMessage,
+                "Bom desempenho! Voce esta evoluindo, continue assim.");
+    }
+    else {
+        sprintf(stats->heuristicMessage,
+                "Continue praticando! Cada partida e um aprendizado.");
+    }
 }

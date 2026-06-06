@@ -224,11 +224,8 @@ int main()
             case STATE_REPORT:
                 DrawText("Estatisticas", 100, 100, 30, WHITE);
 
-                if (IsKeyPressed(KEY_ESCAPE))
-                {
-                    game.state = STATE_MENU;
-                }
-
+            if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
+                game.state = STATE_MENU;
             break;
             
             case STATE_GAMEOVER:
