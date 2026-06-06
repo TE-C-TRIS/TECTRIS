@@ -27,6 +27,8 @@ events:
     names:
       - "mingw32-make.exe"
     candidate_directories:
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -51,6 +53,10 @@ events:
       - "/MinGW/bin/"
       - "/REGISTRY-NOTFOUND/MinGW/bin/"
     searched_directories:
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/mingw32-make.exe.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/mingw32-make.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mingw32-make.exe.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mingw32-make.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mingw32-make.exe.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mingw32-make.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mingw32-make.exe.com"
@@ -89,6 +95,8 @@ events:
     found: "C:/mingw64/bin/mingw32-make.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -134,6 +142,8 @@ events:
       - "icx"
       - "clang"
     candidate_directories:
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -154,6 +164,48 @@ events:
       - "C:/mingw64/bin/"
       - "C:/Users/Matheus/AppData/Local/GitHubDesktop/bin/"
     searched_directories:
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/cc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/cc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/cc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/cl.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/cl.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/cl"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/bcc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/bcc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/bcc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/xlc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/xlc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/xlc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/icx.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/icx.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/icx"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/clang.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/clang.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/clang"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/cc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/cc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/cc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/cl.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/cl.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/cl"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/bcc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/bcc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/bcc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/xlc.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/xlc.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/xlc"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/icx.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/icx.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/icx"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/clang.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/clang.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/clang"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cc.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cc.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cc"
@@ -518,6 +570,8 @@ events:
     found: "C:/mingw64/bin/gcc.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -564,6 +618,8 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -626,6 +682,8 @@ events:
       - "ar"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -649,6 +707,8 @@ events:
     found: "C:/mingw64/bin/ar.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -689,6 +749,8 @@ events:
       - "ranlib"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -712,6 +774,8 @@ events:
     found: "C:/mingw64/bin/ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -752,6 +816,8 @@ events:
       - "strip"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -775,6 +841,8 @@ events:
     found: "C:/mingw64/bin/strip.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -815,6 +883,8 @@ events:
       - "ld"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -838,6 +908,8 @@ events:
     found: "C:/mingw64/bin/ld.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -878,6 +950,8 @@ events:
       - "nm"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -901,6 +975,8 @@ events:
     found: "C:/mingw64/bin/nm.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -941,6 +1017,8 @@ events:
       - "objdump"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -964,6 +1042,8 @@ events:
     found: "C:/mingw64/bin/objdump.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1004,6 +1084,8 @@ events:
       - "objcopy"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1027,6 +1109,8 @@ events:
     found: "C:/mingw64/bin/objcopy.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1067,6 +1151,8 @@ events:
       - "readelf"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1090,6 +1176,8 @@ events:
     found: "C:/mingw64/bin/readelf.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1130,6 +1218,8 @@ events:
       - "dlltool"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1153,6 +1243,8 @@ events:
     found: "C:/mingw64/bin/dlltool.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1193,6 +1285,8 @@ events:
       - "addr2line"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1216,6 +1310,8 @@ events:
     found: "C:/mingw64/bin/addr2line.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1256,6 +1352,8 @@ events:
       - "tapi"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1278,6 +1376,12 @@ events:
       - "C:/mingw64/bin/tapi.com"
       - "C:/mingw64/bin/tapi.exe"
       - "C:/mingw64/bin/tapi"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/tapi.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/tapi.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/tapi"
@@ -1335,6 +1439,8 @@ events:
     found: false
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1378,6 +1484,8 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1400,6 +1508,12 @@ events:
       - "C:/mingw64/bin/gcc-ar-15.2.com"
       - "C:/mingw64/bin/gcc-ar-15.2.exe"
       - "C:/mingw64/bin/gcc-ar-15.2"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.2.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.2.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.2"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar-15.2.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar-15.2.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar-15.2"
@@ -1457,6 +1571,12 @@ events:
       - "C:/mingw64/bin/gcc-ar-15.com"
       - "C:/mingw64/bin/gcc-ar-15.exe"
       - "C:/mingw64/bin/gcc-ar-15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar-15.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar-15.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar-15"
@@ -1514,6 +1634,12 @@ events:
       - "C:/mingw64/bin/gcc-ar15.com"
       - "C:/mingw64/bin/gcc-ar15.exe"
       - "C:/mingw64/bin/gcc-ar15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar15"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar15.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar15.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ar15"
@@ -1572,6 +1698,8 @@ events:
     found: "C:/mingw64/bin/gcc-ar.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1615,6 +1743,8 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1637,6 +1767,12 @@ events:
       - "C:/mingw64/bin/gcc-ranlib-15.2.com"
       - "C:/mingw64/bin/gcc-ranlib-15.2.exe"
       - "C:/mingw64/bin/gcc-ranlib-15.2"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.2.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.2.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.2"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib-15.2.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib-15.2.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib-15.2"
@@ -1694,6 +1830,12 @@ events:
       - "C:/mingw64/bin/gcc-ranlib-15.com"
       - "C:/mingw64/bin/gcc-ranlib-15.exe"
       - "C:/mingw64/bin/gcc-ranlib-15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib-15.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib-15.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib-15"
@@ -1751,6 +1893,12 @@ events:
       - "C:/mingw64/bin/gcc-ranlib15.com"
       - "C:/mingw64/bin/gcc-ranlib15.exe"
       - "C:/mingw64/bin/gcc-ranlib15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib15.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib15.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib15"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib15.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib15.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc-ranlib15"
@@ -1809,6 +1957,8 @@ events:
     found: "C:/mingw64/bin/gcc-ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1851,6 +2001,8 @@ events:
       - "windres"
       - "windres"
     candidate_directories:
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
       - "C:/Windows/System32/"
@@ -1883,6 +2035,12 @@ events:
       - "C:/Program Files (x86)/TectrisC/sbin/"
       - "C:/Program Files (x86)/TectrisC/"
     searched_directories:
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/windres.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/windres.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/windres"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/windres.com"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/windres.exe"
+      - "C:/Users/Matheus/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/windres"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/windres.com"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/windres.exe"
       - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/windres"
@@ -1938,6 +2096,8 @@ events:
     found: "C:/mingw64/bin/windres.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Matheus\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
         - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
         - "C:\\WINDOWS\\system32"
@@ -1972,8 +2132,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf"
-      binary: "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf"
+      source: "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0"
+      binary: "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1982,13 +2142,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf'
+        Change Dir: 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_f6193/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_f6193.dir\\build.make CMakeFiles/cmTC_f6193.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf'
-        Building C object CMakeFiles/cmTC_f6193.dir/CMakeCCompilerABI.c.obj
-        C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_aa64e/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_aa64e.dir\\build.make CMakeFiles/cmTC_aa64e.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0'
+        Building C object CMakeFiles/cmTC_aa64e.dir/CMakeCCompilerABI.c.obj
+        C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -1997,8 +2157,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_f6193.dir\\'
-         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_f6193.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\Matheus\\AppData\\Local\\Temp\\cc2Rc7Gh.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_aa64e.dir\\'
+         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_aa64e.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccKFF21d.s
         GNU C23 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -2017,14 +2177,14 @@ events:
          C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: 87d84d620ae688b825d09302a8c52816
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_f6193.dir\\'
-         C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Matheus\\AppData\\Local\\Temp\\cc2Rc7Gh.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_aa64e.dir\\'
+         C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccKFF21d.s
         GNU assembler version 2.45.1 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r5) 2.45.1
         COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../libexec/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../lib/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.'
-        Linking C executable cmTC_f6193.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_f6193.dir\\link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.'
+        Linking C executable cmTC_aa64e.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_aa64e.dir\\link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe
         COLLECT_LTO_WRAPPER=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
@@ -2036,16 +2196,16 @@ events:
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) 
         COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../libexec/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../lib/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f6193.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f6193.'
-         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\cce6ITjD.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_f6193.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_f6193.dir/objects.a --no-whole-archive --out-implib libcmTC_f6193.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_aa64e.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_aa64e.'
+         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccW1kalI.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_aa64e.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_aa64e.dir/objects.a --no-whole-archive --out-implib libcmTC_aa64e.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\cce6ITjD.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_f6193.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_f6193.dir/objects.a --no-whole-archive --out-implib libcmTC_f6193.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccW1kalI.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_aa64e.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_aa64e.dir/objects.a --no-whole-archive --out-implib libcmTC_aa64e.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r5) 2.45.1
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f6193.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f6193.'
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_f6193.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_f6193.dir/objects.a @CMakeFiles\\cmTC_f6193.dir\\objects1.rsp
-        C:\\mingw64\\bin\\gcc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_f6193.dir/objects.a -Wl,--no-whole-archive -o cmTC_f6193.exe -Wl,--out-implib,libcmTC_f6193.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        mingw32-make[1]: Leaving directory 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_aa64e.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_aa64e.'
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_aa64e.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_aa64e.dir/objects.a @CMakeFiles\\cmTC_aa64e.dir\\objects1.rsp
+        C:\\mingw64\\bin\\gcc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_aa64e.dir/objects.a -Wl,--no-whole-archive -o cmTC_aa64e.exe -Wl,--out-implib,libcmTC_aa64e.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        mingw32-make[1]: Leaving directory 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0'
         
       exitCode: 0
   -
@@ -2080,13 +2240,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf']
+        ignore line: [Change Dir: 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_f6193/fast]
-        ignore line: [C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_f6193.dir\\build.make CMakeFiles/cmTC_f6193.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-ocqblf']
-        ignore line: [Building C object CMakeFiles/cmTC_f6193.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_aa64e/fast]
+        ignore line: [C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_aa64e.dir\\build.make CMakeFiles/cmTC_aa64e.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/CMakeScratch/TryCompile-vneju0']
+        ignore line: [Building C object CMakeFiles/cmTC_aa64e.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -2095,8 +2255,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r5) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_f6193.dir\\']
-        ignore line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_f6193.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\Matheus\\AppData\\Local\\Temp\\cc2Rc7Gh.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_aa64e.dir\\']
+        ignore line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_aa64e.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccKFF21d.s]
         ignore line: [GNU C23 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r5) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -2115,8 +2275,8 @@ events:
         ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 87d84d620ae688b825d09302a8c52816]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_f6193.dir\\']
-        ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Matheus\\AppData\\Local\\Temp\\cc2Rc7Gh.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_aa64e.dir\\']
+        ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccKFF21d.s]
         ignore line: [GNU assembler version 2.45.1 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64  built by Brecht Sanders  r5) 2.45.1]
         ignore line: [COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [C:/mingw64/bin/../libexec/gcc/]
@@ -2127,9 +2287,9 @@ events:
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_f6193.dir\\CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_f6193.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_f6193.dir\\link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_aa64e.dir\\CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_aa64e.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_aa64e.dir\\link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
@@ -2148,13 +2308,13 @@ events:
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f6193.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f6193.']
-        link line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\cce6ITjD.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_f6193.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_f6193.dir/objects.a --no-whole-archive --out-implib libcmTC_f6193.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_aa64e.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_aa64e.']
+        link line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccW1kalI.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_aa64e.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_aa64e.dir/objects.a --no-whole-archive --out-implib libcmTC_aa64e.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\cce6ITjD.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\Matheus\\AppData\\Local\\Temp\\ccW1kalI.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -2176,7 +2336,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_f6193.exe] ==> ignore
+          arg [cmTC_aa64e.exe] ==> ignore
           arg [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -2187,10 +2347,10 @@ events:
           arg [-LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_f6193.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_aa64e.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_f6193.dll.a] ==> ignore
+          arg [libcmTC_aa64e.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore

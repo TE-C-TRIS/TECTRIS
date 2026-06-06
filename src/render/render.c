@@ -123,6 +123,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
     }
 
     else if (ctx->state == STATE_HISTORY) {
+        for (int i = 0; i < ctx->historyCount; i++)
         DrawRectangle(0, 0, sw, sh, (Color){15, 15, 30, 240});
         DrawText("HISTORICO DE PARTIDAS", sw / 2 - MeasureText("HISTORICO DE PARTIDAS", (int)(40 * s)) / 2, (int)(sh * 0.1f), (int)(40 * s), COLOR_TEXT);
 

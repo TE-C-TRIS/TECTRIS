@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = @CMakeFiles/Tectris.dir/includes_C.rsp
 
-C_FLAGS = -std=gnu11
+C_FLAGS = -IC:/raylib/raylib/src -std=gnu11
 
