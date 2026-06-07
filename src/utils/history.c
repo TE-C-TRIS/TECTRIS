@@ -8,7 +8,7 @@ void SaveHistory(MatchHistory data) {
         TraceLog(LOG_WARNING, "HISTORY: Nao foi possivel abrir o arquivo de historico para escrita.");
         return;
     }
-    fprintf(file, "%d,%d,%d,%ld\n", data.score, data.lines, data.level, data.timestamp);
+    fprintf(file, "%d,%d,%d,%lld\n", data.score, data.lines, data.level, (long long)data.timestamp);
     fclose(file);
     TraceLog(LOG_INFO, "HISTORY: Partida salva no historico.");
 }
@@ -21,7 +21,7 @@ int LoadHistory(MatchHistory *history, int maxCount) {
     }
     int count = 0;
     while(count < maxCount) {
-        int result = fscanf(file, "%d,%d,%d,%ld\n",
+        int result = fscanf(file, "%d,%d,%d,%lld\n",
             &history[count].score,
             &history[count].lines,
             &history[count].level,
