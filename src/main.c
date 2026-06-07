@@ -228,18 +228,16 @@ int main()
                     game.state = STATE_GAME;
                 }
             }
-
+            
             break;
+            
+            case STATE_REPORT:
+                DrawText("Estatisticas", 100, 100, 30, WHITE);
 
-        case STATE_REPORT:
-            DrawText("Estatisticas", 100, 100, 30, WHITE);
-
-            if (IsKeyPressed(KEY_ESCAPE))
-            {
+            if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
                 game.state = STATE_MENU;
-            }
-
             break;
+
 
         case STATE_GAMEOVER:
 

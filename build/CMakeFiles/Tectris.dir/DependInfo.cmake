@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/src/game/game.c" "CMakeFiles/Tectris.dir/src/game/game.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/game/game.c.obj.d"
-  "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/src/game/questions.c" "CMakeFiles/Tectris.dir/src/game/questions.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/game/questions.c.obj.d"
-  "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/src/main.c" "CMakeFiles/Tectris.dir/src/main.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/main.c.obj.d"
-  "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/src/render/render.c" "CMakeFiles/Tectris.dir/src/render/render.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/render/render.c.obj.d"
-  "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/src/utils/history.c" "CMakeFiles/Tectris.dir/src/utils/history.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/utils/history.c.obj.d"
-  "C:/Users/Administrator/CESAR School/PIF/TECTRIS-FORK/src/utils/stats.c" "CMakeFiles/Tectris.dir/src/utils/stats.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/utils/stats.c.obj.d"
+  "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/src/game/game.c" "CMakeFiles/Tectris.dir/src/game/game.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/game/game.c.obj.d"
+  "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/src/game/questions.c" "CMakeFiles/Tectris.dir/src/game/questions.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/game/questions.c.obj.d"
+  "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/src/main.c" "CMakeFiles/Tectris.dir/src/main.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/main.c.obj.d"
+  "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/src/render/render.c" "CMakeFiles/Tectris.dir/src/render/render.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/render/render.c.obj.d"
+  "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/src/utils/history.c" "CMakeFiles/Tectris.dir/src/utils/history.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/utils/history.c.obj.d"
+  "C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/src/utils/stats.c" "CMakeFiles/Tectris.dir/src/utils/stats.c.obj" "gcc" "CMakeFiles/Tectris.dir/src/utils/stats.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

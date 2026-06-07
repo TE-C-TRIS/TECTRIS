@@ -126,32 +126,63 @@ void MergePiece(GameContext *ctx) {
     SpawnPiece(ctx);
 }
 
-void ClearLines(GameContext *ctx) {
+void ClearLines(GameContext *ctx)
+{
     int linesCleared = 0;
-    for (int y = BOARD_HEIGHT - 1; y >= 0; y--) {
+
+    for (int y = BOARD_HEIGHT - 1; y >= 0; y--)
+    {
         bool full = true;
-        for (int x = 0; x < BOARD_WIDTH; x++) {
-            if (ctx->board[y][x].a == 0) {
+        bool isPenaltyLine = false; // Identifica linha de penalidade
+
+        for (int x = 0; x < BOARD_WIDTH; x++)
+        {
+            // Verifica se existe alguma célula vazia
+            if (ctx->board[y][x].a == 0)
+            {
                 full = false;
-                break;
+            }
+
+            // Verifica se é um bloco de penalidade (cinza)
+            if (ctx->board[y][x].r == 100 &&
+                ctx->board[y][x].g == 100 &&
+                ctx->board[y][x].b == 100 &&
+                ctx->board[y][x].a == 255)
+            {
+                isPenaltyLine = true;
             }
         }
-        if (full) {
+
+        // Remove apenas linhas cheias que NÃO sejam penalidades
+        if (full && !isPenaltyLine)
+        {
             linesCleared++;
-            for (int yy = y; yy > 0; yy--) {
-                memcpy(ctx->board[yy], ctx->board[yy-1], sizeof(ctx->board[yy]));
+
+            for (int yy = y; yy > 0; yy--)
+            {
+                memcpy(
+                    ctx->board[yy],
+                    ctx->board[yy - 1],
+                    sizeof(ctx->board[yy])
+                );
             }
+
             memset(ctx->board[0], 0, sizeof(ctx->board[0]));
-            y++;
+
+            y++; // Reavalia a linha após deslocamento
         }
     }
-    
-    if (linesCleared > 0) {
+
+    if (linesCleared > 0)
+    {
         int points[] = {0, 100, 300, 500, 800};
+
         ctx->score += points[linesCleared] * ctx->level;
         ctx->lines += linesCleared;
         ctx->level = 1 + (ctx->lines / 10);
-        ctx->dropInterval = 1.0f * powf(0.85f, (float)(ctx->level - 1));
+
+        ctx->dropInterval =
+            1.0f * powf(0.85f, (float)(ctx->level - 1));
     }
 }
 

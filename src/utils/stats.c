@@ -116,42 +116,47 @@ long RecursiveSquareSum(int *arr, int n)
            RecursiveSquareSum(arr, n - 1);
 }
 
-// Função para gerar heurísticas (stub - será implementada pelo Dev 4)
-void GenerateHeuristic(GameStats *stats)
-{
-    if (stats->totalMatches == 0)
-    {
+void GenerateHeuristic(GameStats *stats) {
+    if (stats->totalMatches == 0) {
         sprintf(stats->heuristicMessage,
                 "Nenhuma partida registrada para analise.");
         return;
     }
 
-    // Exemplo de heurísticas simples
-    if (stats->totalMatches < 5)
-    {
+    if (stats->totalMatches < 5) {
         sprintf(stats->heuristicMessage,
-                "Jogue mais partidas para uma analise precisa.");
+                "Continue jogando! Precisa de mais partidas para uma analise completa.");
     }
-    else if (stats->standardDeviation > 500 &&
-             stats->averageScore < 1000)
-    {
+    else if (stats->averageScore > 2000 && stats->standardDeviation < 200) {
         sprintf(stats->heuristicMessage,
-                "Desempenho inconsistente. Tente manter a calma!");
+                "Excelente consistencia! Voce domina o Tectris!");
     }
-    else if (stats->averageScore > 2000 &&
-             stats->standardDeviation < 200)
-    {
+    else if (stats->bestScore > 3000 && stats->averageScore < 1000) {
         sprintf(stats->heuristicMessage,
-                "Excelente consistencia! Voce e um mestre do Tectris!");
+                "Voce tem potencial! Seu melhor jogo prova isso. Mantenha o foco!");
     }
-    else if (stats->bestScore > 3000)
-    {
+    else if (stats->worstScore == 0) {
         sprintf(stats->heuristicMessage,
-                "Pontuacao maxima impressionante! Continue assim.");
+                "Algumas partidas foram dificeis, mas todo expert ja foi iniciante!");
     }
-    else
-    {
+    else if (stats->standardDeviation > 500 && stats->averageScore < 1000) {
         sprintf(stats->heuristicMessage,
-                "Bom desempenho geral. Continue praticando!");
+                "Desempenho inconsistente. Respire fundo e mantenha a calma!");
+    }
+    else if (stats->bestScore > 3000) {
+        sprintf(stats->heuristicMessage,
+                "Pontuacao impressionante! Voce esta no caminho certo.");
+    }
+    else if (stats->totalMatches > 10 && stats->averageScore < 500) {
+        sprintf(stats->heuristicMessage,
+                "Muitas partidas e dedicacao! Tente focar nas perguntas para ganhar mais pontos.");
+    }
+    else if (stats->averageScore >= 1000 && stats->averageScore <= 2000) {
+        sprintf(stats->heuristicMessage,
+                "Bom desempenho! Voce esta evoluindo, continue assim.");
+    }
+    else {
+        sprintf(stats->heuristicMessage,
+                "Continue praticando! Cada partida e um aprendizado.");
     }
 }
