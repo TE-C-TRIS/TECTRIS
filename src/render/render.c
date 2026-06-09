@@ -6,14 +6,14 @@ void UpdateScreenConfig(GameContext *ctx) {
     ctx->screen.screenWidth = GetScreenWidth();
     ctx->screen.screenHeight = GetScreenHeight();
    
-    // Design de referência: 800x700
+  
     float scaleX = (float)ctx->screen.screenWidth / 800.0f;
     float scaleY = (float)ctx->screen.screenHeight / 700.0f;
    
-    // Escala uniforme para não distorcer
+
     ctx->screen.scale = (scaleX < scaleY) ? scaleX : scaleY;
    
-    // Tile size proporcional
+ 
     ctx->screen.cellSize = (int)(30 * ctx->screen.scale);
    
     // Centralização dinâmica
@@ -34,9 +34,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
 
     ClearBackground(COLOR_BG);
 
-    // =========================================================
-    // MENU PRINCIPAL
-    // =========================================================
+  
     if (ctx->state == STATE_MENU)
     {
         int sw = ctx->screen.screenWidth;
@@ -82,9 +80,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         return;
     }
 
-    // =========================================================
-    // TABULEIRO
-    // =========================================================
+ 
     Rectangle boardRect = {
         off.x,
         off.y,
@@ -95,9 +91,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
     DrawRectangleRec(boardRect, (Color){5, 5, 12, 255});
     DrawRectangleLinesEx(boardRect, 3 * s, COLOR_BORDER);
 
-    // =========================================================
-    // CÉLULAS FIXAS
-    // =========================================================
+
     for (int y = 0; y < BOARD_HEIGHT; y++) {
         for (int x = 0; x < BOARD_WIDTH; x++) {
 
@@ -122,9 +116,6 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         }
     }
 
-    // =========================================================
-    // PEÇA ATUAL
-    // =========================================================
     if (ctx->state == STATE_GAME || ctx->state == STATE_QUESTION) {
 
         for (int y = 0; y < ctx->currentPiece.size; y++) {
@@ -159,9 +150,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         }
     }
 
-    // =========================================================
-    // KILL LINE
-    // =========================================================
+  
     int killY = (int)(off.y + (ctx->killLineY * cs));
 
     float pulse = (sinf(GetTime() * 8.0f) + 1.0f) / 2.0f;
@@ -184,9 +173,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         kColor
     );
 
-    // =========================================================
-    // PAINEL LATERAL
-    // =========================================================
+  
     int panelX = (int)(off.x + BOARD_WIDTH * cs + 30 * s);
 
     DrawRectangle(
@@ -208,7 +195,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         COLOR_TEXT
     );
 
-    // SCORE
+    
     DrawText(
         "SCORE",
         panelX + (int)(20 * s),
@@ -228,7 +215,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         WHITE
     );
 
-    // LINES
+    
     DrawText(
         "LINES",
         panelX + (int)(20 * s),
@@ -248,7 +235,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         WHITE
     );
 
-    // LEVEL
+    
     DrawText(
         "LEVEL",
         panelX + (int)(20 * s),
@@ -268,7 +255,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         WHITE
     );
 
-    // NEXT PIECE
+    
 
     DrawText(
         "NEXT",
