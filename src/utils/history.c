@@ -21,7 +21,7 @@ int LoadHistory(MatchHistory *history, int maxCount) {
     }
     int count = 0;
     while(count < maxCount) {
-        int result = fscanf(file, "%d,%d,%d,%lld\n",
+        int result = fscanf(file, "%d,%d,%d,%lld",
             &history[count].score,
             &history[count].lines,
             &history[count].level,
