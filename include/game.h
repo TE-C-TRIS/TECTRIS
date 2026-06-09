@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-#define MAX_HISTORY_RECORDS 10
+#define MAX_HISTORY_RECORDS 100
 
 typedef struct {
     Color board[BOARD_HEIGHT][BOARD_WIDTH];

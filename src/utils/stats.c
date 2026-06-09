@@ -32,32 +32,15 @@ int CalculateWorstScore(MatchHistory *history, int count)
     return RecursiveMin(scores, count);
 }
 
-float CalculateStandardDeviation(MatchHistory *history, int count,
-                                 float average)
+float CalculateStandardDeviation(MatchHistory *history, int count, float average)
 {
     if (count <= 1) return 0.0f;
-int scores[count];
-for (int i = 0; i < count; i++) {
-scores[i] = history[i].score;
-}
-// Para o desvio padrão, precisamos da soma dos quadrados das diferenças
-// Uma abordagem recursiva direta para isso é mais complexa com a assinatura atual.
-// Vamos adaptar para usar a soma recursiva dos quadrados dos scores e ajustar a fórmula.
-// Ou, para simplificar e manter a recursão, podemos calcular a soma dos quadrados dos scores
-// e usar a fórmula de variância: E[X^2] - (E[X])^2
-// Criar um array de diferenças ao quadrado para usar RecursiveSum
-    float diffsSquared[count];
+    
+    float sumOfSquaredDifferences = 0.0f;
     for (int i = 0; i < count; i++) {
-    diffsSquared[i] = powf(history[i].score - average, 2);
-}
-// RecursiveSum opera com int*, então precisamos de uma adaptação ou nova função recursiva para float
-// Para manter a exigência de recursão, vamos usar a RecursiveSquareSum para os scores e adaptar.
-// Alternativa: Se a RecursiveSquareSum for para os scores, podemos fazer:
-// Variância = (RecursiveSquareSum(scores, count) / count) - (average * average);
-// stdDev = sqrtf(Variancia);
-// No entanto, a definição original da RecursiveSquareSum é para um array de int.
-// Vamos manter a implementação iterativa para o desvio padrão por enquanto, ou criar uma RecursiveSumFloat.
-// Para aderir estritamente à recursão para
+        sumOfSquaredDifferences += powf(history[i].score - average, 2);
+    }
+    return sqrtf(sumOfSquaredDifferences / (count - 1));
 }
 
 // Funções recursivas (stubs - serão implementadas pelo Dev 3)

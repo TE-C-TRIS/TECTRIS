@@ -69,5 +69,6 @@ typedef struct {
 
 // Histórico de Partidas
 #define HISTORY_FILE "history.txt"
+#define MAX_HISTORY_RECORDS 100
 
 #endif

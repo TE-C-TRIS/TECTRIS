@@ -17,10 +17,10 @@ int main()
     GameContext game;
     InitGame(&game);
     int menuIndex = 0;
-    MatchHistory history[10];
+    MatchHistory history[MAX_HISTORY_RECORDS];
     int historyCount = 0;
     GameStats stats;
-    int scoresArr[10];
+    int scoresArr[MAX_HISTORY_RECORDS];
 
     Question currentQuestion;
     char userInput[64] = "\0";
@@ -70,7 +70,7 @@ int main()
 
                 else if (menuIndex == 2)
                 {
-                    historyCount = LoadHistory(history, 10);
+                    historyCount = LoadHistory(history, MAX_HISTORY_RECORDS);
 
                     stats.totalMatches = historyCount;
                     stats.averageScore = CalculateAverageScore(history, historyCount);
@@ -470,33 +470,6 @@ int main()
                          sw / 2 - MeasureText(stats.heuristicMessage, (int)(18 * s)) / 2,
                          (int)(sh * 0.75f), (int)(18 * s), LIGHTGRAY);
             }
-            {
-                char buf[128];
-
-                sprintf(buf, "Partidas jogadas: %d", stats.totalMatches);
-                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
-                         (int)(sh * 0.25f), (int)(20 * s), WHITE);
-
-                sprintf(buf, "Media de pontuacao: %.1f", stats.averageScore);
-                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
-                         (int)(sh * 0.35f), (int)(20 * s), WHITE);
-
-                sprintf(buf, "Melhor pontuacao: %d", stats.bestScore);
-                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
-                         (int)(sh * 0.45f), (int)(20 * s), GREEN);
-
-                sprintf(buf, "Pior pontuacao: %d", stats.worstScore);
-                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
-                         (int)(sh * 0.55f), (int)(20 * s), RED);
-
-                sprintf(buf, "Desvio padrao: %.1f", stats.standardDeviation);
-                DrawText(buf, sw / 2 - MeasureText(buf, (int)(20 * s)) / 2,
-                         (int)(sh * 0.65f), (int)(20 * s), YELLOW);
-
-                DrawText(stats.heuristicMessage,
-                         sw / 2 - MeasureText(stats.heuristicMessage, (int)(18 * s)) / 2,
-                         (int)(sh * 0.75f), (int)(18 * s), LIGHTGRAY);
-            }
 
             DrawText(
                 "Pressione ENTER ou ESC para voltar",
@@ -528,7 +501,9 @@ int main()
             }
             else
             {
-                for (int i = 0; i < game.historyCount; i++)
+                int displayCount = (game.historyCount > 10) ? 10 : game.historyCount;
+                int startIndex = game.historyCount - displayCount;
+                for (int i = startIndex; i < game.historyCount; i++)
                 {
                     char line[128];
                     char dateStr[32];
@@ -544,7 +519,7 @@ int main()
                     sprintf(
                         line,
                         "%d. Score: %d | Linhas: %d | Nivel: %d | %s",
-                        i + 1,
+                        i - startIndex + 1,
                         game.history[i].score,
                         game.history[i].lines,
                         game.history[i].level,
@@ -553,7 +528,7 @@ int main()
                     DrawText(
                         line,
                         sw / 2 - MeasureText(line, (int)(16 * s)) / 2,
-                        (int)(sh * 0.2f) + i * (int)(35 * s),
+                        (int)(sh * 0.2f) + (i - startIndex) * (int)(35 * s),
                         (int)(16 * s),
                         WHITE);
                 }
