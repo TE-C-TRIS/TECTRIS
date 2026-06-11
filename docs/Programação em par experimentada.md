@@ -18,6 +18,19 @@ A dinâmica de trabalho em par entre Kézia e Diogo foi essencial para a constru
 
 A colaboração em tempo real no Figma permitiu que a dupla realizasse um processo contínuo de design e revisão mútua. Enquanto um estruturava os fluxos de navegação e as transições das telas, o outro refinava os elementos estéticos, garantindo um design coeso e atrativo. Essa parceria foi fundamental para otimizar o tempo durante as semanas de maior sobrecarga acadêmica e resultou em um protótipo de alta fidelidade que facilitou diretamente o trabalho dos desenvolvedores. 
 
+<p align="center">
+  <img src="/docs/imagens_evidencias/diogo_e_kezia_1.jpg" width="400" alt="">
+</p>
+<p align="center">
+  <img src="/docs/imagens_evidencias/diogo_e_kezia.jpg" width="400" alt="">
+</p>
+<p align="center">
+  <img src="/docs/imagens_evidencias/diogo_e_kezia_2.jpg" width="400" alt="">
+</p>
+<p align="center">
+  <img src="/docs/imagens_evidencias/diogo_e_kezia_3.jpg" width="400" alt="">
+</p>
+
 ## Cecília Lopes e Emily Marques - Front End
 
 Juntas, Cecília e Emily deram vida à interface do TeCtris diretamente no código. A divisão de foco permitiu que Cecília implementasse a camada gráfica e a renderização dos elementos visuais e do grid na tela, enquanto Emily programou a interface de interação com o usuário, o gerenciamento dos feedbacks visuais e a captura dos comandos do teclado.
