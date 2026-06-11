@@ -1,21 +1,37 @@
 # Programação em Par experimentada
 
-Durante o desenvolvimento do projeto, adotamos a prática de programação em par/trio e trabalho colaborativo entre os membros da equipe. Embora cada grupo tivesse responsabilidades principais, todas as decisões foram discutidas em conjunto para garantir que o product final atendesse aos requisitos propostos. 
+Durante o desenvolvimento do projeto, adotamos a prática de programação em par e trabalho colaborativo entre os membros da equipe. Embora cada dupla tivesse responsabilidades principais, todas as decisões foram discutidas em conjunto para garantir que o produto final atendesse aos requisitos propostos. 
 
-## Kezia Aguiar, Cecília Lopes e Emily Raquel - Design e Front End
+## Larissa Morais e Alice Sena - Product Owner + Scrum Master
 
-Kezia, Cecília e Emily trabalharam juntas na construção da identidade visual do jogo. Elas foram responsáveis pela definição da paleta de cores, organização das telas, escolha dos elementos gráficos e implementação da interface. A atuação em conjunto permitiu que diferentes ideias fossem avaliadas antes da tomadas de decisões, resultando em um visual mais consistente e agradável para o usuário.
+Larissa atuou como Product Owner, acompanhando os requisitos definidos pelos professores, verificando se as entregas estavam de acordo com o que havia sido solicitado e monitorando os prazos estabelecidos para cada etapa do projeto. Já Alice atuou como Scrum Master, auxiliando na organização das atividades, acompanhando o andamento das tarefas, promovendo a comunicação entre os membros da equipe e ajudando a remover dificuldades que poderiam atrasar o desenvolvimento.
 
-Uma das principais dificuldades encontradas foi alinhar as ideias de design e adaptá-las às limitações técnicas do projeto. Em contrapartida, a colaboração constante facilitou a resolução de problemas e contribuiu para uma interface mais organizada e intuitiva.
+Essa forte cooperação e colaboração mútua foram fundamentais para manter o projeto organizado e estritamente alinhado aos objetivos pedagógicos. A parceria da dupla foi tão unida que, em diversos momentos, uma absorvia responsabilidades da outra para otimizar o fluxo de trabalho e superar desafios de forma ágil. Como resultado desse esforço conjunto e de muita união, todas as metas semanais foram atingidas rigorosamente dentro dos prazos estipulados e com um elevado padrão de qualidade.
 
-## Alice Sena, João Rafael e Matheus Vaz - Back End
+![alt text](/docs/imagens_evidencias/larissa_e_alice.png)
 
-Alice, João e Matheus trabalharam na implementação das funcionalidades do jogo. O trio ficou responsável pelo desenvolvimento da lógica do sistema, criação e implementação das histórias, funcionamento das mecânicas e implementação dos requisitos definidos para o projeto.
+## Kezia Aguiar e Diogo Alcelino - Design (UI/UX)
 
-Como a maior parte das funcionalidades do jogo dependia do trabalho desse grupo, foi necessário manter uma comunicação constante para alinhar o que cada integrante estava fazendo. Em vários momentos, as tarefas foram desenvolvidas em conjunto, com troca de sugestões e ajuda mútua para resolver dificuldades que surgiam ao longo do desenvolvimento. Apesar de algumas divergências sobre a melhor forma de implementar certas funcionalidades, essas discussões contribuíram para que a equipe chegasse a soluções mais adequadas para o projeto.
+A dinâmica de trabalho em par entre Kézia e Diogo foi essencial para a construção da identidade visual e da experiência do usuário do TeCtris. Kézia liderou com excelência essa frente de atuação, assumindo a responsabilidade pela estruturação dos layouts das telas, organização das informações e pelo desenvolvimento das etapas mais complexas e elaboradas do design da interface. Diogo atuou de forma complementar em parceria com ela, apoiando na construção da identidade visual, definição da paleta de cores e tipografia.
 
-## Larissa Morais e Diogo Alcelino - Product Owner e Scrum Master
+A colaboração em tempo real no Figma permitiu que a dupla realizasse um processo contínuo de design e revisão mútua. Enquanto um estruturava os fluxos de navegação e as transições das telas, o outro refinava os elementos estéticos, garantindo um design coeso e atrativo. Essa parceria foi fundamental para otimizar o tempo durante as semanas de maior sobrecarga acadêmica e resultou em um protótipo de alta fidelidade que facilitou diretamente o trabalho dos desenvolvedores. 
 
-Larissa atuou como Product Owner, acompanhando os requisitos definidos pelos professores, verificando se as entregas estavam de acordo com o que havia sido solicitado e monitorando os prazos estabelecidos para cada etapa do projeto. Já Diogo atuou como Scrum Master, auxiliando na organização das atividades, acompanhando o andamento das tarefas, promovendo a comunicação entre os membros da equipe e ajudando a remover dificuldades que poderiam atrasar o desenvolvimento.
+## Cecília Lopes e Emily Marques - Front End
 
-O trabalho em conjunto nesse caso foi importante para manter o projeto organizado e alinhado aos objetivos, além de garantir que as entregas fossem feitas nos prazos previstos. A Product Owner (Larissa) ficou responsável por validar os requisitos e acompanhar se as entregas estavam de acordo com o que foi solicitado pelos professores (e dentro do prazo de entrega), enquanto o Scrum Master (Diogo) ajudava na organização das atividades, no acompanhamento das tarefas e na comunicação entre os integrantes da equipe.
+Juntas, Cecília e Emily deram vida à interface do TeCtris diretamente no código. A divisão de foco permitiu que Cecília implementasse a camada gráfica e a renderização dos elementos visuais e do grid na tela, enquanto Emily programou a interface de interação com o usuário, o gerenciamento dos feedbacks visuais e a captura dos comandos do teclado.
+
+Durante o desenvolvimento, a dupla alternou entre os papéis de quem escrevia o código e quem revisava a lógica em tempo real. Essa abordagem reduziu drasticamente o número de bugs de posicionamento e falhas de renderização de elementos. O trabalho em par foi decisivo para superar o grande desafio técnico de sincronizar os comandos de entrada dos jogadores (inputs) com as transições de tela entre a jogabilidade do puzzle e os momentos do quiz. A troca constante de conhecimento entre Cecília e Emily garantiu um front-end fluido, responsivo e perfeitamente integrado às regras de negócio desenvolvidas para o jogo.
+
+![alt text](/docs/imagens_evidencias/cecilia_e_emily.jpg)
+![alt text](/docs/imagens_evidencias/cecilia_e_emily_2.jpg)
+
+## João Rafael e Matheus Vaz - Tech leader + Back End
+
+João Rafael e Matheus atuaram diretamente na inteligência e no motor do jogo. A dupla ficou responsável pelo desenvolvimento do núcleo lógico do sistema, funcionamento das mecânicas do puzzle em C, estruturação das regras de funcionamento e implementação de todos os requisitos técnicos definidos para o projeto.
+
+Como o coração do jogo dependia do trabalho dessa frente, foi necessário manter uma comunicação constante para alinhar a arquitetura do código às regras de negócio. Em vários momentos, as tarefas complexas — como a criação do sistema de histórico e o uso de funções recursivas para gerar relatórios analíticos — foram desenvolvidas em conjunto, com troca de sugestões e ajuda mútua para superar os desafios da linguagem C. Apesar de algumas divergências naturais sobre a melhor forma de implementar certas funcionalidades, essas discussões foram fundamentais para que a dupla refinasse o código e chegasse às soluções mais robustas, escaláveis e adequadas para o TeCtris.
+
+![alt text](/docs/imagens_evidencias/joao_e_matheus.jpeg) 
+![alt text](/docs/imagens_evidencias/joao_e_matheus_2.jpg) 
+![alt text](/docs/imagens_evidencias/joao_e_matheus_3.jpg) 
+![alt text](/docs/imagens_evidencias/joao_e_matheus_4.jpg)
