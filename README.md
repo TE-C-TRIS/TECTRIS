@@ -683,6 +683,64 @@ sistema competitivo
 | 🔗 [LinkedIn](https://www.linkedin.com/in/kezia-albuquerque-450522264/) • [GitHub](https://github.com/keziaguiar12) |
 
 
+## 🤝 Como Contribuir
+
+Contribuições são sempre bem-vindas! Se você deseja ajudar no desenvolvimento do **Tectris**, siga os passos abaixo:
+
+### 1. Faça um Fork do Projeto
+
+Crie uma cópia deste repositório em sua conta GitHub.
+
+### 2. Crie uma Branch
+
+Crie uma branch para desenvolver sua funcionalidade ou correção:
+
+```bash
+git checkout -b feature/minha-feature
+```
+
+### 3. Desenvolva sua Solução
+
+Implemente a melhoria seguindo os padrões de código e organização do projeto.
+
+### 4. Realize Testes
+
+Verifique se sua alteração não impacta funcionalidades existentes e se está funcionando corretamente.
+
+### 5. Faça Commit das Alterações
+
+Utilize mensagens de commit claras e descritivas:
+
+```bash
+git commit -m "feat: adiciona sistema de ranking"
+```
+
+### 6. Envie para o seu Fork
+
+```bash
+git push origin feature/minha-feature
+```
+
+### 7. Abra um Pull Request
+
+Abra um Pull Request descrevendo:
+
+* O que foi desenvolvido;
+* O problema resolvido;
+* Possíveis impactos da alteração;
+* Evidências (prints, vídeos ou testes realizados).
+
+### Boas Práticas
+
+* Mantenha o código organizado e documentado;
+* Utilize nomes claros para variáveis e funções;
+* Respeite a arquitetura e estrutura do projeto;
+* Documente novas funcionalidades quando necessário;
+* Verifique se não existem Pull Requests semelhantes antes de criar um novo.
+
+Agradecemos seu interesse em contribuir com o Tectris! 🚀
+
+
 <div align="center">
   <h2>licença</h2>
 </div>
