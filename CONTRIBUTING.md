@@ -9,11 +9,11 @@
 | **Product Owner (PO)** |
 | 🔗 [LinkedIn](https://www.linkedin.com/in/larissa-morais-566833399/) • [GitHub](https://github.com/LarissamnLira) |
 
-| <img width="120" src="https://github.com/dioguis.png"> |
+| <img width="120" src="https://github.com/alicessena.png"> |
 |:----------------------------------------------------------:|
-| **Diogo Alcelino** |
+| **Alice Sena** |
 | **Scrum Master** |
-| 🔗 [LinkedIn](https://www.linkedin.com/in/diogo-alcelino-959690212/) • [GitHub](https://github.com/dioguis) |
+| 🔗 [LinkedIn](https://www.linkedin.com/in/alicessenapereira/) • [GitHub](https://github.com/alicessena) |
 
 | <img width="120" src="https://github.com/jaozinnm.png"> |
 |:----------------------------------------------------------:|
@@ -34,12 +34,6 @@
 | **Desenvolvedora Frontend** |
 | 🔗 [LinkedIn](https://www.linkedin.com/in/cec%C3%ADlia-lopes3107/) • [GitHub](https://github.com/cecilialopess) |
 
-| <img width="120" src="https://github.com/alicessena.png"> |
-|:----------------------------------------------------------:|
-| **Alice Sena** |
-| **Desenvolvedora Backend** |
-| 🔗 [LinkedIn](https://www.linkedin.com/in/alicessenapereira/) • [GitHub](https://github.com/alicessena) |
-
 | <img width="120" src="https://github.com/MatheusSrp.png"> |
 |:----------------------------------------------------------:|
 | **Matheus Vaz** |
@@ -51,3 +45,9 @@
 | **Kezia Aguiar** |
 | **Designer** |
 | 🔗 [LinkedIn](https://www.linkedin.com/in/kezia-albuquerque-450522264/) • [GitHub](https://github.com/keziaguiar12) |
+
+| <img width="120" src="https://github.com/dioguis.png"> |
+|:----------------------------------------------------------:|
+| **Diogo Alcelino** |
+| **Designer** |
+| 🔗 [LinkedIn](https://www.linkedin.com/in/diogo-alcelino-959690212/) • [GitHub](https://github.com/dioguis) |
