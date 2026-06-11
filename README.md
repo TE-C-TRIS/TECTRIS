@@ -22,6 +22,7 @@
 
 [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/community/file/1629208173322160825)
 [![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)](https://trello.com/b/XpkqB8dX/projeto-integrado)
+[![GitBook](https://img.shields.io/badge/GitBook-%23000000.svg?style=for-the-badge&logo=gitbook&logoColor=white)](https://drive.google.com/file/d/1ziHHvH0VzPCdym8xTf5XPHfrV1DrTZkW/view?usp=sharing)
 </div>
 
 <div align="center">
