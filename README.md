@@ -177,6 +177,7 @@ As features estão organizadas por **nível de prioridade e impacto no core do s
 | **Confirmation** | • [ ] Mensagens são exibidas em momentos relevantes do jogo <br> • [ ] Conteúdo das dicas é coerente com o estado da partida <br> • [ ] Heurísticas analisam corretamente os dados disponíveis <br> • [ ] Jogador consegue ler e compreender as orientações |
 
 [Vídeo das Funcionalidades da Semana 3](https://youtu.be/YD0pkZ8R3CI)
+
 [Vídeo das Funcionalidades da Semana 4 (entrega final)](https://canva.link/jm0du2mh5azwsbt)
 
 ## Backlog — Sistema de Adivinhação (Alta Prioridade)
