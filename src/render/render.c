@@ -46,10 +46,10 @@ void DrawGame(GameContext *ctx, int menuIndex) {
                 DrawRectangleLines((int)(off.x + x * cs + 1), (int)(off.y + y * cs + 1), cs - 2, cs - 2, (Color){255,255,255,30});
             }
         }
-    }  // ← fecha o for corretamente aqui
+    } 
     
     // Current Piece
-    if (ctx->state == STATE_GAME || ctx->state == STATE_QUESTION) {
+    if (ctx->state == STATE_GAME || ctx->state == STATE_QUESTION || ctx->state == STATE_QUESTION_EASY) {
         for (int y = 0; y < ctx->currentPiece.size; y++) {
             for (int x = 0; x < ctx->currentPiece.size; x++) {
                 if (ctx->currentPiece.shape[y][x]) {
@@ -99,30 +99,52 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         }
     }
 
-    // Menu
+    // Gerenciamento de Telas Extras (Menu, Relatórios, Perguntas)
     int sw = (int)ctx->screen.screenWidth;
     int sh = (int)ctx->screen.screenHeight;
-
-    // Dentro da função de desenhar o menu no render.c
-    int menuX = 300;        // Posição X padrão do menu
-    int menuStartY = 250;   // Onde o menu começa verticalmente
-    int spacing = 50;       // Espaço entre uma opção e outra
-
-    // ... (Desenho das opções antigas: índice 0, 1, 2...)
-
-    // Nova opção: MODO EASY (supondo que ela seja o índice 3 do seu menu)
-    Color colorEasy = (menuIndex == 3) ? GOLD : WHITE; // Destaca se estiver selecionado
-    DrawText("MODO EASY", menuX, menuStartY + (3 * spacing), 30, colorEasy);
 
     if (ctx->state == STATE_MENU) {
         DrawRectangle(0, 0, sw, sh, (Color){0, 0, 0, 200});
         DrawText("TECTRIS", sw / 2 - MeasureText("TECTRIS", (int)(70 * s)) / 2, (int)(sh * 0.3f), (int)(70 * s), COLOR_TEXT);
         DrawText("Aprenda C Jogando", sw / 2 - MeasureText("Aprenda C Jogando", (int)(25 * s)) / 2, (int)(sh * 0.42f), (int)(25 * s), WHITE);
 
-        const char* options[] = {"Jogar", "Analisar Historico", "Analisar Estatisticas", "Sair"};
-        for (int i = 0; i < 4; i++) {
+        // O MODO EASY FOI INTEGRADO AQUI NAS OPÇÕES:
+        const char* options[] = {"Jogar", "Modo Easy", "Analisar Historico", "Analisar Estatisticas", "Sair"};
+        int totalOptions = 5; // Atualizado para 5 opções
+
+        for (int i = 0; i < totalOptions; i++) {
             Color textColor = (i == menuIndex) ? YELLOW : WHITE;
             DrawText(options[i], sw / 2 - MeasureText(options[i], (int)(30 * s)) / 2, (int)(sh * 0.55f + i * 40 * s), (int)(30 * s), textColor);
+        }
+    }
+
+    else if (ctx->state == STATE_QUESTION_EASY) {
+        DrawRectangle(0, 0, sw, sh, (Color){0, 0, 0, 220}); // Fundo escuro para destacar a pergunta
+        
+        // Desenha o enunciado centralizado
+        // IMPORTANTE: Ajuste "ctx->currentQuestion" de acordo com o nome da sua struct no game.h
+        DrawText(ctx->currentQuestion.enunciado, sw / 2 - MeasureText(ctx->currentQuestion.enunciado, (int)(30 * s)) / 2, (int)(sh * 0.2f), (int)(30 * s), WHITE);
+
+        // Dimensões dos retângulos adaptadas à sua escala 's'
+        int rectWidth = (int)(600 * s);
+        int rectHeight = (int)(60 * s);
+        int rectX = sw / 2 - rectWidth / 2; // Centraliza no meio da tela
+        int startY = (int)(sh * 0.4f);
+        int rectSpacing = (int)(20 * s);
+
+        for (int i = 0; i < 4; i++) {
+            int currentY = startY + i * (rectHeight + rectSpacing);
+
+            // Retângulo da alternativa
+            DrawRectangle(rectX, currentY, rectWidth, rectHeight, DARKGRAY);
+            DrawRectangleLines(rectX, currentY, rectWidth, rectHeight, LIGHTGRAY);
+
+            // Monta o texto no formato "A) Texto da alternativa"
+            char textoAlternativa[200];
+            sprintf(textoAlternativa, "%c) %s", 'A' + i, ctx->currentQuestion.alternativas[i]);
+
+            // Desenha o texto dentro do botão
+            DrawText(textoAlternativa, rectX + (int)(20 * s), currentY + (int)(18 * s), (int)(25 * s), WHITE);
         }
     }
 
@@ -134,7 +156,7 @@ void DrawGame(GameContext *ctx, int menuIndex) {
     }
 
     else if (ctx->state == STATE_HISTORY) {
-        for (int i = 0; i < ctx->historyCount; i++)
+        // CORREÇÃO AQUI: Removemos o "for" que estava multiplicando o fundo sem necessidade
         DrawRectangle(0, 0, sw, sh, (Color){15, 15, 30, 240});
         DrawText("HISTORICO DE PARTIDAS", sw / 2 - MeasureText("HISTORICO DE PARTIDAS", (int)(40 * s)) / 2, (int)(sh * 0.1f), (int)(40 * s), COLOR_TEXT);
 
@@ -153,4 +175,4 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         }
         DrawText("Pressione ENTER para voltar ao Menu", sw / 2 - MeasureText("Pressione ENTER para voltar ao Menu", (int)(20 * s)) / 2, (int)(sh * 0.9f), (int)(20 * s), LIGHTGRAY);
     }
-} 
+}

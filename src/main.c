@@ -98,7 +98,7 @@ int main()
 
                     for (int i = 0; i < historyCount; i++)
                     {
-                        scoresArr[i] = game.history[i].score;
+                        scoresArr[i] = history[i].score; // CORRIGIDO: de game.history para history para ler o arquivo recém-carregado
                     }
 
                     GenerateHeuristic(&stats);
@@ -357,8 +357,7 @@ int main()
             break; // ADICIONADO
             
         case STATE_REPORT:
-            DrawText("Estatísticas", 100, 100, 30, WHITE);
-
+            // MODIFICADO: Removido o DrawText incorreto daqui de dentro pois quebrava o Raylib por rodar fora do BeginDrawing/EndDrawing.
             if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
                 game.state = STATE_MENU;
             break;
@@ -562,7 +561,7 @@ int main()
                 Color fColor = isCorrect ? GREEN : RED; // ADICIONADO
                 const char *fText = isCorrect ? "RESPOSTA CORRETA!" : "RESPOSTA INCORRETA!"; // ADICIONADO
 
-                DrawText(fText, sw / 2 - MeasureText(fText, (int)(40 * s)) / 2, (int)(qBox.y + 420 * s), (int)(40 * s), fColor); // ADICIONADO
+                DrawText(fText, sw / 2 - MeasureText(fText, (int)(40 * s)) / 2, (int)(qBox.y + 450 * s), (int)(40 * s), fColor); // ADICIONADO
             } // ADICIONADO
         } // ADICIONADO
 
@@ -592,6 +591,7 @@ int main()
                 "Pressione ENTER para voltar ao menu",
                 sw / 2 - MeasureText("Pressione ENTER para voltar ao menu", (int)(20 * s)) / 2,
                 (int)(sh * 0.7f),
+          0.5f,
                 (int)(20 * s),
                 LIGHTGRAY);
         }
