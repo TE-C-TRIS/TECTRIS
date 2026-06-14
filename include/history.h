@@ -7,4 +7,7 @@ void SaveHistory(MatchHistory data); // Avisa ao compilador que essa função ex
 
 int LoadHistory(MatchHistory *history, int maxCount);
 
+void SaveHistoryEx(MatchHistory data, const char* filename);
+int LoadHistoryEx(MatchHistory *history, int maxCount, const char* filename);
+
 #endif // Fim da proteção

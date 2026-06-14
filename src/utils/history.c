@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 void SaveHistory(MatchHistory data) {
-    FILE *file = fopen(HISTORY_FILE, "a");
+    FILE *file = fopen(filename, "a");
     if (file == NULL) {
         TraceLog(LOG_WARNING, "HISTORY: Nao foi possivel abrir o arquivo de historico para escrita.");
         return;

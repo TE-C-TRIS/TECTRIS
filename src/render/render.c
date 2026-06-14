@@ -103,6 +103,17 @@ void DrawGame(GameContext *ctx, int menuIndex) {
     int sw = (int)ctx->screen.screenWidth;
     int sh = (int)ctx->screen.screenHeight;
 
+    // Dentro da função de desenhar o menu no render.c
+    int menuX = 300;        // Posição X padrão do menu
+    int menuStartY = 250;   // Onde o menu começa verticalmente
+    int spacing = 50;       // Espaço entre uma opção e outra
+
+    // ... (Desenho das opções antigas: índice 0, 1, 2...)
+
+    // Nova opção: MODO EASY (supondo que ela seja o índice 3 do seu menu)
+    Color colorEasy = (menuIndex == 3) ? GOLD : WHITE; // Destaca se estiver selecionado
+    DrawText("MODO EASY", menuX, menuStartY + (3 * spacing), 30, colorEasy);
+
     if (ctx->state == STATE_MENU) {
         DrawRectangle(0, 0, sw, sh, (Color){0, 0, 0, 200});
         DrawText("TECTRIS", sw / 2 - MeasureText("TECTRIS", (int)(70 * s)) / 2, (int)(sh * 0.3f), (int)(70 * s), COLOR_TEXT);

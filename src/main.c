@@ -7,6 +7,9 @@
 #include "stats.h"
 #include <time.h>
 
+// ADICIONADO: Declaração externa da função do seu novo arquivo "questions_modo_easy.c"
+Question GetRandomEasyQuestion();
+
 int main()
 {
     // Configuração de Janela Redimensionável
@@ -17,6 +20,7 @@ int main()
     GameContext game;
     InitGame(&game);
     int menuIndex = 0;
+    bool isEasyMode = false; // ADICIONADO: Variável flag para saber se a partida atual é do modo fácil ou do modo C
     MatchHistory history[MAX_HISTORY_RECORDS];
     int historyCount = 0;
     GameStats stats;
@@ -42,7 +46,7 @@ int main()
             if (IsKeyPressed(KEY_DOWN))
             {
                 menuIndex++;
-                if (menuIndex > 3)
+                if (menuIndex > 5) // MODIFICADO: O limite máximo subiu para 5 porque agora temos 6 opções no total do menu
                     menuIndex = 0;
             }
 
@@ -50,7 +54,7 @@ int main()
             {
                 menuIndex--;
                 if (menuIndex < 0)
-                    menuIndex = 3;
+                    menuIndex = 5; // MODIFICADO: Retorna para a última opção (5) se passar do topo
             }
 
             if (IsKeyPressed(KEY_ENTER))
@@ -58,19 +62,33 @@ int main()
 
                 if (menuIndex == 0)
                 {
+                    isEasyMode = false; // ADICIONADO: Define que a partida atual NÃO é modo fácil
                     InitGame(&game);
                     game.state = STATE_GAME;
                 }
 
-                else if (menuIndex == 1)
+                else if (menuIndex == 1) // ADICIONADO: Nova opção no menu para iniciar o Modo Easy
                 {
-                    game.historyCount = LoadHistory(game.history, MAX_HISTORY_RECORDS);
+                    isEasyMode = true; // ADICIONADO: Define que a partida atual É do modo fácil
+                    InitGame(&game); // ADICIONADO: Inicializa as configurações de jogo
+                    game.state = STATE_GAME_EASY; // ADICIONADO: Modifica o estado do jogo para o loop do Modo Easy
+                }
+
+                else if (menuIndex == 2) // MODIFICADO: Antes era menuIndex == 1 (Histórico Normal)
+                {
+                    game.historyCount = LoadHistory(game.history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
                     game.state = STATE_HISTORY;
                 }
 
-                else if (menuIndex == 2)
+                else if (menuIndex == 3) // ADICIONADO: Nova opção no menu para abrir o Histórico do Modo Easy
                 {
-                    historyCount = LoadHistory(history, MAX_HISTORY_RECORDS);
+                    game.historyCount = LoadHistory(game.history, MAX_HISTORY_RECORDS, HISTORY_EASY_FILE); // ADICIONADO: Carrega os registros salvos do arquivo fácil
+                    game.state = STATE_HISTORY; // ADICIONADO: Direciona para a tela de exibição padrão de histórico
+                }
+
+                else if (menuIndex == 4) // MODIFICADO: Antes era menuIndex == 2 (Estatísticas)
+                {
+                    historyCount = LoadHistory(history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
 
                     stats.totalMatches = historyCount;
                     stats.averageScore = CalculateAverageScore(history, historyCount);
@@ -87,7 +105,7 @@ int main()
                     game.state = STATE_REPORT;
                 }
 
-                else if (menuIndex == 3)
+                else if (menuIndex == 5) // MODIFICADO: Antes era menuIndex == 3 (Sair)
                 {
                     CloseWindow();
                 }
@@ -156,9 +174,66 @@ int main()
 
             break;
 
+        case STATE_GAME_EASY: // ADICIONADO: Novo bloco de estado completo para gerenciar a partida no modo fácil
+            if (IsKeyPressed(KEY_P)) // ADICIONADO
+                game.state = STATE_PAUSE; // ADICIONADO
+
+            // Controles de Gameplay idênticos ao modo normal // ADICIONADO
+            if (IsKeyPressed(KEY_LEFT)) // ADICIONADO
+            { // ADICIONADO
+                if (!CheckCollision(&game, game.currentPiece, -1, 0)) // ADICIONADO
+                    game.currentPiece.pos.x--; // ADICIONADO
+            } // ADICIONADO
+
+            if (IsKeyPressed(KEY_RIGHT)) // ADICIONADO
+            { // ADICIONADO
+                if (!CheckCollision(&game, game.currentPiece, 1, 0)) // ADICIONADO
+                    game.currentPiece.pos.x++; // ADICIONADO
+            } // ADICIONADO
+
+            if (IsKeyPressed(KEY_DOWN)) // ADICIONADO
+            { // ADICIONADO
+                if (!CheckCollision(&game, game.currentPiece, 0, 1)) // ADICIONADO
+                    game.currentPiece.pos.y++; // ADICIONADO
+            } // ADICIONADO
+
+            if (IsKeyPressed(KEY_UP)) // ADICIONADO
+            { // ADICIONADO
+                TryRotate(&game); // ADICIONADO
+            } // ADICIONADO
+
+            if (IsKeyPressed(KEY_SPACE)) // ADICIONADO
+            { // ADICIONADO
+                while (!CheckCollision(&game, game.currentPiece, 0, 1)) // ADICIONADO
+                    game.currentPiece.pos.y++; // ADICIONADO
+                MergePiece(&game); // ADICIONADO
+            } // ADICIONADO
+
+            // Hack técnico limpo: altera temporariamente o estado interno para rodar a física do game.c perfeitamente // ADICIONADO
+            GameState previousState = game.state; // ADICIONADO
+            game.state = STATE_GAME; // ADICIONADO
+            UpdateGame(&game, dt); // ADICIONADO
+            if (game.state == STATE_GAME) game.state = previousState; // ADICIONADO: Se não deu Game Over, devolve para o modo fácil
+
+            nextQuestionTimer -= dt; // ADICIONADO
+
+            if (nextQuestionTimer <= 0) // ADICIONADO
+            { // ADICIONADO
+                game.state = STATE_QUESTION_EASY; // ADICIONADO: Direciona para o novo estado de pergunta fácil
+                currentQuestion = GetRandomEasyQuestion(); // ADICIONADO: Sorteia as perguntas de curiosidades gerais
+
+                userInput[0] = '\0'; // ADICIONADO
+                letterCount = 0; // ADICIONADO
+                questionTimer = 15.0f; // ADICIONADO
+                showFeedback = false; // ADICIONADO
+
+                nextQuestionTimer = 25.0f; // ADICIONADO
+            } // ADICIONADO
+            break; // ADICIONADO
+
         case STATE_PAUSE:
             if (IsKeyPressed(KEY_P))
-                game.state = STATE_GAME;
+                game.state = isEasyMode ? STATE_GAME_EASY : STATE_GAME; // MODIFICADO: Retorna para o estado correto dependendo de qual modo estava ativo
 
             break;
 
@@ -230,9 +305,59 @@ int main()
             }
             
             break;
+
+        case STATE_QUESTION_EASY: // ADICIONADO: Bloco completo para capturar as alternativas (A, B, C, D) no modo fácil
+            if (!showFeedback) // ADICIONADO
+            { // ADICIONADO
+                questionTimer -= dt; // ADICIONADO
+
+                if (questionTimer <= 0) // ADICIONADO
+                { // ADICIONADO
+                    isCorrect = false; // ADICIONADO
+                    showFeedback = true; // ADICIONADO
+                    feedbackTimer = 2.5f; // ADICIONADO
+                    AddPenaltyLine(&game); // ADICIONADO
+                } // ADICIONADO
+
+                // Captura a alternativa de múltipla escolha pressionada pelo jogador // ADICIONADO
+                int selectedAnswer = -1; // ADICIONADO
+                if (IsKeyPressed(KEY_A)) selectedAnswer = 0; // ADICIONADO
+                if (IsKeyPressed(KEY_B)) selectedAnswer = 1; // ADICIONADO
+                if (IsKeyPressed(KEY_C)) selectedAnswer = 2; // ADICIONADO
+                if (IsKeyPressed(KEY_D)) selectedAnswer = 3; // ADICIONADO
+
+                if (selectedAnswer != -1) // ADICIONADO
+                { // ADICIONADO
+                    char choiceStr[2] = { 'A' + selectedAnswer, '\0' }; // ADICIONADO: Transforma o índice selecionado em texto ("A", "B", "C" ou "D")
+                    isCorrect = ValidateAnswer(choiceStr, &currentQuestion); // ADICIONADO: Valida se a alternativa bate com a correta
+
+                    showFeedback = true; // ADICIONADO
+                    feedbackTimer = 2.5f; // ADICIONADO
+
+                    if (isCorrect) // ADICIONADO
+                    { // ADICIONADO
+                        game.score += 150; // ADICIONADO
+                        RemovePenaltyLine(&game); // ADICIONADO
+                    } // ADICIONADO
+                    else // ADICIONADO
+                    { // ADICIONADO
+                        AddPenaltyLine(&game); // ADICIONADO
+                    } // ADICIONADO
+                } // ADICIONADO
+            } // ADICIONADO
+            else // ADICIONADO
+            { // ADICIONADO
+                feedbackTimer -= dt; // ADICIONADO
+
+                if (feedbackTimer <= 0) // ADICIONADO
+                { // ADICIONADO
+                    game.state = STATE_GAME_EASY; // ADICIONADO: Retorna para a partida do modo fácil
+                } // ADICIONADO
+            } // ADICIONADO
+            break; // ADICIONADO
             
-            case STATE_REPORT:
-                DrawText("Estatisticas", 100, 100, 30, WHITE);
+        case STATE_REPORT:
+            DrawText("Estatísticas", 100, 100, 30, WHITE);
 
             if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
                 game.state = STATE_MENU;
@@ -250,7 +375,14 @@ int main()
                 currentMatch.level = game.level;
                 currentMatch.timestamp = time(NULL);
 
-                SaveHistory(currentMatch);
+                if (isEasyMode) // ADICIONADO: Condicional para salvar no arquivo correspondente ao modo jogado
+                { // ADICIONADO
+                    SaveHistory(currentMatch, HISTORY_EASY_FILE); // ADICIONADO: Salva o registro no histórico separado do modo fácil
+                } // ADICIONADO
+                else // ADICIONADO
+                { // ADICIONADO
+                    SaveHistory(currentMatch, HISTORY_FILE); // MODIFICADO: Passa o arquivo do histórico normal por parâmetro
+                } // ADICIONADO
 
                 game.state = STATE_MENU;
                 menuIndex = 0;
@@ -262,7 +394,13 @@ int main()
         // Renderização Centralizada
         BeginDrawing();
 
+        // Hack técnico limpo: engana o DrawGame do render.c para desenhar o fundo e os blocos de Tetris perfeitamente no modo fácil // ADICIONADO
+        bool wasEasyGame = (game.state == STATE_GAME_EASY); // ADICIONADO
+        if (wasEasyGame) game.state = STATE_GAME; // ADICIONADO
+
         DrawGame(&game, menuIndex);
+
+        if (wasEasyGame) game.state = STATE_GAME_EASY; // ADICIONADO: Restaura o estado verdadeiro após desenhar o grid do jogo
 
         float s = game.screen.scale;
         int sw = game.screen.screenWidth;
@@ -391,6 +529,42 @@ int main()
                 }
             }
         }
+
+        else if (game.state == STATE_QUESTION_EASY) // ADICIONADO: Renderização visual da tela de perguntas do Modo Easy (Alternativas)
+        { // ADICIONADO
+            DrawRectangle(0, 0, sw, sh, (Color){10, 20, 15, 240}); // ADICIONADO: Fundo escuro com uma tonalidade esverdeada para mudar a estética
+
+            Rectangle qBox = { sw * 0.1f, sh * 0.15f, sw * 0.8f, sh * 0.7f }; // ADICIONADO: Caixa centralizada
+            DrawRectangleLinesEx(qBox, 3 * s, showFeedback ? (isCorrect ? GREEN : RED) : COLOR_TEXT); // ADICIONADO
+
+            DrawText("CURIOSIDADES GERAIS", sw / 2 - MeasureText("CURIOSIDADES GERAIS", (int)(35 * s)) / 2, (int)(qBox.y + 40 * s), (int)(35 * s), COLOR_TEXT); // ADICIONADO
+
+            DrawText(currentQuestion.question, sw / 2 - MeasureText(currentQuestion.question, (int)(22 * s)) / 2, (int)(qBox.y + 110 * s), (int)(22 * s), WHITE); // ADICIONADO
+
+            // ADICIONADO: Loop para gerar e alinhar na tela dinamicamente as 4 caixas com as alternativas (A, B, C, D)
+            for (int i = 0; i < 4; i++) // ADICIONADO
+            { // ADICIONADO
+                Rectangle optBox = { sw / 2 - 250 * s, qBox.y + 180 * s + i * (50 * s), 500 * s, 42 * s }; // ADICIONADO
+                DrawRectangleRec(optBox, COLOR_PANEL); // ADICIONADO
+                DrawRectangleLinesEx(optBox, 1 * s, WHITE); // ADICIONADO
+                
+                char optText[256]; // ADICIONADO
+                sprintf(optText, "%c) %s", 'A' + i, currentQuestion.answers[i]); // ADICIONADO: Renderiza como "A) Opção", "B) Opção", etc.
+                DrawText(optText, (int)(optBox.x + 15 * s), (int)(optBox.y + 12 * s), (int)(16 * s), WHITE); // ADICIONADO
+            } // ADICIONADO
+
+            // ADICIONADO: Barra de tempo correndo na parte inferior da caixa de pergunta
+            float timerWidth = (questionTimer / 15.0f) * 500 * s; // ADICIONADO
+            DrawRectangle((int)(sw / 2 - 250 * s), (int)(qBox.y + 395 * s), (int)timerWidth, (int)(5 * s), (questionTimer < 5) ? RED : GREEN); // ADICIONADO
+
+            if (showFeedback) // ADICIONADO
+            { // ADICIONADO
+                Color fColor = isCorrect ? GREEN : RED; // ADICIONADO
+                const char *fText = isCorrect ? "RESPOSTA CORRETA!" : "RESPOSTA INCORRETA!"; // ADICIONADO
+
+                DrawText(fText, sw / 2 - MeasureText(fText, (int)(40 * s)) / 2, (int)(qBox.y + 420 * s), (int)(40 * s), fColor); // ADICIONADO
+            } // ADICIONADO
+        } // ADICIONADO
 
         else if (game.state == STATE_GAMEOVER)
         {

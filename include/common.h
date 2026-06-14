@@ -21,9 +21,12 @@
 typedef enum {
     STATE_MENU,
     STATE_GAME,
+    STATE_GAME_EASY,      // NOVO: Jogo no modo fácil
     STATE_PAUSE,
     STATE_QUESTION,
+    STATE_QUESTION_EASY, // NOVO: Tela de pergunta de curiosidades
     STATE_HISTORY,
+    STATE_HISTORY_EASY, // NOVO: Histórico do modo fácil
     STATE_REPORT,
     STATE_GAMEOVER
 } GameState;
@@ -69,6 +72,7 @@ typedef struct {
 
 // Histórico de Partidas
 #define HISTORY_FILE "history.txt"
+#define HISTORY_EASY_FILE "history_easy.txt" // novo
 #define MAX_HISTORY_RECORDS 100
 
 #endif
