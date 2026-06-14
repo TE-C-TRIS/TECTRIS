@@ -4,11 +4,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct {
-    char pergunta[256];
-    char alternativas[4][100]; // 4 alternativas de até 100 caracteres
-    int alternativaCorreta;    // Índice da resposta certa (0 = 1, 1 = 2, 2 = 3, 3 = 4)
-} PerguntaEasy;
 
 static PerguntaEasy bancoEasy[] = {
     {"1. Quantos coracoes um polvo possui?", {"1) 3", "2) 1", "3) 2", "4) 8"}, 0},

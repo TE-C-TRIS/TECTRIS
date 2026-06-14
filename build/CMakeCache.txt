@@ -39,7 +39,7 @@ CMAKE_C_COMPILER_AR:FILEPATH=C:/mingw64/bin/gcc-ar.exe
 CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/mingw64/bin/gcc-ranlib.exe
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=-IC:/raylib/raylib/src
+CMAKE_C_FLAGS:STRING=
 
 //Flags used by the C compiler during DEBUG builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g
@@ -60,7 +60,7 @@ CMAKE_C_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell
 CMAKE_DLLTOOL:FILEPATH=C:/mingw64/bin/dlltool.exe
 
 //Flags used by the linker during all build types.
-CMAKE_EXE_LINKER_FLAGS:STRING=-LC:/raylib/raylib/src -lwinmm -lgdi32 -lopengl32
+CMAKE_EXE_LINKER_FLAGS:STRING=
 
 //Flags used by the linker during DEBUG builds.
 CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=
