@@ -117,37 +117,6 @@ void DrawGame(GameContext *ctx, int menuIndex) {
             DrawText(options[i], sw / 2 - MeasureText(options[i], (int)(30 * s)) / 2, (int)(sh * 0.55f + i * 40 * s), (int)(30 * s), textColor);
         }
     }
-
-    else if (ctx->state == STATE_QUESTION_EASY) {
-        DrawRectangle(0, 0, sw, sh, (Color){0, 0, 0, 220}); // Fundo escuro para destacar a pergunta
-        
-        // Desenha o enunciado centralizado
-        // IMPORTANTE: Ajuste "ctx->currentQuestion" de acordo com o nome da sua struct no game.h
-        DrawText(ctx->currentQuestion.enunciado, sw / 2 - MeasureText(ctx->currentQuestion.enunciado, (int)(30 * s)) / 2, (int)(sh * 0.2f), (int)(30 * s), WHITE);
-
-        // Dimensões dos retângulos adaptadas à sua escala 's'
-        int rectWidth = (int)(600 * s);
-        int rectHeight = (int)(60 * s);
-        int rectX = sw / 2 - rectWidth / 2; // Centraliza no meio da tela
-        int startY = (int)(sh * 0.4f);
-        int rectSpacing = (int)(20 * s);
-
-        for (int i = 0; i < 4; i++) {
-            int currentY = startY + i * (rectHeight + rectSpacing);
-
-            // Retângulo da alternativa
-            DrawRectangle(rectX, currentY, rectWidth, rectHeight, DARKGRAY);
-            DrawRectangleLines(rectX, currentY, rectWidth, rectHeight, LIGHTGRAY);
-
-            // Monta o texto no formato "A) Texto da alternativa"
-            char textoAlternativa[200];
-            sprintf(textoAlternativa, "%c) %s", 'A' + i, ctx->currentQuestion.alternativas[i]);
-
-            // Desenha o texto dentro do botão
-            DrawText(textoAlternativa, rectX + (int)(20 * s), currentY + (int)(18 * s), (int)(25 * s), WHITE);
-        }
-    }
-
     else if (ctx->state == STATE_REPORT) {
         DrawRectangle(0, 0, sw, sh, (Color){15, 15, 30, 240});
         DrawText("RELATORIO ANALITICO", sw / 2 - MeasureText("RELATORIO ANALITICO", (int)(40 * s)) / 2, (int)(sh * 0.1f), (int)(40 * s), COLOR_TEXT);

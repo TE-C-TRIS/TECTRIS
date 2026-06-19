@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Tectris.dir/src/game/game.c.obj.d"
   "CMakeFiles/Tectris.dir/src/game/questions.c.obj"
   "CMakeFiles/Tectris.dir/src/game/questions.c.obj.d"
+  "CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj"
+  "CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj.d"
   "CMakeFiles/Tectris.dir/src/main.c.obj"
   "CMakeFiles/Tectris.dir/src/main.c.obj.d"
   "CMakeFiles/Tectris.dir/src/render/render.c.obj"

@@ -116,11 +116,26 @@ CMakeFiles/Tectris.dir/src/game/questions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Tectris.dir/src/game/questions.c.s"
 	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\game\questions.c" -o CMakeFiles\Tectris.dir\src\game\questions.c.s
 
+CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj: CMakeFiles/Tectris.dir/flags.make
+CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj: CMakeFiles/Tectris.dir/includes_C.rsp
+CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj: C:/Users/Matheus/OneDrive/Desktop/CESAR\ SCHOOL/Semestre\ 2/Jogo_Tectris/TECTRIS/src/game/questions_modo_easy.c
+CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj: CMakeFiles/Tectris.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj"
+	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj -MF CMakeFiles\Tectris.dir\src\game\questions_modo_easy.c.obj.d -o CMakeFiles\Tectris.dir\src\game\questions_modo_easy.c.obj -c "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\game\questions_modo_easy.c"
+
+CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.i"
+	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\game\questions_modo_easy.c" > CMakeFiles\Tectris.dir\src\game\questions_modo_easy.c.i
+
+CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.s"
+	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\game\questions_modo_easy.c" -o CMakeFiles\Tectris.dir\src\game\questions_modo_easy.c.s
+
 CMakeFiles/Tectris.dir/src/render/render.c.obj: CMakeFiles/Tectris.dir/flags.make
 CMakeFiles/Tectris.dir/src/render/render.c.obj: CMakeFiles/Tectris.dir/includes_C.rsp
 CMakeFiles/Tectris.dir/src/render/render.c.obj: C:/Users/Matheus/OneDrive/Desktop/CESAR\ SCHOOL/Semestre\ 2/Jogo_Tectris/TECTRIS/src/render/render.c
 CMakeFiles/Tectris.dir/src/render/render.c.obj: CMakeFiles/Tectris.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Tectris.dir/src/render/render.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Tectris.dir/src/render/render.c.obj"
 	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Tectris.dir/src/render/render.c.obj -MF CMakeFiles\Tectris.dir\src\render\render.c.obj.d -o CMakeFiles\Tectris.dir\src\render\render.c.obj -c "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\render\render.c"
 
 CMakeFiles/Tectris.dir/src/render/render.c.i: cmake_force
@@ -135,7 +150,7 @@ CMakeFiles/Tectris.dir/src/utils/history.c.obj: CMakeFiles/Tectris.dir/flags.mak
 CMakeFiles/Tectris.dir/src/utils/history.c.obj: CMakeFiles/Tectris.dir/includes_C.rsp
 CMakeFiles/Tectris.dir/src/utils/history.c.obj: C:/Users/Matheus/OneDrive/Desktop/CESAR\ SCHOOL/Semestre\ 2/Jogo_Tectris/TECTRIS/src/utils/history.c
 CMakeFiles/Tectris.dir/src/utils/history.c.obj: CMakeFiles/Tectris.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Tectris.dir/src/utils/history.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Tectris.dir/src/utils/history.c.obj"
 	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Tectris.dir/src/utils/history.c.obj -MF CMakeFiles\Tectris.dir\src\utils\history.c.obj.d -o CMakeFiles\Tectris.dir\src\utils\history.c.obj -c "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\utils\history.c"
 
 CMakeFiles/Tectris.dir/src/utils/history.c.i: cmake_force
@@ -150,7 +165,7 @@ CMakeFiles/Tectris.dir/src/utils/stats.c.obj: CMakeFiles/Tectris.dir/flags.make
 CMakeFiles/Tectris.dir/src/utils/stats.c.obj: CMakeFiles/Tectris.dir/includes_C.rsp
 CMakeFiles/Tectris.dir/src/utils/stats.c.obj: C:/Users/Matheus/OneDrive/Desktop/CESAR\ SCHOOL/Semestre\ 2/Jogo_Tectris/TECTRIS/src/utils/stats.c
 CMakeFiles/Tectris.dir/src/utils/stats.c.obj: CMakeFiles/Tectris.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Tectris.dir/src/utils/stats.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Tectris.dir/src/utils/stats.c.obj"
 	C:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Tectris.dir/src/utils/stats.c.obj -MF CMakeFiles\Tectris.dir\src\utils\stats.c.obj.d -o CMakeFiles\Tectris.dir\src\utils\stats.c.obj -c "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\src\utils\stats.c"
 
 CMakeFiles/Tectris.dir/src/utils/stats.c.i: cmake_force
@@ -166,6 +181,7 @@ Tectris_OBJECTS = \
 "CMakeFiles/Tectris.dir/src/main.c.obj" \
 "CMakeFiles/Tectris.dir/src/game/game.c.obj" \
 "CMakeFiles/Tectris.dir/src/game/questions.c.obj" \
+"CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj" \
 "CMakeFiles/Tectris.dir/src/render/render.c.obj" \
 "CMakeFiles/Tectris.dir/src/utils/history.c.obj" \
 "CMakeFiles/Tectris.dir/src/utils/stats.c.obj"
@@ -176,6 +192,7 @@ Tectris_EXTERNAL_OBJECTS =
 bin/Tectris.exe: CMakeFiles/Tectris.dir/src/main.c.obj
 bin/Tectris.exe: CMakeFiles/Tectris.dir/src/game/game.c.obj
 bin/Tectris.exe: CMakeFiles/Tectris.dir/src/game/questions.c.obj
+bin/Tectris.exe: CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj
 bin/Tectris.exe: CMakeFiles/Tectris.dir/src/render/render.c.obj
 bin/Tectris.exe: CMakeFiles/Tectris.dir/src/utils/history.c.obj
 bin/Tectris.exe: CMakeFiles/Tectris.dir/src/utils/stats.c.obj
@@ -184,7 +201,7 @@ bin/Tectris.exe: C:/raylib/raylib/src/libraylib.a
 bin/Tectris.exe: CMakeFiles/Tectris.dir/linkLibs.rsp
 bin/Tectris.exe: CMakeFiles/Tectris.dir/objects1.rsp
 bin/Tectris.exe: CMakeFiles/Tectris.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable bin\Tectris.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable bin\Tectris.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Tectris.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

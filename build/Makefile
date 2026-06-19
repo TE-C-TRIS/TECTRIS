@@ -176,6 +176,30 @@ src/game/questions.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/game/questions.c.s
 .PHONY : src/game/questions.c.s
 
+src/game/questions_modo_easy.obj: src/game/questions_modo_easy.c.obj
+.PHONY : src/game/questions_modo_easy.obj
+
+# target to build an object file
+src/game/questions_modo_easy.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj
+.PHONY : src/game/questions_modo_easy.c.obj
+
+src/game/questions_modo_easy.i: src/game/questions_modo_easy.c.i
+.PHONY : src/game/questions_modo_easy.i
+
+# target to preprocess a source file
+src/game/questions_modo_easy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.i
+.PHONY : src/game/questions_modo_easy.c.i
+
+src/game/questions_modo_easy.s: src/game/questions_modo_easy.c.s
+.PHONY : src/game/questions_modo_easy.s
+
+# target to generate assembly for a file
+src/game/questions_modo_easy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.s
+.PHONY : src/game/questions_modo_easy.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -287,6 +311,9 @@ help:
 	@echo ... src/game/questions.obj
 	@echo ... src/game/questions.i
 	@echo ... src/game/questions.s
+	@echo ... src/game/questions_modo_easy.obj
+	@echo ... src/game/questions_modo_easy.i
+	@echo ... src/game/questions_modo_easy.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

@@ -8,7 +8,8 @@
 #include <time.h>
 
 // ADICIONADO: Declaração externa da função do seu novo arquivo "questions_modo_easy.c"
-Question GetRandomEasyQuestion();
+PerguntaEasy GetRandomQuestionEasy();
+bool ValidateAnswerEasy(int escolhaJogador, const PerguntaEasy* q);
 
 int main()
 {
@@ -27,6 +28,7 @@ int main()
     int scoresArr[MAX_HISTORY_RECORDS];
 
     Question currentQuestion;
+    PerguntaEasy currentEasyQuestion;
     char userInput[64] = "\0";
     int letterCount = 0;
     float questionTimer = 0;
@@ -76,19 +78,19 @@ int main()
 
                 else if (menuIndex == 2) // MODIFICADO: Antes era menuIndex == 1 (Histórico Normal)
                 {
-                    game.historyCount = LoadHistory(game.history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
+                    game.historyCount = LoadHistoryEx(game.history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
                     game.state = STATE_HISTORY;
                 }
 
                 else if (menuIndex == 3) // ADICIONADO: Nova opção no menu para abrir o Histórico do Modo Easy
                 {
-                    game.historyCount = LoadHistory(game.history, MAX_HISTORY_RECORDS, HISTORY_EASY_FILE); // ADICIONADO: Carrega os registros salvos do arquivo fácil
+                    game.historyCount = LoadHistoryEx(game.history, MAX_HISTORY_RECORDS, HISTORY_EASY_FILE); // ADICIONADO: Carrega os registros salvos do arquivo fácil
                     game.state = STATE_HISTORY; // ADICIONADO: Direciona para a tela de exibição padrão de histórico
                 }
 
                 else if (menuIndex == 4) // MODIFICADO: Antes era menuIndex == 2 (Estatísticas)
                 {
-                    historyCount = LoadHistory(history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
+                    historyCount = LoadHistoryEx(history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
 
                     stats.totalMatches = historyCount;
                     stats.averageScore = CalculateAverageScore(history, historyCount);
@@ -220,7 +222,7 @@ int main()
             if (nextQuestionTimer <= 0) // ADICIONADO
             { // ADICIONADO
                 game.state = STATE_QUESTION_EASY; // ADICIONADO: Direciona para o novo estado de pergunta fácil
-                currentQuestion = GetRandomEasyQuestion(); // ADICIONADO: Sorteia as perguntas de curiosidades gerais
+                currentEasyQuestion = GetRandomQuestionEasy(); // ADICIONADO: Sorteia as perguntas de curiosidades gerais
 
                 userInput[0] = '\0'; // ADICIONADO
                 letterCount = 0; // ADICIONADO
@@ -329,7 +331,7 @@ int main()
                 if (selectedAnswer != -1) // ADICIONADO
                 { // ADICIONADO
                     char choiceStr[2] = { 'A' + selectedAnswer, '\0' }; // ADICIONADO: Transforma o índice selecionado em texto ("A", "B", "C" ou "D")
-                    isCorrect = ValidateAnswer(choiceStr, &currentQuestion); // ADICIONADO: Valida se a alternativa bate com a correta
+                    isCorrect = ValidateAnswerEasy(selectedAnswer, &currentEasyQuestion); // ADICIONADO: Valida se a alternativa bate com a correta
 
                     showFeedback = true; // ADICIONADO
                     feedbackTimer = 2.5f; // ADICIONADO
@@ -376,11 +378,11 @@ int main()
 
                 if (isEasyMode) // ADICIONADO: Condicional para salvar no arquivo correspondente ao modo jogado
                 { // ADICIONADO
-                    SaveHistory(currentMatch, HISTORY_EASY_FILE); // ADICIONADO: Salva o registro no histórico separado do modo fácil
+                    SaveHistoryEx(currentMatch, HISTORY_EASY_FILE); // ADICIONADO: Salva o registro no histórico separado do modo fácil
                 } // ADICIONADO
                 else // ADICIONADO
                 { // ADICIONADO
-                    SaveHistory(currentMatch, HISTORY_FILE); // MODIFICADO: Passa o arquivo do histórico normal por parâmetro
+                    SaveHistoryEx(currentMatch, HISTORY_FILE); // MODIFICADO: Passa o arquivo do histórico normal por parâmetro
                 } // ADICIONADO
 
                 game.state = STATE_MENU;
@@ -538,7 +540,7 @@ int main()
 
             DrawText("CURIOSIDADES GERAIS", sw / 2 - MeasureText("CURIOSIDADES GERAIS", (int)(35 * s)) / 2, (int)(qBox.y + 40 * s), (int)(35 * s), COLOR_TEXT); // ADICIONADO
 
-            DrawText(currentQuestion.question, sw / 2 - MeasureText(currentQuestion.question, (int)(22 * s)) / 2, (int)(qBox.y + 110 * s), (int)(22 * s), WHITE); // ADICIONADO
+            DrawText(currentEasyQuestion.pergunta, sw / 2 - MeasureText(currentEasyQuestion.pergunta, (int)(22 * s)) / 2, (int)(qBox.y + 110 * s), (int)(22 * s), WHITE); // ADICIONADO
 
             // ADICIONADO: Loop para gerar e alinhar na tela dinamicamente as 4 caixas com as alternativas (A, B, C, D)
             for (int i = 0; i < 4; i++) // ADICIONADO
@@ -548,7 +550,7 @@ int main()
                 DrawRectangleLinesEx(optBox, 1 * s, WHITE); // ADICIONADO
                 
                 char optText[256]; // ADICIONADO
-                sprintf(optText, "%c) %s", 'A' + i, currentQuestion.answers[i]); // ADICIONADO: Renderiza como "A) Opção", "B) Opção", etc.
+                sprintf(optText, "%c) %s", 'A' + i, currentEasyQuestion.alternativas[i]); // ADICIONADO: Renderiza como "A) Opção", "B) Opção", etc.
                 DrawText(optText, (int)(optBox.x + 15 * s), (int)(optBox.y + 12 * s), (int)(16 * s), WHITE); // ADICIONADO
             } // ADICIONADO
 
@@ -591,7 +593,6 @@ int main()
                 "Pressione ENTER para voltar ao menu",
                 sw / 2 - MeasureText("Pressione ENTER para voltar ao menu", (int)(20 * s)) / 2,
                 (int)(sh * 0.7f),
-          0.5f,
                 (int)(20 * s),
                 LIGHTGRAY);
         }

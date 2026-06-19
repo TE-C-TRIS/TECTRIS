@@ -10,6 +10,7 @@ set(SOURCES
     src/main.c
     src/game/game.c
     src/game/questions.c
+    src/game/questions_modo_easy.c
     src/render/render.c
     src/utils/history.c
     src/utils/stats.c

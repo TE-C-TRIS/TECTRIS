@@ -70,6 +70,13 @@ typedef struct {
     int cellSize;
 } ScreenConfig;
 
+// Estrutura de Pergunta do Modo Easy
+typedef struct {
+    char pergunta[256];
+    char alternativas[4][100];
+    int alternativaCorreta;
+} PerguntaEasy;
+
 // Histórico de Partidas
 #define HISTORY_FILE "history.txt"
 #define HISTORY_EASY_FILE "history_easy.txt" // novo
