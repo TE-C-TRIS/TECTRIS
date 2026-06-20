@@ -98,52 +98,118 @@ def note(name, octave):
     return 440.0 * (2 ** (n/12.0))
 
 def gen_music():
-    print('Gerando musica de fundo original...')
-    beat = 60.0/140.0  # semina a 140bpm
-    e = beat/2  # colcheia
+    print('Gerando musica de fundo original (versao estendida, com secoes)...')
+    bpm = 132
+    beat = 60.0 / bpm   # semínima
+    e = beat / 2        # colcheia (unidade base usada abaixo)
 
-    melody_steps = [
+    # ---------------------------------------------------------------
+    # Composicao original em La menor, com 4 secoes (A, B, A-variacao,
+    # ponte) para nao ficar repetitiva rapido. O loop completo dá uns
+    # 50s antes de reiniciar, bem mais longo que a versao anterior.
+    # Cada item: (nota, oitava, duracao_em_colcheias). nota=None = pausa.
+    # ---------------------------------------------------------------
+
+    # --- Secao A: tema principal (16 compassos de 1 colcheia = 8 tempos) ---
+    section_a = [
         ('A',4,1),('C',5,1),('E',5,1),('A',5,1),
         ('G',5,1),('E',5,1),('C',5,1),('A',4,1),
         ('F',4,1),('A',4,1),('C',5,1),('F',5,1),
         ('E',5,1),('C',5,1),('A',4,1),(None,0,1),
-        ('A',4,1),('C',5,1),('E',5,1),('A',5,1),
-        ('B',5,1),('A',5,1),('G',5,1),('E',5,1),
-        ('D',5,1),('C',5,1),('B',4,1),('A',4,2),
     ]
-    bass_steps = [
+    bass_a = [
         ('A',2,4),('F',2,4),
         ('G',2,4),('E',2,4),
-        ('A',2,4),('F',2,4),
-        ('G',2,2),('E',2,2),
     ]
 
-    mel_notes = []
-    for n_, oct_, dur in melody_steps:
-        f = None if n_ is None else note(n_, oct_)
-        mel_notes.append((f, dur*e))
-    bass_notes = []
-    for n_, oct_, dur in bass_steps:
-        f = note(n_, oct_)
-        bass_notes.append((f, dur*e))
+    # --- Secao B: "refrao", registro mais agudo e animado, contraste ---
+    section_b = [
+        ('C',5,1),('E',5,1),('G',5,1),('C',6,1),
+        ('B',5,1),('G',5,1),('E',5,1),('D',5,1),
+        ('C',5,1),('E',5,1),('A',5,1),('G',5,1),
+        ('E',5,1),('D',5,1),('C',5,2),
+    ]
+    bass_b = [
+        ('F',2,4),('C',2,4),
+        ('G',2,4),('G',2,4),
+    ]
+    # camada extra (arpejo) so na secao B, pra dar uma "subida de energia"
+    arp_b = [
+        ('A',3,0.5),('C',4,0.5),('E',4,0.5),('A',4,0.5),
+    ] * 7  # repete o arpejo curto ao longo da secao B inteira
+
+    # --- Secao A variacao: parecido com A mas termina diferente ---
+    section_a2 = [
+        ('A',4,1),('C',5,1),('E',5,1),('A',5,1),
+        ('B',5,1),('A',5,1),('G',5,1),('E',5,1),
+        ('D',5,1),('C',5,1),('B',4,1),('A',4,1),
+        ('C',5,1),('B',4,1),('A',4,2),
+    ]
+    bass_a2 = [
+        ('A',2,4),('F',2,4),
+        ('G',2,2),('E',2,2),('A',2,4),
+    ]
+
+    # --- Secao D: "pergunta e resposta" entre registro grave e agudo ---
+    section_d = [
+        ('A',3,1),('A',4,1),('C',4,1),('C',5,1),
+        ('E',4,1),('E',5,1),('A',4,1),('A',5,1),
+        ('G',4,1),('G',5,1),('E',4,1),('E',5,1),
+        ('F',4,1),('D',5,1),('C',5,1),('B',4,1),
+    ]
+    bass_d = [
+        ('D',2,4),('A',2,4),
+        ('F',2,4),('E',2,4),
+    ]
+
+    # --- Ponte: respiro mais calmo antes de repetir o loop ---
+    section_bridge = [
+        ('F',4,2),('G',4,2),('A',4,2),(None,0,2),
+        ('E',4,2),('F',4,2),('G',4,2),(None,0,2),
+        ('A',4,1),('G',4,1),('F',4,1),('E',4,1),('D',4,4),
+    ]
+    bass_bridge = [
+        ('F',2,4),('G',2,4),('E',2,4),('A',2,4),('D',2,4),
+    ]
+
+    full_melody = section_a + section_b + section_a2 + section_d + section_bridge
+    full_bass = bass_a + bass_b + bass_a2 + bass_d + bass_bridge
+
+    mel_notes = [(None if n_ is None else note(n_, oct_), dur * e) for n_, oct_, dur in full_melody]
+    bass_notes = [(note(n_, oct_), dur * e) for n_, oct_, dur in full_bass]
+    arp_notes = [(note(n_, oct_), dur * e) for n_, oct_, dur in arp_b]
 
     lead = concat_notes(mel_notes, wave_name='square', vol=0.34)
     bass = concat_notes(bass_notes, wave_name='triangle', vol=0.30)
-    # leve percussao sintetica (ruido curto) a cada beat para dar groove
-    perc = []
-    total_beats = sum(d for _, _, d in melody_steps)
-    for i in range(int(total_beats)):
-        if i % 2 == 1:
-            n = int(SR*0.045)
-            for k in range(n):
-                t = k/SR
-                v = random.uniform(-1,1) * envelope(t, 0.045, attack=0.001, release=0.04) * 0.12
-                perc.append(v)
-            perc.extend([0.0]*int(SR*(beat-0.045)))
-        else:
-            perc.extend([0.0]*int(SR*beat))
 
-    full = mix(lead, bass, perc)
+    # a camada de arpejo so toca durante a secao B: calcula o offset em amostras
+    offset_b_samples = int(SR * sum(dur * e for _, _, dur in section_a))
+    arp_audio = concat_notes(arp_notes, wave_name='triangle', vol=0.16)
+    arp_track = [0.0] * offset_b_samples + arp_audio
+
+    # percussao sintetica: "chute" grave nos tempos fortes + "hi-hat" curto nos contratempos
+    perc = []
+    total_eighths = sum(d for _, _, d in full_melody)
+    for i in range(int(total_eighths)):
+        if i % 4 == 0:
+            # chute grave
+            n = int(SR * 0.09)
+            for k in range(n):
+                t = k / SR
+                v = sine(55, t) * envelope(t, 0.09, attack=0.001, release=0.08) * 0.22
+                perc.append(v)
+            perc.extend([0.0] * int(SR * (e - 0.09)))
+        elif i % 2 == 1:
+            n = int(SR * 0.04)
+            for k in range(n):
+                t = k / SR
+                v = random.uniform(-1, 1) * envelope(t, 0.04, attack=0.001, release=0.035) * 0.10
+                perc.append(v)
+            perc.extend([0.0] * int(SR * (e - 0.04)))
+        else:
+            perc.extend([0.0] * int(SR * e))
+
+    full = mix(lead, bass, perc, arp_track)
     save_wav(f'{OUT}/music_loop.wav', full)
 
 # ---------------------------------------------------------------

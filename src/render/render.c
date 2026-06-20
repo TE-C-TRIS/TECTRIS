@@ -3,6 +3,53 @@
 #include <math.h>
 #include <string.h>
 
+// ---------------------------------------------------------------------
+// Fundo ambiente: uma grade bem sutil + leve vinheta nas bordas, so pra
+// a tela nao ficar com preto vazio atras do tabuleiro. Discreto de
+// proposito, pra nao atrapalhar a leitura do jogo.
+// ---------------------------------------------------------------------
+static void DrawAmbientBackground(int sw, int sh) {
+    Color gridColor = (Color){0, 255, 65, 12};
+    int step = 42;
+    for (int x = 0; x < sw; x += step) DrawLine(x, 0, x, sh, gridColor);
+    for (int y = 0; y < sh; y += step) DrawLine(0, y, sw, y, gridColor);
+
+    Color vig = (Color){0, 0, 0, 70};
+    int vSize = 50;
+    DrawRectangle(0, 0, sw, vSize, vig);
+    DrawRectangle(0, sh - vSize, sw, vSize, vig);
+    DrawRectangle(0, 0, vSize, sh, vig);
+    DrawRectangle(sw - vSize, 0, vSize, sh, vig);
+}
+
+// ---------------------------------------------------------------------
+// Peca fantasma: simula a queda da peca atual ate colidir, pra mostrar
+// ao jogador onde ela vai pousar (igual ao Tetris moderno).
+// ---------------------------------------------------------------------
+static Tetromino GetGhostPiece(GameContext *ctx) {
+    Tetromino ghost = ctx->currentPiece;
+    while (!CheckCollision(ctx, ghost, 0, 1)) {
+        ghost.pos.y++;
+    }
+    return ghost;
+}
+
+static void DrawGhostPiece(Tetromino *ghost, Vector2 off, int cs) {
+    Color outline = ghost->color;
+    outline.a = 140;
+    for (int y = 0; y < ghost->size; y++) {
+        for (int x = 0; x < ghost->size; x++) {
+            if (ghost->shape[y][x]) {
+                int px = (int)(off.x + (ghost->pos.x + x) * cs);
+                int py = (int)(off.y + (ghost->pos.y + y) * cs);
+                if (py >= off.y) {
+                    DrawRectangleLines(px + 2, py + 2, cs - 4, cs - 4, outline);
+                }
+            }
+        }
+    }
+}
+
 void UpdateScreenConfig(GameContext *ctx) {
     ctx->screen.screenWidth = GetScreenWidth();
     ctx->screen.screenHeight = GetScreenHeight();
@@ -33,7 +80,8 @@ void DrawGame(GameContext *ctx, int menuIndex) {
     Vector2 off = ctx->screen.offset;
 
     ClearBackground(COLOR_BG);
-    
+    DrawAmbientBackground(ctx->screen.screenWidth, ctx->screen.screenHeight);
+
     // Grid Background
     Rectangle boardRect = { off.x, off.y, (float)BOARD_WIDTH * cs, (float)BOARD_HEIGHT * cs };
     DrawRectangleRec(boardRect, (Color){5, 5, 12, 255});
@@ -49,6 +97,12 @@ void DrawGame(GameContext *ctx, int menuIndex) {
         }
     } 
     
+    // Peca Fantasma (preview de onde a peca vai pousar)
+    if (ctx->state == STATE_GAME) {
+        Tetromino ghost = GetGhostPiece(ctx);
+        DrawGhostPiece(&ghost, off, cs);
+    }
+
     // Current Piece
     if (ctx->state == STATE_GAME || ctx->state == STATE_QUESTION || ctx->state == STATE_QUESTION_EASY) {
         for (int y = 0; y < ctx->currentPiece.size; y++) {
@@ -267,6 +321,23 @@ static void DrawBoardAt(GameContext *ctx, float x, float y, int cs, Color accent
         }
     }
 
+    // Peca Fantasma
+    if (ctx->state == STATE_GAME) {
+        Tetromino ghost = ctx->currentPiece;
+        while (!CheckCollision(ctx, ghost, 0, 1)) ghost.pos.y++;
+        Color outline = ghost.color;
+        outline.a = 140;
+        for (int yy = 0; yy < ghost.size; yy++) {
+            for (int xx = 0; xx < ghost.size; xx++) {
+                if (ghost.shape[yy][xx]) {
+                    int px = (int)(x + (ghost.pos.x + xx) * cs);
+                    int py = (int)(y + (ghost.pos.y + yy) * cs);
+                    if (py >= y) DrawRectangleLines(px + 2, py + 2, cs - 4, cs - 4, outline);
+                }
+            }
+        }
+    }
+
     if (ctx->state == STATE_GAME) {
         for (int yy = 0; yy < ctx->currentPiece.size; yy++) {
             for (int xx = 0; xx < ctx->currentPiece.size; xx++) {
@@ -321,6 +392,7 @@ void DrawMultiplayerGame(GameContext *p1, GameContext *p2,
     float p2X = centerX + centerW + margin;
 
     ClearBackground(COLOR_BG);
+    DrawAmbientBackground(sw, sh);
 
     DrawText("TECTRIS - MULTIPLAYER LOCAL",
         sw / 2 - MeasureText("TECTRIS - MULTIPLAYER LOCAL", (int)(22 * scale)) / 2,
@@ -452,8 +524,21 @@ void DrawMultiQuestionOverlay(MultiQuestionState *mq, GameContext *p1, GameConte
     DrawText(p2Title, (int)(p2Box.x + 16*s), (int)(p2Box.y + 14*s), (int)(20*s), COLOR_P2);
 
     if (!mq->p1Done) {
-        const char *hint = p1Active ? "Digite e pressione ENTER" : "Pressione [S] para responder";
-        DrawText(hint, (int)(p1Box.x + 16*s), (int)(p1Box.y + 46*s), (int)(14*s), p1Active ? WHITE : GRAY);
+        const char *hint;
+        Color hintColor = GRAY;
+        if (mq->showFeedback) {
+            hint = "Jogador 2 acertou primeiro - sem penalidade";
+            hintColor = LIGHTGRAY;
+        } else if (p1Active) {
+            hint = "Digite e pressione ENTER";
+            hintColor = WHITE;
+        } else if (mq->p2Done && !mq->p2Correct) {
+            hint = "Sua vez! Pressione [S] para responder";
+            hintColor = COLOR_P1;
+        } else {
+            hint = "Pressione [S] para responder";
+        }
+        DrawText(hint, (int)(p1Box.x + 16*s), (int)(p1Box.y + 46*s), (int)(14*s), hintColor);
         if (p1Active) {
             Rectangle iBox = { p1Box.x + 16*s, p1Box.y + 74*s, p1Box.width - 32*s, 44*s };
             DrawRectangleRec(iBox, (Color){5,5,12,255});
@@ -470,8 +555,21 @@ void DrawMultiQuestionOverlay(MultiQuestionState *mq, GameContext *p1, GameConte
     }
 
     if (!mq->p2Done) {
-        const char *hint = p2Active ? "Digite e pressione ENTER" : "Pressione [BAIXO] para responder";
-        DrawText(hint, (int)(p2Box.x + 16*s), (int)(p2Box.y + 46*s), (int)(14*s), p2Active ? WHITE : GRAY);
+        const char *hint;
+        Color hintColor = GRAY;
+        if (mq->showFeedback) {
+            hint = "Jogador 1 acertou primeiro - sem penalidade";
+            hintColor = LIGHTGRAY;
+        } else if (p2Active) {
+            hint = "Digite e pressione ENTER";
+            hintColor = WHITE;
+        } else if (mq->p1Done && !mq->p1Correct) {
+            hint = "Sua vez! Pressione [BAIXO] para responder";
+            hintColor = COLOR_P2;
+        } else {
+            hint = "Pressione [BAIXO] para responder";
+        }
+        DrawText(hint, (int)(p2Box.x + 16*s), (int)(p2Box.y + 46*s), (int)(14*s), hintColor);
         if (p2Active) {
             Rectangle iBox = { p2Box.x + 16*s, p2Box.y + 74*s, p2Box.width - 32*s, 44*s };
             DrawRectangleRec(iBox, (Color){5,5,12,255});
@@ -504,6 +602,7 @@ void DrawNameEntryScreen(const char *title, const char *input, bool isEasy) {
     if (s < 0.6f) s = 0.6f;
 
     ClearBackground(COLOR_BG);
+    DrawAmbientBackground(sw, sh);
 
     DrawText("TECTRIS", sw/2 - MeasureText("TECTRIS", (int)(50*s))/2, (int)(sh*0.22f), (int)(50*s), COLOR_TEXT);
     DrawText(title, sw/2 - MeasureText(title, (int)(22*s))/2, (int)(sh*0.34f), (int)(22*s), isEasy ? COLOR_P2 : COLOR_P1);
@@ -531,6 +630,7 @@ void DrawMultiNameEntryScreen(const char *p1Name, const char *p2Name, int active
     if (s < 0.6f) s = 0.6f;
 
     ClearBackground(COLOR_BG);
+    DrawAmbientBackground(sw, sh);
 
     DrawText("TECTRIS", sw/2 - MeasureText("TECTRIS", (int)(46*s))/2, (int)(sh*0.14f), (int)(46*s), COLOR_TEXT);
     DrawText("MULTIPLAYER LOCAL", sw/2 - MeasureText("MULTIPLAYER LOCAL", (int)(20*s))/2, (int)(sh*0.25f), (int)(20*s), COLOR_BORDER);
@@ -612,6 +712,7 @@ void DrawRankingScreen(RankingEntry *entries, int count) {
     if (s < 0.6f) s = 0.6f;
 
     ClearBackground(COLOR_BG);
+    DrawAmbientBackground(sw, sh);
 
     DrawText("RANKING GERAL", sw/2 - MeasureText("RANKING GERAL", (int)(38*s))/2, (int)(sh*0.04f), (int)(38*s), COLOR_TEXT);
     DrawText("C = Desafio de C   |   EASY = Curiosidades   |   MULTI = Multiplayer Local",

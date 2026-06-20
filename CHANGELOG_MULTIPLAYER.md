@@ -72,7 +72,29 @@ durante o build do Matheus numa raylib mais nova):
    baseado em `DrawRectangleLinesEx`, que é uma API estável há várias versões — assim compila
    igual independente da versão exata do raylib instalada.
 
-## 📁 Arquivos novos
+## ✨ Segunda rodada — ajustes pedidos depois do primeiro teste
+
+- **Música mais longa e variada**: a trilha original foi reescrita com 5 seções (tema
+  principal, "refrão" mais agudo com uma camada extra de arpejo, variação do tema, uma
+  seção de "pergunta e resposta" entre grave/agudo, e uma ponte mais calma antes de repetir)
+  — foi de ~6s pra 20s de música única antes de repetir, bem menos repetitiva.
+  Sobre tocar a trilha clássica do Tetris: não dá, é conteúdo protegido (faz parte da marca
+  registrada do jogo), mas mantive a mesma pegada 8-bit/chiptune que ela tem.
+- **Pergunta no multiplayer agora é tipo "revezamento"**: quem responde primeiro (`S` ou
+  `↓`) tem a vez. Se acertar, a pergunta já resolve na hora e o jogo volta — o outro nem
+  precisa responder. Se errar, a vez passa automaticamente pro outro jogador tentar a mesma
+  pergunta (com indicação clara na tela: "Sua vez!"). Só errado.
+- **Bug do "A) 1)" nas alternativas do Modo Easy**: o banco de perguntas já tinha o número
+  ("1)", "2)"...) dentro do próprio texto da alternativa, e o desenho na tela também
+  acrescentava a letra ("A)", "B)"...) — duplicava. Removi o número de dentro do texto das
+  100 perguntas, agora mostra só "A) 3", "B) 1", etc.
+- **Peça fantasma**: agora aparece um contorno mostrando onde a peça vai pousar se cair
+  reto (como no Tetris moderno) — tanto no modo single-player quanto no multiplayer.
+- **Fundo deixou de ser preto vazio**: adicionei uma grade bem sutil + uma leve vinheta nas
+  bordas em todas as telas (menu, jogo, multiplayer, ranking, entrada de nome). Discreto de
+  propósito pra não atrapalhar a leitura do tabuleiro.
+
+
 ```
 include/ranking.h          include/audio_fx.h
 src/utils/ranking.c        src/utils/audio_fx.c

@@ -99,7 +99,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.3/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/CMake/share/cmake-4.3/Modules/Platform/Windows.cmake"
   "C:/Program Files/CMake/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake"
-  "C:/Users/Matheus/Downloads/TECTRIS_multiplayer (1)/TECTRIS/CMakeLists.txt"
+  "C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/CMakeLists.txt"
   "CMakeFiles/4.3.2/CMakeCCompiler.cmake"
   "CMakeFiles/4.3.2/CMakeRCCompiler.cmake"
   "CMakeFiles/4.3.2/CMakeSystem.cmake"

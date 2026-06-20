@@ -1,6 +1,6 @@
 CMakeFiles/Tectris.dir/src/utils/ranking.c.obj: \
- C:\Users\Matheus\Downloads\TECTRIS_multiplayer\ (1)\TECTRIS\src\utils\ranking.c \
- C:/Users/Matheus/DOWNLO~1/TECTRI~2/TECTRIS/include/ranking.h \
+ C:\Users\Matheus\Downloads\TECTRIS_mostra_tech\TECTRIS\src\utils\ranking.c \
+ C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/include/ranking.h \
  C:/mingw64/x86_64-w64-mingw32/include/time.h \
  C:/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
  C:/mingw64/x86_64-w64-mingw32/include/corecrt.h \

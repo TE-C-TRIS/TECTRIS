@@ -1,6 +1,6 @@
 CMakeFiles/Tectris.dir/src/utils/audio_fx.c.obj: \
- C:\Users\Matheus\Downloads\TECTRIS_multiplayer\ (1)\TECTRIS\src\utils\audio_fx.c \
- C:/Users/Matheus/DOWNLO~1/TECTRI~2/TECTRIS/include/audio_fx.h \
+ C:\Users\Matheus\Downloads\TECTRIS_mostra_tech\TECTRIS\src\utils\audio_fx.c \
+ C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/include/audio_fx.h \
  C:/raylib/raylib/src/raylib.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
  C:/mingw64/x86_64-w64-mingw32/include/stdarg.h \

@@ -705,6 +705,8 @@ int main()
             {
                 mq.questionTimer -= dt;
 
+                // So pode reivindicar a vez quem ainda nao tentou nessa pergunta.
+                // Se o primeiro errar, a vez passa automaticamente pro outro.
                 if (IsKeyPressed(KEY_S) && mq.activeTurn == TURN_NONE && !mq.p1Done)
                 {
                     mq.activeTurn = TURN_P1;
@@ -754,6 +756,7 @@ int main()
                             PlayFx(&audio, audio.sfxWrong);
                             TriggerFlash(&flashP1, RED, 0.4f);
                             AddPopup(&popsP1, "Penalidade", RED);
+                            if (!mq.p2Done) PlayFx(&audio, audio.sfxWarning); // avisa que a vez passou
                         }
                         mq.activeTurn = TURN_NONE;
                     }
@@ -796,10 +799,16 @@ int main()
                             PlayFx(&audio, audio.sfxWrong);
                             TriggerFlash(&flashP2, RED, 0.4f);
                             AddPopup(&popsP2, "Penalidade", RED);
+                            if (!mq.p1Done) PlayFx(&audio, audio.sfxWarning);
                         }
                         mq.activeTurn = TURN_NONE;
                     }
                 }
+
+                // Resolve a pergunta assim que alguem acertar (o outro nem precisa
+                // responder), ou quando os dois ja tiverem tentado e errado.
+                bool someoneCorrect = (mq.p1Done && mq.p1Correct) || (mq.p2Done && mq.p2Correct);
+                bool bothAttempted = mq.p1Done && mq.p2Done;
 
                 if (mq.questionTimer <= 0)
                 {
@@ -808,10 +817,10 @@ int main()
                     mq.showFeedback = true;
                     mq.feedbackTimer = 2.2f;
                 }
-                else if (mq.p1Done && mq.p2Done)
+                else if (someoneCorrect || bothAttempted)
                 {
                     mq.showFeedback = true;
-                    mq.feedbackTimer = 1.8f;
+                    mq.feedbackTimer = someoneCorrect ? 1.6f : 2.2f;
                 }
             }
             else
