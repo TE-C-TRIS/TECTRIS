@@ -14,6 +14,8 @@ set(SOURCES
     src/render/render.c
     src/utils/history.c
     src/utils/stats.c
+    src/utils/ranking.c
+    src/utils/audio_fx.c
 )
 add_executable(Tectris ${SOURCES})
 target_link_libraries(Tectris

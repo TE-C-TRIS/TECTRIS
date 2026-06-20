@@ -1,6 +1,6 @@
 CMakeFiles/Tectris.dir/src/game/questions_modo_easy.c.obj: \
- C:\Users\Matheus\OneDrive\Desktop\CESAR\ SCHOOL\Semestre\ 2\Jogo_Tectris\TECTRIS\src\game\questions_modo_easy.c \
- C:/Users/Matheus/OneDrive/Desktop/CESARS~1/SEMEST~2/JOGO_T~1/TECTRIS/include/common.h \
+ C:\Users\Matheus\Downloads\TECTRIS_mostra_tech\TECTRIS\src\game\questions_modo_easy.c \
+ C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/include/common.h \
  C:/raylib/raylib/src/raylib.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
  C:/mingw64/x86_64-w64-mingw32/include/stdarg.h \

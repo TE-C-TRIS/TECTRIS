@@ -1,3 +1,3 @@
-C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/Tectris.dir
-C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/edit_cache.dir
-C:/Users/Matheus/OneDrive/Desktop/CESAR SCHOOL/Semestre 2/Jogo_Tectris/TECTRIS/build/CMakeFiles/rebuild_cache.dir
+C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/build/CMakeFiles/Tectris.dir
+C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/build/CMakeFiles/edit_cache.dir
+C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/build/CMakeFiles/rebuild_cache.dir

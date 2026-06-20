@@ -1,7 +1,7 @@
 CMakeFiles/Tectris.dir/src/game/game.c.obj: \
- C:\Users\Matheus\OneDrive\Desktop\CESAR\ SCHOOL\Semestre\ 2\Jogo_Tectris\TECTRIS\src\game\game.c \
- C:/Users/Matheus/OneDrive/Desktop/CESARS~1/SEMEST~2/JOGO_T~1/TECTRIS/include/game.h \
- C:/Users/Matheus/OneDrive/Desktop/CESARS~1/SEMEST~2/JOGO_T~1/TECTRIS/include/common.h \
+ C:\Users\Matheus\Downloads\TECTRIS_mostra_tech\TECTRIS\src\game\game.c \
+ C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/include/game.h \
+ C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/include/common.h \
  C:/raylib/raylib/src/raylib.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
  C:/mingw64/x86_64-w64-mingw32/include/stdarg.h \
@@ -24,6 +24,7 @@ CMakeFiles/Tectris.dir/src/game/game.c.obj: \
  C:/mingw64/x86_64-w64-mingw32/include/_timeval.h \
  C:/mingw64/x86_64-w64-mingw32/include/pthread_time.h \
  C:/mingw64/x86_64-w64-mingw32/include/pthread_compat.h \
+ C:/Users/Matheus/Downloads/TECTRIS_mostra_tech/TECTRIS/include/ranking.h \
  C:/mingw64/x86_64-w64-mingw32/include/stdlib.h \
  C:/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
  C:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \

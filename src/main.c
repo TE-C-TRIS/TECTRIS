@@ -5,6 +5,7 @@
 #include <math.h>
 #include "history.h"
 #include "stats.h"
+#include "audio_fx.h"
 #include <time.h>
 
 // ADICIONADO: Declaração externa da função do seu novo arquivo "questions_modo_easy.c"
@@ -17,6 +18,7 @@ int main()
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT);
     InitWindow(800, 700, "Tectris - Aprenda C Jogando");
     SetTargetFPS(60);
+    SetExitKey(KEY_NULL); // ESC e usado como "voltar" em varias telas; sem isso o raylib fecha a janela ao apertar ESC em qualquer lugar
 
     GameContext game;
     InitGame(&game);
@@ -37,9 +39,65 @@ int main()
     float feedbackTimer = 0;
     float nextQuestionTimer = 20.0f; // Tempo entre perguntas
 
+    // ===== NOVO: Audio (musica + efeitos sonoros) =====
+    AudioAssets audio;
+    InitAudioAssets(&audio);
+
+    // ===== NOVO: Estado de pausa generico (volta para o estado certo, inclusive multiplayer) =====
+    GameState pauseReturnState = STATE_GAME;
+
+    // ===== NOVO: Entrada de nome (single-player) e ranking unificado =====
+    char nameInput[24] = "\0";
+    int nameLetters = 0;
+    RankingEntry rankingBuf[MAX_RANKING_RECORDS];
+    int rankingCount = 0;
+
+    // ===== NOVO: Efeitos visuais do modo single-player (popup + flash de acerto/erro) =====
+    PopupSystem popsSingle;
+    InitPopupSystem(&popsSingle);
+    FlashEffect flashSingle = {0};
+
+    // ===== NOVO: Multiplayer local =====
+    char multiP1Name[24] = "\0";
+    char multiP2Name[24] = "\0";
+    int multiNameLetters = 0;
+    int multiNameStep = 0; // 0 = digitando nome do J1, 1 = digitando nome do J2
+
+    GameContext gameP1, gameP2;
+    InitGame(&gameP1);
+    InitGame(&gameP2);
+
+    PopupSystem popsP1, popsP2;
+    InitPopupSystem(&popsP1);
+    InitPopupSystem(&popsP2);
+    FlashEffect flashP1 = {0}, flashP2 = {0};
+
+    MultiQuestionState mq;
+    memset(&mq, 0, sizeof(mq));
+    float multiQuestionInterval = 0;
+    bool multiResultSaved = false;
+
     while (!WindowShouldClose())
     {
         float dt = GetFrameTime();
+
+        UpdateAudioAssets(&audio);
+        UpdatePopups(&popsSingle, dt);
+        UpdateFlash(&flashSingle, dt);
+        UpdatePopups(&popsP1, dt);
+        UpdatePopups(&popsP2, dt);
+        UpdateFlash(&flashP1, dt);
+        UpdateFlash(&flashP2, dt);
+
+        // Atalhos globais de musica/efeitos - desativados enquanto o jogador esta digitando texto
+        bool isTypingText = (game.state == STATE_QUESTION) ||
+                             (game.state == STATE_NAME_ENTRY) ||
+                             (game.state == STATE_MULTI_NAME_ENTRY) ||
+                             (game.state == STATE_MULTI_QUESTION && mq.activeTurn != TURN_NONE);
+        if (!isTypingText) {
+            if (IsKeyPressed(KEY_M)) ToggleMusic(&audio);
+            if (IsKeyPressed(KEY_N)) ToggleSfx(&audio);
+        }
 
         // Máquina de Estados
         switch (game.state)
@@ -48,49 +106,74 @@ int main()
             if (IsKeyPressed(KEY_DOWN))
             {
                 menuIndex++;
-                if (menuIndex > 5) // MODIFICADO: O limite máximo subiu para 5 porque agora temos 6 opções no total do menu
+                PlayFx(&audio, audio.sfxSelect);
+                if (menuIndex > 7) // 8 opcoes no total (0..7)
                     menuIndex = 0;
             }
 
             if (IsKeyPressed(KEY_UP))
             {
                 menuIndex--;
+                PlayFx(&audio, audio.sfxSelect);
                 if (menuIndex < 0)
-                    menuIndex = 5; // MODIFICADO: Retorna para a última opção (5) se passar do topo
+                    menuIndex = 7;
             }
 
             if (IsKeyPressed(KEY_ENTER))
             {
 
-                if (menuIndex == 0)
+                if (menuIndex == 0) // Jogar (Desafio de C)
                 {
-                    isEasyMode = false; // ADICIONADO: Define que a partida atual NÃO é modo fácil
+                    isEasyMode = false;
                     InitGame(&game);
-                    game.state = STATE_GAME;
+                    nameInput[0] = '\0';
+                    nameLetters = 0;
+                    game.state = STATE_NAME_ENTRY;
                 }
 
-                else if (menuIndex == 1) // ADICIONADO: Nova opção no menu para iniciar o Modo Easy
+                else if (menuIndex == 1) // Modo Easy (Curiosidades)
                 {
-                    isEasyMode = true; // ADICIONADO: Define que a partida atual É do modo fácil
-                    InitGame(&game); // ADICIONADO: Inicializa as configurações de jogo
-                    game.state = STATE_GAME_EASY; // ADICIONADO: Modifica o estado do jogo para o loop do Modo Easy
+                    isEasyMode = true;
+                    InitGame(&game);
+                    nameInput[0] = '\0';
+                    nameLetters = 0;
+                    game.state = STATE_NAME_ENTRY;
                 }
 
-                else if (menuIndex == 2) // MODIFICADO: Antes era menuIndex == 1 (Histórico Normal)
+                else if (menuIndex == 2) // Multiplayer Local
                 {
-                    game.historyCount = LoadHistoryEx(game.history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
+                    InitGame(&gameP1);
+                    InitGame(&gameP2);
+                    multiP1Name[0] = '\0';
+                    multiP2Name[0] = '\0';
+                    multiNameLetters = 0;
+                    multiNameStep = 0;
+                    multiResultSaved = false;
+                    game.state = STATE_MULTI_NAME_ENTRY;
+                }
+
+                else if (menuIndex == 3) // Ranking Geral
+                {
+                    rankingCount = LoadRanking(rankingBuf, MAX_RANKING_RECORDS);
+                    SortRankingByScoreDesc(rankingBuf, rankingCount);
+                    game.state = STATE_RANKING;
+                }
+
+                else if (menuIndex == 4) // Historico - Desafio de C
+                {
+                    game.historyCount = LoadHistoryEx(game.history, MAX_HISTORY_RECORDS, HISTORY_FILE);
                     game.state = STATE_HISTORY;
                 }
 
-                else if (menuIndex == 3) // ADICIONADO: Nova opção no menu para abrir o Histórico do Modo Easy
+                else if (menuIndex == 5) // Historico - Modo Easy
                 {
-                    game.historyCount = LoadHistoryEx(game.history, MAX_HISTORY_RECORDS, HISTORY_EASY_FILE); // ADICIONADO: Carrega os registros salvos do arquivo fácil
-                    game.state = STATE_HISTORY; // ADICIONADO: Direciona para a tela de exibição padrão de histórico
+                    game.historyCount = LoadHistoryEx(game.history, MAX_HISTORY_RECORDS, HISTORY_EASY_FILE);
+                    game.state = STATE_HISTORY;
                 }
 
-                else if (menuIndex == 4) // MODIFICADO: Antes era menuIndex == 2 (Estatísticas)
+                else if (menuIndex == 6) // Analisar Estatisticas
                 {
-                    historyCount = LoadHistoryEx(history, MAX_HISTORY_RECORDS, HISTORY_FILE); // MODIFICADO: Passa o arquivo padrão por parâmetro
+                    historyCount = LoadHistoryEx(history, MAX_HISTORY_RECORDS, HISTORY_FILE);
 
                     stats.totalMatches = historyCount;
                     stats.averageScore = CalculateAverageScore(history, historyCount);
@@ -100,14 +183,14 @@ int main()
 
                     for (int i = 0; i < historyCount; i++)
                     {
-                        scoresArr[i] = history[i].score; // CORRIGIDO: de game.history para history para ler o arquivo recém-carregado
+                        scoresArr[i] = history[i].score;
                     }
 
                     GenerateHeuristic(&stats);
                     game.state = STATE_REPORT;
                 }
 
-                else if (menuIndex == 5) // MODIFICADO: Antes era menuIndex == 3 (Sair)
+                else if (menuIndex == 7) // Sair
                 {
                     CloseWindow();
                 }
@@ -120,8 +203,10 @@ int main()
             break;
 
         case STATE_GAME:
-            if (IsKeyPressed(KEY_P))
+            if (IsKeyPressed(KEY_P)) {
+                pauseReturnState = STATE_GAME;
                 game.state = STATE_PAUSE;
+            }
 
             // Controles de Gameplay
             if (IsKeyPressed(KEY_LEFT))
@@ -153,10 +238,20 @@ int main()
                 while (!CheckCollision(&game, game.currentPiece, 0, 1))
                     game.currentPiece.pos.y++;
 
+                int linesBefore = game.lines;
                 MergePiece(&game);
+                if (game.state == STATE_GAMEOVER) PlayFx(&audio, audio.sfxGameOver);
+                else if (game.lines > linesBefore) PlayFx(&audio, audio.sfxLineClear);
+                else PlayFx(&audio, audio.sfxLock);
             }
 
-            UpdateGame(&game, dt);
+            {
+                int linesBefore = game.lines;
+                GameState stateBefore = game.state;
+                UpdateGame(&game, dt);
+                if (game.state == STATE_GAMEOVER && stateBefore != STATE_GAMEOVER) PlayFx(&audio, audio.sfxGameOver);
+                else if (game.lines > linesBefore) PlayFx(&audio, audio.sfxLineClear);
+            }
 
             // Gerenciamento de Perguntas
             nextQuestionTimer -= dt;
@@ -177,8 +272,10 @@ int main()
             break;
 
         case STATE_GAME_EASY: // ADICIONADO: Novo bloco de estado completo para gerenciar a partida no modo fácil
-            if (IsKeyPressed(KEY_P)) // ADICIONADO
+            if (IsKeyPressed(KEY_P)) { // ADICIONADO
+                pauseReturnState = STATE_GAME_EASY;
                 game.state = STATE_PAUSE; // ADICIONADO
+            }
 
             // Controles de Gameplay idênticos ao modo normal // ADICIONADO
             if (IsKeyPressed(KEY_LEFT)) // ADICIONADO
@@ -208,13 +305,22 @@ int main()
             { // ADICIONADO
                 while (!CheckCollision(&game, game.currentPiece, 0, 1)) // ADICIONADO
                     game.currentPiece.pos.y++; // ADICIONADO
+                int linesBeforeEasy = game.lines;
                 MergePiece(&game); // ADICIONADO
+                if (game.state == STATE_GAMEOVER) PlayFx(&audio, audio.sfxGameOver);
+                else if (game.lines > linesBeforeEasy) PlayFx(&audio, audio.sfxLineClear);
+                else PlayFx(&audio, audio.sfxLock);
             } // ADICIONADO
 
             // Hack técnico limpo: altera temporariamente o estado interno para rodar a física do game.c perfeitamente // ADICIONADO
             GameState previousState = game.state; // ADICIONADO
             game.state = STATE_GAME; // ADICIONADO
-            UpdateGame(&game, dt); // ADICIONADO
+            {
+                int linesBeforeEasy2 = game.lines;
+                UpdateGame(&game, dt); // ADICIONADO
+                if (game.state == STATE_GAMEOVER) PlayFx(&audio, audio.sfxGameOver);
+                else if (game.lines > linesBeforeEasy2) PlayFx(&audio, audio.sfxLineClear);
+            }
             if (game.state == STATE_GAME) game.state = previousState; // ADICIONADO: Se não deu Game Over, devolve para o modo fácil
 
             nextQuestionTimer -= dt; // ADICIONADO
@@ -235,7 +341,7 @@ int main()
 
         case STATE_PAUSE:
             if (IsKeyPressed(KEY_P))
-                game.state = isEasyMode ? STATE_GAME_EASY : STATE_GAME; // MODIFICADO: Retorna para o estado correto dependendo de qual modo estava ativo
+                game.state = pauseReturnState; // Retorna para o estado correto, inclusive multiplayer
 
             break;
 
@@ -252,6 +358,9 @@ int main()
                     feedbackTimer = 2.5f;
 
                     AddPenaltyLine(&game);
+                    PlayFx(&audio, audio.sfxWrong);
+                    TriggerFlash(&flashSingle, RED, 0.4f);
+                    AddPopup(&popsSingle, "Tempo esgotado", RED);
                 }
 
                 // Captura de Input de Texto
@@ -289,10 +398,16 @@ int main()
                     {
                         game.score += 150;
                         RemovePenaltyLine(&game);
+                        PlayFx(&audio, audio.sfxCorrect);
+                        TriggerFlash(&flashSingle, GREEN, 0.4f);
+                        AddPopup(&popsSingle, "+150", GREEN);
                     }
                     else
                     {
                         AddPenaltyLine(&game);
+                        PlayFx(&audio, audio.sfxWrong);
+                        TriggerFlash(&flashSingle, RED, 0.4f);
+                        AddPopup(&popsSingle, "Penalidade", RED);
                     }
                 }
             }
@@ -319,6 +434,9 @@ int main()
                     showFeedback = true; // ADICIONADO
                     feedbackTimer = 2.5f; // ADICIONADO
                     AddPenaltyLine(&game); // ADICIONADO
+                    PlayFx(&audio, audio.sfxWrong);
+                    TriggerFlash(&flashSingle, RED, 0.4f);
+                    AddPopup(&popsSingle, "Tempo esgotado", RED);
                 } // ADICIONADO
 
                 // Captura a alternativa de múltipla escolha pressionada pelo jogador // ADICIONADO
@@ -340,10 +458,16 @@ int main()
                     { // ADICIONADO
                         game.score += 150; // ADICIONADO
                         RemovePenaltyLine(&game); // ADICIONADO
+                        PlayFx(&audio, audio.sfxCorrect);
+                        TriggerFlash(&flashSingle, GREEN, 0.4f);
+                        AddPopup(&popsSingle, "+150", GREEN);
                     } // ADICIONADO
                     else // ADICIONADO
                     { // ADICIONADO
                         AddPenaltyLine(&game); // ADICIONADO
+                        PlayFx(&audio, audio.sfxWrong);
+                        TriggerFlash(&flashSingle, RED, 0.4f);
+                        AddPopup(&popsSingle, "Penalidade", RED);
                     } // ADICIONADO
                 } // ADICIONADO
             } // ADICIONADO
@@ -385,16 +509,410 @@ int main()
                     SaveHistoryEx(currentMatch, HISTORY_FILE); // MODIFICADO: Passa o arquivo do histórico normal por parâmetro
                 } // ADICIONADO
 
+                // NOVO: tambem salva no Ranking Geral unificado (com nome + indicador de modo)
+                RankingEntry rEntry;
+                strncpy(rEntry.name, game.playerName[0] ? game.playerName : "Jogador", RANKING_NAME_LEN - 1);
+                rEntry.name[RANKING_NAME_LEN - 1] = '\0';
+                rEntry.score = game.score;
+                rEntry.lines = game.lines;
+                rEntry.level = game.level;
+                strncpy(rEntry.mode, isEasyMode ? MODE_EASY : MODE_C, RANKING_MODE_LEN - 1);
+                rEntry.mode[RANKING_MODE_LEN - 1] = '\0';
+                rEntry.timestamp = time(NULL);
+                SaveRankingEntry(rEntry);
+
                 game.state = STATE_MENU;
                 menuIndex = 0;
             }
 
+            break;
+
+        case STATE_NAME_ENTRY:
+        {
+            int key = GetCharPressed();
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (nameLetters < 23))
+                {
+                    nameInput[nameLetters] = (char)key;
+                    nameInput[nameLetters + 1] = '\0';
+                    nameLetters++;
+                }
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE) && nameLetters > 0)
+            {
+                nameLetters--;
+                nameInput[nameLetters] = '\0';
+            }
+
+            if (IsKeyPressed(KEY_ENTER) && nameLetters > 0)
+            {
+                SanitizePlayerName(nameInput);
+                strncpy(game.playerName, nameInput, sizeof(game.playerName) - 1);
+                game.playerName[sizeof(game.playerName) - 1] = '\0';
+                PlayFx(&audio, audio.sfxSelect);
+                game.state = isEasyMode ? STATE_GAME_EASY : STATE_GAME;
+            }
+
+            if (IsKeyPressed(KEY_ESCAPE))
+            {
+                game.state = STATE_MENU;
+            }
+            break;
+        }
+
+        case STATE_MULTI_NAME_ENTRY:
+        {
+            char *activeBuf = (multiNameStep == 0) ? multiP1Name : multiP2Name;
+
+            int key = GetCharPressed();
+            while (key > 0)
+            {
+                if ((key >= 32) && (key <= 125) && (multiNameLetters < 23))
+                {
+                    activeBuf[multiNameLetters] = (char)key;
+                    activeBuf[multiNameLetters + 1] = '\0';
+                    multiNameLetters++;
+                }
+                key = GetCharPressed();
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE) && multiNameLetters > 0)
+            {
+                multiNameLetters--;
+                activeBuf[multiNameLetters] = '\0';
+            }
+
+            if (IsKeyPressed(KEY_ENTER) && multiNameLetters > 0)
+            {
+                SanitizePlayerName(activeBuf);
+                PlayFx(&audio, audio.sfxSelect);
+
+                if (multiNameStep == 0)
+                {
+                    multiNameStep = 1;
+                    multiNameLetters = 0;
+                }
+                else
+                {
+                    strncpy(gameP1.playerName, multiP1Name, sizeof(gameP1.playerName) - 1);
+                    gameP1.playerName[sizeof(gameP1.playerName) - 1] = '\0';
+                    strncpy(gameP2.playerName, multiP2Name, sizeof(gameP2.playerName) - 1);
+                    gameP2.playerName[sizeof(gameP2.playerName) - 1] = '\0';
+
+                    gameP1.state = STATE_GAME;
+                    gameP2.state = STATE_GAME;
+                    InitPopupSystem(&popsP1);
+                    InitPopupSystem(&popsP2);
+                    flashP1.timer = 0;
+                    flashP2.timer = 0;
+                    memset(&mq, 0, sizeof(mq));
+                    multiQuestionInterval = 24.0f;
+                    multiResultSaved = false;
+
+                    game.state = STATE_MULTI_GAME;
+                }
+            }
+
+            if (IsKeyPressed(KEY_ESCAPE))
+            {
+                game.state = STATE_MENU;
+            }
+            break;
+        }
+
+        case STATE_MULTI_GAME:
+        {
+            if (IsKeyPressed(KEY_P)) {
+                pauseReturnState = STATE_MULTI_GAME;
+                game.state = STATE_PAUSE;
+                break;
+            }
+
+            // ----- Jogador 1: WASD + Espaco -----
+            if (IsKeyPressed(KEY_A)) { if (!CheckCollision(&gameP1, gameP1.currentPiece, -1, 0)) gameP1.currentPiece.pos.x--; }
+            if (IsKeyPressed(KEY_D)) { if (!CheckCollision(&gameP1, gameP1.currentPiece, 1, 0)) gameP1.currentPiece.pos.x++; }
+            if (IsKeyPressed(KEY_S)) { if (!CheckCollision(&gameP1, gameP1.currentPiece, 0, 1)) gameP1.currentPiece.pos.y++; }
+            if (IsKeyPressed(KEY_W)) { TryRotate(&gameP1); }
+            if (IsKeyPressed(KEY_SPACE))
+            {
+                while (!CheckCollision(&gameP1, gameP1.currentPiece, 0, 1)) gameP1.currentPiece.pos.y++;
+                int linesBeforeP1 = gameP1.lines;
+                MergePiece(&gameP1);
+                if (gameP1.state == STATE_GAMEOVER) PlayFx(&audio, audio.sfxGameOver);
+                else if (gameP1.lines > linesBeforeP1) PlayFx(&audio, audio.sfxLineClear);
+                else PlayFx(&audio, audio.sfxLock);
+            }
+
+            // ----- Jogador 2: Setas + Enter -----
+            if (IsKeyPressed(KEY_LEFT)) { if (!CheckCollision(&gameP2, gameP2.currentPiece, -1, 0)) gameP2.currentPiece.pos.x--; }
+            if (IsKeyPressed(KEY_RIGHT)) { if (!CheckCollision(&gameP2, gameP2.currentPiece, 1, 0)) gameP2.currentPiece.pos.x++; }
+            if (IsKeyPressed(KEY_DOWN)) { if (!CheckCollision(&gameP2, gameP2.currentPiece, 0, 1)) gameP2.currentPiece.pos.y++; }
+            if (IsKeyPressed(KEY_UP)) { TryRotate(&gameP2); }
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                while (!CheckCollision(&gameP2, gameP2.currentPiece, 0, 1)) gameP2.currentPiece.pos.y++;
+                int linesBeforeP2 = gameP2.lines;
+                MergePiece(&gameP2);
+                if (gameP2.state == STATE_GAMEOVER) PlayFx(&audio, audio.sfxGameOver);
+                else if (gameP2.lines > linesBeforeP2) PlayFx(&audio, audio.sfxLineClear);
+                else PlayFx(&audio, audio.sfxLock);
+            }
+
+            // ----- Gravidade automatica (reaproveita UpdateGame para os dois) -----
+            {
+                int l1Before = gameP1.lines;
+                UpdateGame(&gameP1, dt);
+                if (gameP1.lines > l1Before) PlayFx(&audio, audio.sfxLineClear);
+            }
+            {
+                int l2Before = gameP2.lines;
+                UpdateGame(&gameP2, dt);
+                if (gameP2.lines > l2Before) PlayFx(&audio, audio.sfxLineClear);
+            }
+
+            // ----- Pergunta de logica periodica -----
+            multiQuestionInterval -= dt;
+            if (multiQuestionInterval <= 0 && gameP1.state == STATE_GAME && gameP2.state == STATE_GAME)
+            {
+                int qLevel = (gameP1.level > gameP2.level) ? gameP1.level : gameP2.level;
+                mq.question = GetRandomQuestion(qLevel);
+                mq.activeTurn = TURN_NONE;
+                mq.p1Done = false; mq.p2Done = false;
+                mq.p1Correct = false; mq.p2Correct = false;
+                mq.p1Input[0] = '\0'; mq.p2Input[0] = '\0';
+                mq.p1Letters = 0; mq.p2Letters = 0;
+                mq.questionTimeMax = 22.0f;
+                mq.questionTimer = mq.questionTimeMax;
+                mq.showFeedback = false;
+                game.state = STATE_MULTI_QUESTION;
+            }
+
+            // ----- Fim de partida: alguem violou a Kill Line -----
+            if (gameP1.state == STATE_GAMEOVER || gameP2.state == STATE_GAMEOVER)
+            {
+                game.state = STATE_MULTI_GAMEOVER;
+            }
+
+            break;
+        }
+
+        case STATE_MULTI_QUESTION:
+        {
+            if (!mq.showFeedback)
+            {
+                mq.questionTimer -= dt;
+
+                // So pode reivindicar a vez quem ainda nao tentou nessa pergunta.
+                // Se o primeiro errar, a vez passa automaticamente pro outro.
+                if (IsKeyPressed(KEY_S) && mq.activeTurn == TURN_NONE && !mq.p1Done)
+                {
+                    mq.activeTurn = TURN_P1;
+                    PlayFx(&audio, audio.sfxOpenInput);
+                }
+                if (IsKeyPressed(KEY_DOWN) && mq.activeTurn == TURN_NONE && !mq.p2Done)
+                {
+                    mq.activeTurn = TURN_P2;
+                    PlayFx(&audio, audio.sfxOpenInput);
+                }
+
+                if (mq.activeTurn == TURN_P1)
+                {
+                    int key = GetCharPressed();
+                    while (key > 0)
+                    {
+                        if ((key >= 32) && (key <= 125) && (mq.p1Letters < 63))
+                        {
+                            mq.p1Input[mq.p1Letters] = (char)key;
+                            mq.p1Input[mq.p1Letters + 1] = '\0';
+                            mq.p1Letters++;
+                        }
+                        key = GetCharPressed();
+                    }
+                    if (IsKeyPressed(KEY_BACKSPACE) && mq.p1Letters > 0)
+                    {
+                        mq.p1Letters--;
+                        mq.p1Input[mq.p1Letters] = '\0';
+                    }
+                    if (IsKeyPressed(KEY_ENTER) && mq.p1Letters > 0)
+                    {
+                        mq.p1Correct = ValidateAnswer(mq.p1Input, &mq.question);
+                        mq.p1Done = true;
+                        if (mq.p1Correct)
+                        {
+                            gameP1.score += 150;
+                            RemovePenaltyLine(&gameP1);
+                            AddPenaltyLine(&gameP2); // ataque ao adversario
+                            PlayFx(&audio, audio.sfxCorrect);
+                            TriggerFlash(&flashP1, GREEN, 0.4f);
+                            TriggerFlash(&flashP2, ORANGE, 0.3f);
+                            AddPopup(&popsP1, "+150", GREEN);
+                        }
+                        else
+                        {
+                            AddPenaltyLine(&gameP1);
+                            PlayFx(&audio, audio.sfxWrong);
+                            TriggerFlash(&flashP1, RED, 0.4f);
+                            AddPopup(&popsP1, "Penalidade", RED);
+                            if (!mq.p2Done) PlayFx(&audio, audio.sfxWarning); // avisa que a vez passou
+                        }
+                        mq.activeTurn = TURN_NONE;
+                    }
+                }
+                else if (mq.activeTurn == TURN_P2)
+                {
+                    int key = GetCharPressed();
+                    while (key > 0)
+                    {
+                        if ((key >= 32) && (key <= 125) && (mq.p2Letters < 63))
+                        {
+                            mq.p2Input[mq.p2Letters] = (char)key;
+                            mq.p2Input[mq.p2Letters + 1] = '\0';
+                            mq.p2Letters++;
+                        }
+                        key = GetCharPressed();
+                    }
+                    if (IsKeyPressed(KEY_BACKSPACE) && mq.p2Letters > 0)
+                    {
+                        mq.p2Letters--;
+                        mq.p2Input[mq.p2Letters] = '\0';
+                    }
+                    if (IsKeyPressed(KEY_ENTER) && mq.p2Letters > 0)
+                    {
+                        mq.p2Correct = ValidateAnswer(mq.p2Input, &mq.question);
+                        mq.p2Done = true;
+                        if (mq.p2Correct)
+                        {
+                            gameP2.score += 150;
+                            RemovePenaltyLine(&gameP2);
+                            AddPenaltyLine(&gameP1); // ataque ao adversario
+                            PlayFx(&audio, audio.sfxCorrect);
+                            TriggerFlash(&flashP2, GREEN, 0.4f);
+                            TriggerFlash(&flashP1, ORANGE, 0.3f);
+                            AddPopup(&popsP2, "+150", GREEN);
+                        }
+                        else
+                        {
+                            AddPenaltyLine(&gameP2);
+                            PlayFx(&audio, audio.sfxWrong);
+                            TriggerFlash(&flashP2, RED, 0.4f);
+                            AddPopup(&popsP2, "Penalidade", RED);
+                            if (!mq.p1Done) PlayFx(&audio, audio.sfxWarning);
+                        }
+                        mq.activeTurn = TURN_NONE;
+                    }
+                }
+
+                // Resolve a pergunta assim que alguem acertar (o outro nem precisa
+                // responder), ou quando os dois ja tiverem tentado e errado.
+                bool someoneCorrect = (mq.p1Done && mq.p1Correct) || (mq.p2Done && mq.p2Correct);
+                bool bothAttempted = mq.p1Done && mq.p2Done;
+
+                if (mq.questionTimer <= 0)
+                {
+                    if (!mq.p1Done) { mq.p1Done = true; mq.p1Correct = false; AddPenaltyLine(&gameP1); PlayFx(&audio, audio.sfxWrong); }
+                    if (!mq.p2Done) { mq.p2Done = true; mq.p2Correct = false; AddPenaltyLine(&gameP2); PlayFx(&audio, audio.sfxWrong); }
+                    mq.showFeedback = true;
+                    mq.feedbackTimer = 2.2f;
+                }
+                else if (someoneCorrect || bothAttempted)
+                {
+                    mq.showFeedback = true;
+                    mq.feedbackTimer = someoneCorrect ? 1.6f : 2.2f;
+                }
+            }
+            else
+            {
+                mq.feedbackTimer -= dt;
+                if (mq.feedbackTimer <= 0)
+                {
+                    game.state = STATE_MULTI_GAME;
+                    multiQuestionInterval = 20.0f + (float)GetRandomValue(0, 8);
+                }
+            }
+            break;
+        }
+
+        case STATE_MULTI_GAMEOVER:
+        {
+            if (!multiResultSaved)
+            {
+                multiResultSaved = true;
+                PlayFx(&audio, audio.sfxWin);
+
+                GameContext *winner;
+                if (gameP1.state == STATE_GAMEOVER && gameP2.state == STATE_GAMEOVER)
+                    winner = (gameP1.score >= gameP2.score) ? &gameP1 : &gameP2;
+                else if (gameP1.state == STATE_GAMEOVER)
+                    winner = &gameP2;
+                else
+                    winner = &gameP1;
+
+                RankingEntry rEntry;
+                strncpy(rEntry.name, winner->playerName[0] ? winner->playerName : "Jogador", RANKING_NAME_LEN - 1);
+                rEntry.name[RANKING_NAME_LEN - 1] = '\0';
+                rEntry.score = winner->score;
+                rEntry.lines = winner->lines;
+                rEntry.level = winner->level;
+                strncpy(rEntry.mode, MODE_MULTI, RANKING_MODE_LEN - 1);
+                rEntry.mode[RANKING_MODE_LEN - 1] = '\0';
+                rEntry.timestamp = time(NULL);
+                SaveRankingEntry(rEntry);
+            }
+
+            if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
+            {
+                game.state = STATE_MENU;
+                menuIndex = 0;
+            }
+            break;
+        }
+
+        case STATE_RANKING:
+            if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_ESCAPE))
+                game.state = STATE_MENU;
             break;
         }
 
         // Renderização Centralizada
         BeginDrawing();
 
+        if (game.state == STATE_NAME_ENTRY)
+        {
+            DrawNameEntryScreen(isEasyMode ? "MODO EASY - CURIOSIDADES" : "DESAFIO DE C", nameInput, isEasyMode);
+        }
+        else if (game.state == STATE_MULTI_NAME_ENTRY)
+        {
+            DrawMultiNameEntryScreen(multiP1Name, multiP2Name, multiNameStep);
+        }
+        else if (game.state == STATE_MULTI_GAME || game.state == STATE_MULTI_QUESTION || game.state == STATE_MULTI_GAMEOVER)
+        {
+            DrawMultiplayerGame(&gameP1, &gameP2, &flashP1, &flashP2, &popsP1, &popsP2, multiQuestionInterval);
+
+            if (game.state == STATE_MULTI_QUESTION)
+            {
+                DrawMultiQuestionOverlay(&mq, &gameP1, &gameP2);
+            }
+            else if (game.state == STATE_MULTI_GAMEOVER)
+            {
+                bool p1Won;
+                if (gameP1.state == STATE_GAMEOVER && gameP2.state == STATE_GAMEOVER)
+                    p1Won = (gameP1.score >= gameP2.score);
+                else if (gameP1.state == STATE_GAMEOVER)
+                    p1Won = false;
+                else
+                    p1Won = true;
+                DrawMultiGameOverScreen(&gameP1, &gameP2, p1Won);
+            }
+        }
+        else if (game.state == STATE_RANKING)
+        {
+            DrawRankingScreen(rankingBuf, rankingCount);
+        }
+        else
+        {
         // Hack técnico limpo: engana o DrawGame do render.c para desenhar o fundo e os blocos de Tetris perfeitamente no modo fácil // ADICIONADO
         bool wasEasyGame = (game.state == STATE_GAME_EASY); // ADICIONADO
         if (wasEasyGame) game.state = STATE_GAME; // ADICIONADO
@@ -716,10 +1234,12 @@ int main()
                 (int)(18 * s),
                 LIGHTGRAY);
         }
+        }
 
         EndDrawing();
     }
 
+    UnloadAudioAssets(&audio);
     CloseWindow();
 
     return 0;

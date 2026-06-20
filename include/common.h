@@ -28,8 +28,23 @@ typedef enum {
     STATE_HISTORY,
     STATE_HISTORY_EASY, // NOVO: Histórico do modo fácil
     STATE_REPORT,
-    STATE_GAMEOVER
+    STATE_GAMEOVER,
+
+    // ===== Multiplayer / Ranking geral =====
+    STATE_NAME_ENTRY,        // Tela de digitar nome (modos single-player, antes de jogar)
+    STATE_MULTI_NAME_ENTRY,  // Tela de digitar os dois nomes (multiplayer)
+    STATE_MULTI_GAME,        // Partida multiplayer local (2 tabuleiros simultâneos)
+    STATE_MULTI_QUESTION,    // Pergunta no multiplayer (entrada alternada por jogador)
+    STATE_MULTI_GAMEOVER,    // Fim da partida multiplayer (mostra vencedor)
+    STATE_RANKING            // Pódio + ranking geral (todos os modos)
 } GameState;
+
+// Cores dos jogadores no modo multiplayer
+#define COLOR_P1 (Color){ 0, 245, 255, 255 }    // Ciano (mesmo tom do COLOR_TEXT)
+#define COLOR_P2 (Color){ 255, 140, 0, 255 }    // Laranja vibrante (alto contraste com P1)
+#define COLOR_GOLD   (Color){ 255, 215, 70, 255 }
+#define COLOR_SILVER (Color){ 200, 207, 224, 255 }
+#define COLOR_BRONZE (Color){ 222, 142, 80, 255 }
 
 // Estrutura de Posição
 typedef struct {
@@ -81,5 +96,51 @@ typedef struct {
 #define HISTORY_FILE "history.txt"
 #define HISTORY_EASY_FILE "history_easy.txt" // novo
 #define MAX_HISTORY_RECORDS 100
+
+// ===================================================================
+// Efeitos visuais (popups flutuantes de pontuação + flash de acerto/erro)
+// ===================================================================
+#define MAX_POPUPS 12
+
+typedef struct {
+    char text[24];
+    float life;     // tempo restante (segundos)
+    float maxLife;  // duração total, usada para calcular o fade e o deslocamento
+    Color color;
+    bool active;
+} Popup;
+
+typedef struct {
+    Popup items[MAX_POPUPS];
+} PopupSystem;
+
+typedef struct {
+    Color color;
+    float timer;   // > 0 enquanto o flash estiver visível
+    float maxTimer;
+} FlashEffect;
+
+// ===================================================================
+// Estado de UI da pergunta no modo multiplayer (entrada alternada)
+// ===================================================================
+typedef enum {
+    TURN_NONE = 0,
+    TURN_P1,
+    TURN_P2
+} AnswerTurn;
+
+typedef struct {
+    Question question;
+    AnswerTurn activeTurn;     // quem está com a caixa de resposta aberta agora
+    bool p1Done, p2Done;       // já responderam (ou levaram timeout)
+    bool p1Correct, p2Correct;
+    char p1Input[64];
+    char p2Input[64];
+    int p1Letters, p2Letters;
+    float questionTimer;
+    float questionTimeMax;
+    bool showFeedback;
+    float feedbackTimer;
+} MultiQuestionState;
 
 #endif
