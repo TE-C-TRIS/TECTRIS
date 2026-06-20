@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS"
+CMAKE_SOURCE_DIR = "C:\Users\Matheus\Downloads\TECTRIS_multiplayer (1)\TECTRIS"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build"
+CMAKE_BINARY_DIR = "C:\Users\Matheus\Downloads\TECTRIS_multiplayer (1)\TECTRIS\build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Matheus\Downloads\TECTRIS_multiplayer (1)\TECTRIS\build\CMakeFiles" "C:\Users\Matheus\Downloads\TECTRIS_multiplayer (1)\TECTRIS\build\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Matheus\OneDrive\Desktop\CESAR SCHOOL\Semestre 2\Jogo_Tectris\TECTRIS\build\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Matheus\Downloads\TECTRIS_multiplayer (1)\TECTRIS\build\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -248,6 +248,30 @@ src/render/render.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/render/render.c.s
 .PHONY : src/render/render.c.s
 
+src/utils/audio_fx.obj: src/utils/audio_fx.c.obj
+.PHONY : src/utils/audio_fx.obj
+
+# target to build an object file
+src/utils/audio_fx.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/audio_fx.c.obj
+.PHONY : src/utils/audio_fx.c.obj
+
+src/utils/audio_fx.i: src/utils/audio_fx.c.i
+.PHONY : src/utils/audio_fx.i
+
+# target to preprocess a source file
+src/utils/audio_fx.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/audio_fx.c.i
+.PHONY : src/utils/audio_fx.c.i
+
+src/utils/audio_fx.s: src/utils/audio_fx.c.s
+.PHONY : src/utils/audio_fx.s
+
+# target to generate assembly for a file
+src/utils/audio_fx.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/audio_fx.c.s
+.PHONY : src/utils/audio_fx.c.s
+
 src/utils/history.obj: src/utils/history.c.obj
 .PHONY : src/utils/history.obj
 
@@ -271,6 +295,30 @@ src/utils/history.s: src/utils/history.c.s
 src/utils/history.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/history.c.s
 .PHONY : src/utils/history.c.s
+
+src/utils/ranking.obj: src/utils/ranking.c.obj
+.PHONY : src/utils/ranking.obj
+
+# target to build an object file
+src/utils/ranking.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/ranking.c.obj
+.PHONY : src/utils/ranking.c.obj
+
+src/utils/ranking.i: src/utils/ranking.c.i
+.PHONY : src/utils/ranking.i
+
+# target to preprocess a source file
+src/utils/ranking.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/ranking.c.i
+.PHONY : src/utils/ranking.c.i
+
+src/utils/ranking.s: src/utils/ranking.c.s
+.PHONY : src/utils/ranking.s
+
+# target to generate assembly for a file
+src/utils/ranking.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tectris.dir\build.make CMakeFiles/Tectris.dir/src/utils/ranking.c.s
+.PHONY : src/utils/ranking.c.s
 
 src/utils/stats.obj: src/utils/stats.c.obj
 .PHONY : src/utils/stats.obj
@@ -320,9 +368,15 @@ help:
 	@echo ... src/render/render.obj
 	@echo ... src/render/render.i
 	@echo ... src/render/render.s
+	@echo ... src/utils/audio_fx.obj
+	@echo ... src/utils/audio_fx.i
+	@echo ... src/utils/audio_fx.s
 	@echo ... src/utils/history.obj
 	@echo ... src/utils/history.i
 	@echo ... src/utils/history.s
+	@echo ... src/utils/ranking.obj
+	@echo ... src/utils/ranking.i
+	@echo ... src/utils/ranking.s
 	@echo ... src/utils/stats.obj
 	@echo ... src/utils/stats.i
 	@echo ... src/utils/stats.s

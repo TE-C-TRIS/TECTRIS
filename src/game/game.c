@@ -45,7 +45,8 @@ void InitGame(GameContext *ctx) {
     ctx->dropTimer = 0;
     ctx->dropInterval = 1.0f;
     ctx->state = STATE_MENU;
-    
+    ctx->playerName[0] = '\0';
+
     srand(time(NULL));
     ctx->currentPiece = CreateRandomPiece();
     ctx->nextPiece = CreateRandomPiece();
